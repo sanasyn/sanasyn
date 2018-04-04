@@ -1,0 +1,33 @@
+{
+  "name": "practicesana",
+  "version": "1.0.0",
+  "description": "practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd Client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "Client/node_modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marissapels/practiceSana.git"
+  },
+  "author": "Marissa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marissapels/practiceSana/issues"
+  },
+  "homepage": "https://github.com/marissapels/practiceSana#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "knex": "^0.14.2",
+    "pg": "^7.4.1",
+    "react-router-dom": "^4.2.2",
+    "zipcodes": "^6.0.0"
+  }
+}

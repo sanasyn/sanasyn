@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.0em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #d4d2d2;
+  font-family: sans-serif;
+}
+
+.header {
+  margin-top: 0; 
+  background-color: #20759c;
+  min-height:255;
+  border-top: solid #545454 8px;
+}
+
+.logo {
+  font-family: Arial;
+  letter-spacing: -6px;
+  font-size: 2.7em;
+  padding-right: 14px;
+  font-style: italic;
+  color: #CCC515;
+}
+
+.container {
+  width:100%;
+}
+
+.quiz {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  background:#fff;
+  border-radius: 3px;
+
+}
+/*Landing Page*/
+.topStyle {
+    background: #060d16;
+    padding: 0px;
+    text-align: center;
+    position: relative;
+    overflow: auto;
+    color:white;
+    margin: 0px;
+
+}
+
+.info {
+  margin-top: 20px;
+}
+
+.synapseImage {
+  width: 45%;
+  display: block;
+}
+
+.startInfo {
+  font-size:23px;
+}
+
+.latin {
+  overflow:auto;
+  padding:35px;
+  background:white;
+}
+
+.latinImage {
+  max-width: 600px;
+}
+
+.stepContainer {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.step {
+  margin: 32px;
+  background: #334f54;
+  border-radius: 22px;
+  text-align: center;
+  padding:12px;
+}
+
+h2.stepNumber {
+  height: 100px;
+  width: 100px;
+  background-color: #56a7a0;
+  border-radius: 50%;
+  line-height: 100px;
+  color: white;
+  font-size: 40px;
+  margin: 10px;
+  display: inline-block;
+  border: white solid 2px;
+}
+
+p.stepDesc {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
+}
+
+
+/*quiz */
+ .quiz {
+  margin: 0, auto;
+  text-align: center;
+  padding: 30px;
+} 
+ 
+
+ /*Result*/
+.result {
+  padding: 1.5rem 2.5rem;
+  text-align: center;
+}
+
+/*question */
+.question {
+  margin: 0;
+  padding: 0.5rem 2.5rem 1.5rem 2.5rem;
+  color:black;
+}
+
+
+/*answer options*/
+.answerOptions{
+  margin: 0;
+  padding: 0;
+  list-style:none;
+}
+
+.answerOption:hover{
+  background-color:#eefbfe;
+}
+
+[type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+  font-size: 2em;
+  margin:12px;
+}
+[type="radio"]+label:before, [type="radio"]+label:after {
+  width:20px;
+  height:20px;
+  border: 2px solid black;
+}
+
+[type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
+    border: 2px solid #000000;
+}
+
+.radioLabel {
+  color:black;
+}
+
+input[type="text"] {
+    font-size: 2em;
+    text-align: center;
+    color: black;
+}
+
+label.checkCustomLabel {
+    font-size: 2em;
+    margin: 10px;
+    color:black;
+}
+
+[type="checkbox"]:checked+label:before {
+  width: 14px;
+    height: 24px;
+}
+
+/* Result Details */
+.detail-container {
+  width: 75%
+}
+
+.detail-topsection {
+  margin-bottom: 20px;
+}
+
+.detail-study-title {
+  font-size: 2.8em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.detail-description {
+  border-top: .2em solid black;
+}
+
+.detail-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.detail-phase, .detail-eligibility, .detail-studylink {
+  height: 150px;
+  text-align: center;
+}
+
+.detail-study-phase {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.detail-studylink {
+  padding-top: 35px;
+  font-size: 2.0em;
+}
+
+.detail-contact {
+  height: 450px;
+}
+
+div.col-md-6.detail-map {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+button.col-md-6.detail-back {
+  height: 100px;
+}
+
+/*animation*/
+.fade-enter{
+  opacity:0;
+}
+
+.fade-enter .fade-enter-active{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out 0.3s;
+}
+
+.fade-leave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 1;
+}
+
+.fade-leave .fade-leave-active{
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-appear{
+  opacity: 0;
+}
+
+.fade-apear .fade-apear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
