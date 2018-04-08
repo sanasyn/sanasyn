@@ -5,7 +5,6 @@ const Client = require("pg")
 const app = express();
 const PORT = process.env.PORT || 8080;
 const match = require("./helpers/match.js");
-// require("./helpers/match.js");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,10 +15,10 @@ app.post("/query", match.runQuery);
 app.post("/resultDetails", require("./helpers/resultDetails"))
 app.post("/useReason", require("./helpers/useReason"))
 
-app.use(express.static(path.resolve(__dirname, './dist')));
+app.use(express.static(path.resolve(__dirname, './src/dist')));
 
 app.get('*', function(request, response) {
-   response.sendFile(path.resolve(__dirname, './dist/index.html'));
+   response.sendFile(path.resolve(__dirname, './src/dist/index.html'));
  });
 
 app.listen(PORT, function() {

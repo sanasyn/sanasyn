@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
-import questionaire from '../api/questionaire';
+import questionaire from '../utils/questionaire';
 import update from 'react-addons-update';
 import Result from './Result';
 import RefreshIndicator from 'material-ui/RefreshIndicator';

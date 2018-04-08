@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import LandingPage from './components/LandingPage';
-import Main from './components/Main';
+import LandingPage from './LandingPage';
+import Main from './Main';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
-import headerImage from './SanaTitle_b.svg';
+import headerImage from '../dist/SanaTitle.svg';
 
 class App extends Component {
   render() {

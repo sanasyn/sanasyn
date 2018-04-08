@@ -2,14 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: ['./Client/src/index.js'],
+  entry: ['./src/index.js'],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './src/dist/assets'),
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: 'assets',
   },
   devServer: {
-    contentBase: './dist/index.html',
+    contentBase: './src/dist/index.html',
     proxy: {
       '/**': {
         target: 'http://localhost:8080',
@@ -35,12 +35,16 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.css$/,
+        loader: 'style-loader!css-loader!autoprefixer-loader'
+      },
+      {
+        test: /\.(jpg|png|gif|svg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/[name].[ext]',
+              name: '/[name].[ext]',
             },
           },
         ],

@@ -1,5 +1,5 @@
 import React from 'react';
-import Background from '../synapse.jpg';
+import Background from '../dist/synapse.jpg';
 import FlatButton from 'material-ui/FlatButton';
 import { Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
