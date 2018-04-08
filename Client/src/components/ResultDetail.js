@@ -8,16 +8,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
 class ResultDetail extends Component {
-  state = {
-    elg_info_open: false,
-    tab_value:'include'
-  };
+  constructor(props){
+      super(props)
 
-  handleToggle = () => {
+      this.state = {
+        elg_info_open: false,
+        tab_value:'include'
+      }
+  }
+
+  handleToggle() {
     const currStat=this.state.elg_info_open;
     this.setState({elg_info_open: !currStat});
   };
-  handleTabChange = (value) => {
+  handleTabChange(value) {
     this.setState({
       tab_value: value,
     });
