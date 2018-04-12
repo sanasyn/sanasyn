@@ -20,6 +20,7 @@ function getDetails(req, res){
   return getStudyInfo(study)
     .then((data)=> getContactInfo(data, study))
     .then((data) => res.send(data))
+    .catch((err) => reject(err))
 }
 
 function getStudyInfo(study){
@@ -31,6 +32,7 @@ function getStudyInfo(study){
       console.log("getStudyInfo ", row);
       return row
     })
+    .catch((err) => reject(err))
 }
 
 function getContactInfo(data, study){
@@ -44,6 +46,7 @@ function getContactInfo(data, study){
         contact: row
       }
     })
+    .catch((err) => reject(err))
 }
 
 module.exports = getDetails;
