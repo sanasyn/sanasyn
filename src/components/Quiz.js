@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import config from '../../config/config.js'
 // import AnswerOption from '../components/AnswerOption'
 
 
@@ -30,15 +31,8 @@ function Quiz(props){
 
                 <LinearProgress mode="determinate" min={0} max={props.questionTotal} color="#d40027" style={{height: "7px", marginBottom: "25px"}} value={props.counter} />
 
-               
-               {/* <QuestionCount
-                    counter={props.questionId}
-                    total={props.questionTotal}
-                /> */ }
-
                 <Question content={props.question}/>
-                
-                
+                          
                 <AnswerInput 
                 answerInputType={props.answerInputType}
                 answerOptions={props.answerOptions}
@@ -54,6 +48,9 @@ function Quiz(props){
                 
 
                 <FlatButton style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em",}} onClick={props.onClickNext}> NEXT</FlatButton>
+
+                {config.node_env==='dev' ? (<FlatButton style={{backgroundColor: "red", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em",}} onClick={props.skipToResults}> Results</FlatButton>):null}
+                
 
                 
             </div>

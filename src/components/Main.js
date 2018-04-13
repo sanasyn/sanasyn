@@ -50,6 +50,7 @@ class Main extends Component {
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
     this.handleClickNext=this.handleClickNext.bind(this);
     this.handleClickBack=this.handleClickBack.bind(this);
+    this.skipToResults=this.skipToResults.bind(this);
     this.handleTextChange=this.handleTextChange.bind(this);
     this.validateInputValue=this.validateInputValue.bind(this);
     this.renderResult=this.renderResult.bind(this);
@@ -107,8 +108,8 @@ class Main extends Component {
   }
 
   getMatchResult() {
-  //   console.log("getMatchResult");
-  //   console.log("answer: ", this.state.answer);
+    console.log("getMatchResult");
+    console.log("answer: ", this.state.answer);
     axios.post('./query', this.state.answer)
       .then((results) => {
         // console.log("results: ", results.data);
@@ -164,6 +165,32 @@ class Main extends Component {
     this.setState({
       currAnswer: event.currentTarget.value
     });
+  }
+
+  skipToResults() {
+    this.setState({
+      loading:true,
+      answer: {
+        zipcode:"78758",
+        age: "65",
+        gender: "Female",
+        geneticTesting: {
+          taken: "apoE4_0",
+          consent: "yes"
+        },
+        stroke: "no", 
+        medications: {
+            list: ["Namenda"],
+            acceptableTime:"yes"
+         },
+        informant: "yes",
+        primaryCare: "yes",
+        opinion: {
+          list:[]
+        }
+      }
+    });
+    setTimeout(()=> this.getMatchResult(),300);
   }
 
   handleClickBack() {
@@ -504,6 +531,7 @@ class Main extends Component {
         inputError={this.state.inputError}
         validateInputValue={this.validateInputValue}
         counter={this.state.counter}
+        skipToResults={this.skipToResults}
         />
     );
   }
