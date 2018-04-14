@@ -65,24 +65,24 @@ class Result extends Component {
     render(){
         const resultTable = (   
           <Table style={{maxWidth:"90%", margin:"auto"}}>
-            <TableHeader displaySelectAll={false}>
+            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
-                <TableHeaderColumn style={{paddingLeft: '0px', width: '12%', fontSize: '1.3em'}}>See Details</TableHeaderColumn>
-                <TableHeaderColumn style={{paddingLeft: '0px', width: '12%', fontSize: '1.3em'}}>NCT_ID</TableHeaderColumn>
-                <TableHeaderColumn style={{paddingLeft: '0px', width: '51%', fontSize: '1.3em'}}>Title</TableHeaderColumn>
-                <TableHeaderColumn style={{paddingLeft: '0px', width: '15%', fontSize: '1.3em'}}>City, State</TableHeaderColumn>
-                <TableHeaderColumn style={{paddingLeft: '0px', width: '12%', fontSize: '1.3em'}}>Zip Codes</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>See Details</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '14%', fontSize: '1.3em'}}>NCT_ID</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '51%', fontSize: '1.3em'}}>Title</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '15%', fontSize: '1.3em'}}>City, State</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>Zip Codes</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false}>
               {this.resultsOnPage().map((study, i) => {
                 return (
                   <TableRow key={i}>
-                    <TableRowColumn><FlatButton style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px", width: '10%', fontSize: '1.3em'}}  onClick={this.onStudySelect.bind(this, study)}>Details</FlatButton></TableRowColumn>
-                    <TableRowColumn style={{width: '12%', fontSize: '1.3em'}}>{study.nct_id}</TableRowColumn>
-                    <TableRowColumn style={{width: '51%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.official_title}</TableRowColumn>
-                    <TableRowColumn style={{width: '15%', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
-                    <TableRowColumn style={{width: '12%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '10%'}}><FlatButton style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px", fontSize: '1.3em'}}  onClick={this.onStudySelect.bind(this, study)}>Details</FlatButton></TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '14%', fontSize: '1.3em'}}>{study.nct_id}</TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '51%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.official_title}</TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '15%', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>
                   </TableRow>
                 )
               }
