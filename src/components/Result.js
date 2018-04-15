@@ -12,7 +12,6 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
-
 class Result extends Component {
     constructor(props){
         super(props)
@@ -68,7 +67,6 @@ class Result extends Component {
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
                 <TableHeaderColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>See Details</TableHeaderColumn>
-                <TableHeaderColumn style={{padding: '15px', width: '14%', fontSize: '1.3em'}}>NCT_ID</TableHeaderColumn>
                 <TableHeaderColumn style={{padding: '15px', width: '51%', fontSize: '1.3em'}}>Title</TableHeaderColumn>
                 <TableHeaderColumn style={{padding: '15px', width: '15%', fontSize: '1.3em'}}>City, State</TableHeaderColumn>
                 <TableHeaderColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>Zip Codes</TableHeaderColumn>
@@ -79,9 +77,8 @@ class Result extends Component {
                 return (
                   <TableRow key={i}>
                     <TableRowColumn style={{padding: '15px', width: '10%'}}><FlatButton style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px", fontSize: '1.3em'}}  onClick={this.onStudySelect.bind(this, study)}>Details</FlatButton></TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '14%', fontSize: '1.3em'}}>{study.nct_id}</TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '51%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.official_title}</TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '15%', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '51%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.official_title}  <span style={{fontStyle:'italic', color:'#a0a0a0'}}>({study.nct_id})</span></TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '15%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
                     <TableRowColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>
                   </TableRow>
                 )
