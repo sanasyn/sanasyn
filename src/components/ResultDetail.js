@@ -57,7 +57,7 @@ class ResultDetail extends Component {
                 modal={true}
                 open={this.state.elg_info_open}
                 autoScrollBodyContent={true}
-                contentStyle={{height:'70%'}}a
+                contentStyle={{height:'70%'}}
               >
                 <Tabs
                   value={this.state.tab_value}
