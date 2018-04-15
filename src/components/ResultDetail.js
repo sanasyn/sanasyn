@@ -32,7 +32,7 @@ class ResultDetail extends Component {
       <FlatButton
         label="Ok"
         primary={true}
-        onClick={this.handleToggle}
+        onClick={()=>{this.handleToggle()}}
       />
     ];
 
@@ -44,13 +44,13 @@ class ResultDetail extends Component {
         </Card>
 
         <div className="row detail-midsection">
-          <Card div className="col-md-4 detail-phase">
+          <Card className="col-md-4 detail-phase">
             <CardTitle className="detail-title">Trial Phase</CardTitle>
             <CardText className="detail-study-phase" style={{fontSize: '2.5em'}}>{this.props.study.phase}</CardText>
           </Card>
           <Card className="col-md-4 detail-eligibility">
             <div>
-              <RaisedButton label="Eligibility Info" onClick={this.handleToggle} />
+              <RaisedButton label="Eligibility Info" onClick={()=>{this.handleToggle()}} />
               <Dialog
                 title="Eligibility Information"
                 actions={actions}
@@ -61,7 +61,7 @@ class ResultDetail extends Component {
               >
                 <Tabs
                   value={this.state.tab_value}
-                  onChange={this.handleTabChange}
+                  onChange={()=>{this.handleTabChange()}}
                 >
                   <Tab label="Inclusion Criteria" value="include">
                     <div>
