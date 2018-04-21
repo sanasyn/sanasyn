@@ -6,7 +6,7 @@ function geneticQueryInc(genetic) {
 	if (genetic.taken === 'apoE4_1') {
 		queryGenetic = '%APOE4%'
 	}
-	console.log("GENETIC INC: ", queryGenetic)
+	// console.log("GENETIC INC: ", queryGenetic)
 	return queryGenetic;
 }
 
@@ -16,7 +16,7 @@ function geneticQueryEx(genetic) {
 	if (genetic.consent === 'no') {
 		queryGenetic = ['%APOE%','%genetic%'];
 	}
-	console.log("GENETIC Ex: ", queryGenetic)
+	// console.log("GENETIC Ex: ", queryGenetic)
 	return queryGenetic;
 }
 
@@ -26,7 +26,7 @@ function mriQuery(mri) {
 	if (mri === 'no') {
 		queryMri = ['%contraindication%MR%'];
 	}
-	console.log("MRI: ", queryMri);
+	// console.log("MRI: ", queryMri);
 	return queryMri;
 }
 
@@ -36,7 +36,7 @@ function petQuery(pet) {
 	if (pet === 'no') {
 		petArray = ['%PET%', "%florbetapir%", "%F-AV-1451%"]
 	}
-	console.log("PET: ", petArray);
+	// console.log("PET: ", petArray);
 	return petArray;
 }
 
@@ -46,7 +46,7 @@ function spinalQuery(spinal) {
 	if (spinal === 'no') {
 		spinalArray = ['%lumbar%','%LP%']
 	} 
-	console.log("SPINAL ARRAY: ", spinalArray);
+	// console.log("SPINAL ARRAY: ", spinalArray);
 	return spinalArray;
 }
 
@@ -55,7 +55,7 @@ function strokeQuery(stroke) {
 	if (stroke === 'yes') {
 		strokeArray = ['%stroke%', '%vascular%', '%ischemic%']
 	}
-	console.log("STROKE ARRAY: ", strokeArray);
+	// console.log("STROKE ARRAY: ", strokeArray);
 	return strokeArray;
 }
 
@@ -93,7 +93,7 @@ function medicationsQuery(medications) {
 	if (queryArray.length === 0) {
 		queryArray = ['']
 	}
-	console.log("MEDICATIONS: ", queryArray);
+	// console.log("MEDICATIONS: ", queryArray);
 
 	return queryArray;
 }
@@ -133,7 +133,7 @@ function medicationsQueryNot(medications) {
 	if (queryArray.length === 0) {
 		queryArray = ['%']
 	}
-	console.log("MEDICATIONS: ", queryArray);
+	// console.log("MEDICATIONS: ", queryArray);
 
 	return queryArray;
 }
@@ -144,7 +144,7 @@ function caregiverQueryInc(care) {
 	if (care === 'no') {
 		queryCare = ['%caregiver%','%partner%'];
 	}
-	console.log("CARE INC: ", queryCare)
+	// console.log("CARE INC: ", queryCare)
 	return queryCare;
 }
 

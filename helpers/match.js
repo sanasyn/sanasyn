@@ -27,7 +27,8 @@ function getConnectionOptions() {
 }
 
 function runQuery(req, res) {
-	console.log("BODY: ", req.body);
+	// console.log("BODY: ", req.body);
+	console.time("TIME");
 	let query = req.body;
 	return knex
 	// .distinct()
@@ -49,36 +50,40 @@ function runQuery(req, res) {
 		.orWhere('gender', 'All')
 	})
 	// // GOOD
-	.andWhere(knex.raw("criteria_ex NOT ILIKE any ( :search)",
-			{search: geneticQueryEx(query.geneticTesting)}
-			))
 	.andWhere(knex.raw("criteria_inc ILIKE ( :search)", 
-			{search: geneticQueryInc(query.geneticTesting)}
-			))
+		{search: geneticQueryInc(query.geneticTesting)}
+		))
+	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :search)",
+	// 		{search: geneticQueryEx(query.geneticTesting)}
+	// 		))
 	// // GOOD
-	.andWhere(knex.raw("criteria_ex NOT ILIKE any ( :mriSearch)", 
-			{mriSearch: mriQuery(query.mri)}
-			))
+	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :mriSearch)", 
+	// 		{mriSearch: mriQuery(query.mri)}
+	// 		))
 	// // GOOD
-	.andWhere(knex.raw("criteria_ex NOT ILIKE any ( :arraySearch)",
-			{arraySearch: petQuery(query.pet)}
-			))
+	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :arraySearch)",
+	// 		{arraySearch: petQuery(query.pet)}
+	// 		))
 	// //GOOD
 	.andWhere(knex.raw("criteria_ex NOT LIKE any ( :spinalSearch)", 
-			{spinalSearch: spinalQuery(query.spinalTap)}
-			))
+		{spinalSearch: spinalQuery(query.spinalTap)}
+		))
 	// //GOOD
-	.andWhere(knex.raw("criteria_ex NOT ILIKE any ( :strokeSearch)", 
-			{strokeSearch: strokeQuery(query.stroke)}
-			))
+	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :strokeSearch)", 
+	// 		{strokeSearch: strokeQuery(query.stroke)}
+	// 		))
 	// // //GOOD
-	.andWhere(knex.raw("criteria_ex NOT ILIKE any ( :arraySearch)", 
-			{arraySearch: medicationsQuery(query.medications)}
-			))
+	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :arraySearch)", 
+	// 		{arraySearch: medicationsQuery(query.medications)}
+	// 		))
 	// // //GOOD
-	.andWhere(knex.raw("criteria_inc NOT ILIKE any ( :careSearch)", 
-			{careSearch: caregiverQueryInc(query.informant)}
-			))
+	// .andWhere(knex.raw("criteria_inc NOT ILIKE any ( :careSearch)", 
+	// 		{careSearch: caregiverQueryInc(query.informant)}
+	// 		))
+
+	.andWhere(knex.raw("criteria_ex NOT ILIKE any ( :multipleSearch)", 
+		{multipleSearch: buildNotILikeQueryEx(query)}
+		))
 	// .limit(10)
 	.then(rows => {
 		return getFacilityDistance(query.zipcode, rows)
@@ -87,9 +92,31 @@ function runQuery(req, res) {
 				res.send(results)
 			})
 	})
+	.then(()=>{console.timeEnd("TIME");})
 	.catch((error) => {
 		res.send(new Error('Error querying database. ', error));
 	});
+	
+}
+
+function buildNotILikeQueryEx(request) {
+	let buildArray=[];
+	let functionArray = [
+		geneticQueryEx(request.geneticTesting),
+		mriQuery(request.mri),
+		petQuery(request.pet),
+		strokeQuery(request.stroke),
+		medicationsQuery(request.medications),
+		caregiverQueryInc(request.informant)
+	];
+	console.log("FUNCTION ARRAY: ", functionArray);
+	for (let i=0; i<functionArray.length; i++) {
+		if (functionArray[i].join().length) {
+			buildArray.push(...functionArray[i]);
+		}
+	}
+	console.log("BUILD ARRRAY: ", buildArray);
+	return buildArray;
 }
 
 // runQuery();
