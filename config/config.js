@@ -15,7 +15,7 @@ module.exports = {
         client : process.env.HEROKU_CLIENT || 'pg',
         user : process.env.HEROKU_DB_USER || 'notProvided',
         host : process.env.HEROKU_HOST || 'notProvided',
-        database : process.envHEROKU_DATABASE || 'notProvided',
+        database : process.env.HEROKU_DATABASE || 'notProvided',
         password : process.env.HEROKU_PASSWORD || 'notProvided',  
     },
     zipcode: {
