@@ -8,15 +8,15 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: 'assets',
   },
-  devServer: {
-    contentBase: './src/dist/index.html',
-    proxy: {
-      '/**': {
-        target: 'http://localhost:8080',
-        secure: false,
-      },
-    },
-  },
+  // devServer: {
+  //   contentBase: './src/dist/index.html',
+  //   proxy: {
+  //     '/**': {
+  //       target: 'http://localhost:8080',
+  //       secure: false,
+  //     },
+  //   },
+  // },
   module: {
     rules: [
       {
