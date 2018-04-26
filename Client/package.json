@@ -1,0 +1,60 @@
+{
+  "name": "practicesana",
+  "version": "1.0.0",
+  "engines": {
+    "node":"9.5.0"
+  },
+  "description": "practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "heroku-postbuild": "cd Client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "Client/node_modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marissapels/practiceSana.git"
+  },
+  "author": "Marissa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marissapels/practiceSana/issues"
+  },
+  "homepage": "https://github.com/marissapels/practiceSana#readme",
+  "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "css-loader": "^0.28.11",
+    "express": "^4.16.2",
+    "html-webpack-plugin": "^3.2.0",
+    "knex": "^0.14.2",
+    "material-ui": "^0.20.0",
+    "pg": "^7.4.1",
+    "react": "^16.3.1",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-addons-update": "^15.6.2",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "style-loader": "^0.20.3",
+    "zipcodes": "^6.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-jest": "^22.4.1",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "2.9.4"
+  }
+}
