@@ -27,5 +27,5 @@ module.exports = {
         password : process.env.ZIP_PASSWORD || 'notProvided',  
     },
     googlemaps: process.env.GOOGLE_KEY || 'notProvided',
-    node_env : process.env.NODE_ENV || 'production',
+    node_env : process.env.NODE_ENV || 'dev',
 }
