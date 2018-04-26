@@ -12,6 +12,7 @@
     "build": "webpack",
     "build:watch": "webpack --watch"
   },
+  "proxy": "http://localhost:8080",
   "cacheDirectories": [
     "node_modules",
     "Client/node_modules"
