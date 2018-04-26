@@ -8,7 +8,7 @@ module.exports = {
         password : process.env.AACT_PASSWORD || 'notProvided',
         poolMin : process.env.poolMin || '0',
         poolMax : process.env.poolMax || '100',     
-        connectionString : process.env.CONNECTION_AACT || 'postgres://aact:aact@aact-db.ctti-clinicaltrials.org:5432/aact'
+        connectionString : process.env.CONNECTION_AACT || 'notProvided'
     },
     heroku: {
         port : process.env.HEROKU_NODE_ENV || 5432,
