@@ -2,7 +2,7 @@ module.exports = {
     aact: {
         port : process.env.AACT_NODE_ENV || 5432,
         client : process.env.AACT_CLIENT || 'postgres',
-        user : process.env.AACT_DB_USER || 'notProvided',
+        user : process.env.AACT_DB_USER || 'aact',
         host : process.env.AACT_HOST || 'notProvided',
         database : process.env.AACT_DATABASE || 'notProvided',
         password : process.env.AACT_PASSWORD || 'notProvided',
@@ -27,5 +27,5 @@ module.exports = {
         password : process.env.ZIP_PASSWORD || 'notProvided',  
     },
     googlemaps: process.env.GOOGLE_KEY || 'notProvided',
-    node_env : process.env.NODE_ENV || 'dev',
+    node_env : process.env.NODE_ENV || 'production',
 }
