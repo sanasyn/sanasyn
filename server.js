@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.post("/query", match.runQuery);
-app.post("/resultDetails", require("./helpers/resultDetails"))
-app.post("/useReason", require("./helpers/useReason"))
+app.post("/api/query", match.runQuery);
+app.post("/api/resultDetails", require("./helpers/resultDetails"))
+app.post("/api/useReason", require("./helpers/useReason"))
 
 app.use(express.static(path.resolve(__dirname, './src/dist')));
 

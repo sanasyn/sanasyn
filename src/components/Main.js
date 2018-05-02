@@ -110,7 +110,7 @@ class Main extends Component {
   getMatchResult() {
     console.log("getMatchResult");
     console.log("answer: ", this.state.answer);
-    axios.post('/query', this.state.answer)
+    axios.post('/api/query', this.state.answer)
       .then((results) => {
         // console.log("results: ", results.data);
         this.setState({
@@ -125,7 +125,7 @@ class Main extends Component {
   }
 
   postUseReason() {
-    axios.post('/useReason', this.state.answer.opinion)
+    axios.post('/api/useReason', this.state.answer.opinion)
       .then((val) => console.log(val.data))
       .catch(error => {
         console.log("ERROR: ", error)

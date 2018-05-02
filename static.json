@@ -4,14 +4,8 @@
 		"/**": "index.html"
 	},
 	"proxies": {
-	    "/query": {
-	      "origin": "https://localhost:8080"
-	    },
-	    "/resultDetails": {
-	      "origin": "https://localhost:8080"
-	    },
-	    "/useReason": {
-	      "origin": "https://localhost:8080"
+	    "/api/": {
+	      "origin": "http://localhost:8080"
 	    }
   	}
 }
