@@ -120,6 +120,7 @@ class Main extends Component {
       })
       .catch(error => {
         console.log("ERROR: ", error)
+        console.log(error.response)
       });
   }
 
@@ -128,6 +129,7 @@ class Main extends Component {
       .then((val) => console.log(val.data))
       .catch(error => {
         console.log("ERROR: ", error)
+        console.log(error.response)
       });
   }
 
