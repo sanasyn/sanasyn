@@ -2,5 +2,16 @@
 	"root": "src/dist/",
 	"routes": {
 		"/**": "index.html"
-	}
+	},
+	"proxies": {
+	    "/query": {
+	      "origin": "http://localhost:8080"
+	    },
+	    "/resultDetails": {
+	      "origin": "http://localhost:8080"
+	    },
+	    "/useReason": {
+	      "origin": "http://localhost:8080"
+	    }
+  	}
 }
