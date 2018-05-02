@@ -5,13 +5,13 @@
 	},
 	"proxies": {
 	    "/query": {
-	      "origin": "https://safe-thicket-52701.herokuapp.com/"
+	      "origin": "https://localhost:8080"
 	    },
 	    "/resultDetails": {
-	      "origin": "https://safe-thicket-52701.herokuapp.com/"
+	      "origin": "https://localhost:8080"
 	    },
 	    "/useReason": {
-	      "origin": "https://safe-thicket-52701.herokuapp.com/"
+	      "origin": "https://localhost:8080"
 	    }
   	}
 }
