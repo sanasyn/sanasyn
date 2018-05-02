@@ -11,7 +11,7 @@
     "start": "node server.js",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "heroku-postbuild": "npm run start"
+    "heroku-postbuild": "npm run build"
   },
   "proxy": "http://localhost:8080",
   "cacheDirectories": [
