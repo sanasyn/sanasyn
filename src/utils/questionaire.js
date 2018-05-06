@@ -55,7 +55,7 @@ const questionaire = [
 
     },
     {
-        question: 'Did you have a cerebrovascular or cardiovascular event in the last year? (myocardial infarction; congestive heart failure, valvular disease, hypertrophic cardiomyopathy, transient ischemic attack, stroke)',
+        question: 'Did you have a cerebro-cardiovascular event in the last year? (myocardial infarction; congestive heart failure, valvular disease, hypertrophic cardiomyopathy, transient ischemic attack, stroke)',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
@@ -89,7 +89,7 @@ const questionaire = [
     {
         question:"Why are you using this application? Check all that apply.",
         type:'checkbox',
-        options:["Family history of Alzhimer's Disease","Interested in Clinical research","Memory Complants","Other"],
+        options:["Family history of Alzhimer's Disease","Interested in Clinical research","Memory Complaints","Other"],
         followupQ:[{
             question:"Please write in your reason.",
             type:'text',
