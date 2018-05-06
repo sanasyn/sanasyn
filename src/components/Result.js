@@ -62,24 +62,33 @@ class Result extends Component {
     }
 
     render(){
+        const instructions = (
+          <div className="instructions" style={{textAlign: "center"}}>
+            <h2 style={{fontSize: "2.5em", fontWeight: "bold"}}>Click on the title for study details.</h2>
+          </div>
+          )
+
         const resultTable = (   
           <Table style={{maxWidth:"90%", margin:"auto"}}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
-                <TableHeaderColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>See Details</TableHeaderColumn>
-                <TableHeaderColumn style={{padding: '15px', width: '51%', fontSize: '1.3em'}}>Title</TableHeaderColumn>
-                <TableHeaderColumn style={{padding: '15px', width: '15%', fontSize: '1.3em'}}>City, State</TableHeaderColumn>
-                <TableHeaderColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>Zip Codes</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '55%', fontSize: '1.3em'}}>Title</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '18%', fontSize: '1.3em'}}>City, State</TableHeaderColumn>
+                <TableHeaderColumn style={{padding: '15px', width: '13%', fontSize: '1.3em'}}>Zip Codes</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false}>
               {this.resultsOnPage().map((study, i) => {
                 return (
                   <TableRow key={i}>
-                    <TableRowColumn style={{padding: '15px', width: '10%'}}><FlatButton style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px", fontSize: '1.3em'}}  onClick={this.onStudySelect.bind(this, study)}>Details</FlatButton></TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '51%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.official_title}  <span style={{fontStyle:'italic', color:'#a0a0a0'}}>({study.nct_id})</span></TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '15%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '10%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>
+                    <TableRowColumn 
+                      style={{padding: '15px', width: '55%', whiteSpace: 'normal', fontSize: '1.3em'}} 
+                    >
+                      <a onClick={this.onStudySelect.bind(this, study)}>{study.official_title}</a>
+                      <span style={{fontStyle:'italic', color:'#a0a0a0'}}>( {study.nct_id})</span>
+                    </TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '18%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
+                    <TableRowColumn style={{padding: '15px', width: '13%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>
                   </TableRow>
                 )
               }
@@ -94,6 +103,7 @@ class Result extends Component {
 
         return (
           <div className="resultsPage">
+            {instructions}
             {this.state.showResults ? resultTable : null }
             {this.state.showDetails ? detailPage : null }
 
