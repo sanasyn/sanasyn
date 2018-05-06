@@ -111,14 +111,26 @@ class ResultDetail extends Component {
           </Card>
           <Card className="col-md-6 detail-map">
             <CardMedia>
-              <iframe
+        
+              {this.props.facility_contact_name ?
+                <iframe
+                  title={"result-map"}
+                  width={"600"}
+                  height={"450"}
+                  frameBorder={"0"}
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBCyRuFxxuSVcYNNDZmVWrBUJgHaoXhLJ0&q=${this.props.contact.facility_name},${this.props.study.zip}`}
+                >
+                </iframe>
+              :
+                <iframe
                 title={"result-map"}
                 width={"600"}
                 height={"450"}
                 frameBorder={"0"}
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBCyRuFxxuSVcYNNDZmVWrBUJgHaoXhLJ0&q=${this.props.contact.facility_name},${this.props.study.zip}`}
-              >
-              </iframe>
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBCyRuFxxuSVcYNNDZmVWrBUJgHaoXhLJ0&q=${this.props.study.zip}`}>
+                </iframe>
+              }
+
           </CardMedia>
           </Card>
         </div>
