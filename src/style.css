@@ -133,6 +133,11 @@ td, th {
   color:black;
 }
 
+.subtext{
+  color:#ccc;
+  font-style: italic;
+}
+
 
 /*answer options*/
 .answerOptions{
