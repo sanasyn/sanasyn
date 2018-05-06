@@ -103,7 +103,7 @@ class Result extends Component {
 
         return (
           <div className="resultsPage">
-            {instructions}
+            {this.state.showResults ? instructions : null }
             {this.state.showResults ? resultTable : null }
             {this.state.showDetails ? detailPage : null }
 
