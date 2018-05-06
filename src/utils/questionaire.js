@@ -1,6 +1,6 @@
 const questionaire = [
     {
-        question:'Zipcode',
+        question:'ZIP Code',
         type:'text',
         options:'',
         followupQ:''
@@ -89,7 +89,7 @@ const questionaire = [
     {
         question:"Why are you using this application? Check all that apply.",
         type:'checkbox',
-        options:["Family history of Alzhimer's Disease","Interested in Clinical research","Memory Complaints","Other"],
+        options:["Family history of Alzheimer's Disease","Interested in clinical research","Memory complaints","Other"],
         followupQ:[{
             question:"Please write in your reason.",
             type:'text',
