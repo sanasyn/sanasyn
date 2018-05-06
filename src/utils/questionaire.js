@@ -55,7 +55,7 @@ const questionaire = [
 
     },
     {
-        question: 'Did you have a cerebrovascular or cardiovascular event in the last year? |(myocardial infarction; congestive heart failure, valvular disease, hypertrophic cardiomyopathy, transient ischemic attack, stroke)',
+        question: 'Did you have a cerebro-cardiovascular event in the last year? |(myocardial infarction; congestive heart failure, valvular disease, hypertrophic cardiomyopathy, transient ischemic attack, stroke)',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
