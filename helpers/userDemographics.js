@@ -1,4 +1,4 @@
-const config = require('../config/config').heroku;
+const config = require('../config/config').local;
 const knex = require('knex')(getConnectionOptions());
 
 function getConnectionOptions() {
@@ -26,9 +26,9 @@ function insertReason(req, res){
           other: val.other, 
           other_reason: val.otherReason
         }])
-        .into('use_reason')
+        .into('user_demographics')
     })
-    .then(() => res.send("Use reason inserted into db"))
+    .then(() => res.send("User demographics inserted into db"))
     .catch((err) => Promise.reject(err))
 
 }
