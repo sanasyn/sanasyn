@@ -29,7 +29,7 @@ function Quiz(props){
         >
             <div className="quiz">
 
-                <LinearProgress mode="determinate" min={0} max={props.questionTotal} color="#d40027" style={{height: "7px", marginBottom: "25px"}} value={props.counter} />
+                <LinearProgress mode="determinate" min={0} max={props.questionTotal} color="#d40027" style={{height: "7px", margin: "0px auto 30px auto", width: "80%"}} value={props.counter} />
 
                 <Question content={props.question}/>
                           
