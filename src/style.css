@@ -13,6 +13,10 @@ body {
   font-family: sans-serif;
 }
 
+a:hover { 
+    cursor: pointer;
+}
+
 .header {
   margin-top: 0; 
   background-color: #20759c;
