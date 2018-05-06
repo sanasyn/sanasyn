@@ -55,7 +55,7 @@ class Main extends Component {
     this.validateInputValue=this.validateInputValue.bind(this);
     this.renderResult=this.renderResult.bind(this);
     this.renderLoading=this.renderLoading.bind(this);
-    this.postUseReason=this.postUseReason.bind(this);
+    this.postUserDemographics=this.postUserDemographics.bind(this);
   }
 
   componentWillMount() {
@@ -124,8 +124,8 @@ class Main extends Component {
       });
   }
 
-  postUseReason() {
-    axios.post('/api/useReason', this.state.answer.opinion)
+  postUserDemographics() {
+    axios.post('/api/userDemographics', this.state.answer.opinion)
       .then((val) => console.log(val.data))
       .catch(error => {
         console.log("ERROR: ", error)
@@ -411,7 +411,7 @@ class Main extends Component {
             loading:true
           });
          setTimeout(()=> this.getMatchResult(),300);
-         setTimeout(()=> this.postUseReason(),400);
+         setTimeout(()=> this.postUserDemographics(),400);
         }
       }
     } 
@@ -465,7 +465,7 @@ class Main extends Component {
                       loading:true
                     });
                     setTimeout(()=> this.getMatchResult(),300);
-                    setTimeout(()=> this.postUseReason(),400);
+                    setTimeout(()=> this.postUserDemographics(),400);
                   }
               break;
 
