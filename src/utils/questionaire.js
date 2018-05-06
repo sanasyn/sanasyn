@@ -1,25 +1,25 @@
 const questionaire = [
     {
-        question:"What is your zipcode?",
+        question:'Zipcode',
         type:'text',
         options:'',
         followupQ:''
     },
     {
-        question: 'What is your age?',
+        question: 'Age in Years',
         type:'text',
         options:'',
         followupQ:''
     },
     {
-        question: 'What is your gender?',
+        question: 'Sex',
         type:'radio',
         options:[ 'Male','Female'],
         followupQ:''
       
     },
     {
-        question: 'Have you had genetic testing?',
+        question: 'Genetic testing done?',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:[{
@@ -36,46 +36,46 @@ const questionaire = [
         ]
     },
     {
-        question: 'Are you okay with having an MRI done?',
+        question: 'Would you consent to a MRI?',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
     },
     {
-        question: 'Are you okay with getting a PET scan for amyloid imaging?',
+        question: 'Would you consent to a PET scan?',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
     },
     {
-        question: 'Are you okay with having a lumbar puncture/spinal tab done for detection of Amyloid Beta/P-Tau?',
-        type:'radio',
-        options:[ 'Yes','No'],
-        followupQ:''
-
-    },
-    {
-        question: 'Did you have a stroke/transient ischemic attack in the last 12 months?',
+        question: 'Would you consent to a lumbar puncture/spinal tap?',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
 
     },
     {
-        question: 'Are you taking any anti-dementia medication? Check all that apply.',
+        question: 'Did you have a cerebrovascular or cardiovascular event in the last year? (myocardial infarction; congestive heart failure, valvular disease, hypertrophic cardiomyopathy, transient ischemic attack, stroke)',
+        type:'radio',
+        options:[ 'Yes','No'],
+        followupQ:''
+
+    },
+    {
+        question: 'Memory enhancing medications. Check all that apply',
         type:'checkbox',
         options:['Aricept','Exelon','Razadyne ER','Namenda','None'],
         followupQ:[
             {
                 parentAnswer:'',
-                question: 'Have you been taking these medications for more than 10 weeks?',
+                question: 'Have you been On selected medication(s) for more than 10 weeks?',
                 type:'radio',
                 options:['Yes','No']
             }
         ]
     },
     {
-        question: 'Do you have a family member or a caregiver that will accompany you?',
+        question: 'Availability of family member/caregiver to accompany you for trial visits.',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
