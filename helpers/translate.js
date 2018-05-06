@@ -53,7 +53,8 @@ function spinalQuery(spinal) {
 function strokeQuery(stroke) {
 	let strokeArray = [''];
 	if (stroke === 'yes') {
-		strokeArray = ['%stroke%', '%vascular%', '%ischemic%']
+		strokeArray = ['%stroke%', '%vascular%', '%ischemic%', '%myocardial infarction%','%congestive heart failure%', '%valvular%', '%hypertrophic cardiomyopathy%', "%cerebrovascular%", "%cardiovascular%", "%cardiac%"
+		]
 	}
 	// console.log("STROKE ARRAY: ", strokeArray);
 	return strokeArray;

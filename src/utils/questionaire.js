@@ -6,7 +6,7 @@ const questionaire = [
         followupQ:''
     },
     {
-        question: 'Age in Years',
+        question: 'Age in years',
         type:'text',
         options:'',
         followupQ:''
@@ -19,11 +19,11 @@ const questionaire = [
       
     },
     {
-        question: 'Genetic testing done?',
+        question: 'Have you had genetic testing done?',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:[{
-            question: 'Is APOE4 detected?',
+            question: 'Was APOE4 detected?',
             type:'radio',
             options:[ 'Yes','No']
         
@@ -36,7 +36,7 @@ const questionaire = [
         ]
     },
     {
-        question: 'Would you consent to a MRI?',
+        question: 'Would you consent to an MRI?',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
@@ -68,14 +68,14 @@ const questionaire = [
         followupQ:[
             {
                 parentAnswer:'',
-                question: 'Have you been On selected medication(s) for more than 10 weeks?',
+                question: 'Have you been on selected medication(s) for more than 10 weeks?',
                 type:'radio',
                 options:['Yes','No']
             }
         ]
     },
     {
-        question: 'Availability of family member/caregiver to accompany you for trial visits.',
+        question: 'Do you have an available family member/caregiver for trial visits?',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
@@ -87,7 +87,7 @@ const questionaire = [
         followupQ:''
     },
     {
-        question:"Why are you using this app? Check all that apply.",
+        question:"Why are you using this application? Check all that apply.",
         type:'checkbox',
         options:["Family history of Alzhimer's Disease","Interested in Clinical research","Memory Complants","Other"],
         followupQ:[{
