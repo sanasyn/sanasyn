@@ -13,7 +13,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.post("/api/query", match.runQuery);
 app.post("/api/resultDetails", require("./helpers/resultDetails"))
-app.post("/api/useReason", require("./helpers/useReason"))
+app.post("/api/userDemographics", require("./helpers/userDemographics"))
 
 app.use(express.static(path.resolve(__dirname, './src/dist')));
 
