@@ -33473,7 +33473,7 @@ exports = module.exports = __webpack_require__(225)(false);
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n}\n\nh1 {\n  font-size: 3.0em;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background: #d4d2d2;\n  font-family: sans-serif;\n}\n\n.header {\n  margin-top: 0; \n  background-color: #20759c;\n  min-height:255;\n  border-top: solid #545454 8px;\n}\n\n.logo {\n  font-family: Arial;\n  letter-spacing: -6px;\n  font-size: 2.7em;\n  padding-right: 14px;\n  font-style: italic;\n  color: #CCC515;\n}\n\n.container {\n  width:100%;\n}\n\n.quiz {\n  position: relative;\n  max-width: 800px;\n  margin: 0 auto;\n  background:#fff;\n  border-radius: 3px;\n\n}\n/*Landing Page*/\n.topStyle {\n    background: #060d16;\n    padding: 0px;\n    text-align: center;\n    position: relative;\n    overflow: auto;\n    color:white;\n    margin: 0px;\n\n}\n\n.info {\n  margin-top: 20px;\n}\n\n.synapseImage {\n  width: 45%;\n  display: block;\n}\n\n.startInfo {\n  font-size:23px;\n}\n\n.latin {\n  overflow:auto;\n  padding:35px;\n  background:white;\n}\n\n.latinImage {\n  max-width: 600px;\n}\n\n.stepContainer {\n  padding-top: 30px;\n  text-align: center;\n}\n\n.step {\n  margin: 32px;\n  background: #334f54;\n  border-radius: 22px;\n  text-align: center;\n  padding:12px;\n}\n\nh2.stepNumber {\n  height: 100px;\n  width: 100px;\n  background-color: #56a7a0;\n  border-radius: 50%;\n  line-height: 100px;\n  color: white;\n  font-size: 40px;\n  margin: 10px;\n  display: inline-block;\n  border: white solid 2px;\n}\n\np.stepDesc {\n    font-size: 22px;\n    font-weight: bold;\n    padding: 10px;\n    color: white;\n}\n\n\n/*quiz */\n .quiz {\n  margin: 0, auto;\n  text-align: center;\n  padding: 30px;\n} \n \n\n /*Result*/\n.result {\n  padding: 1.5rem 2.5rem;\n  text-align: center;\n}\n\ntd, th {\n  padding:10px;\n}\n\n/*question */\n.question {\n  margin: 0;\n  padding: 0.5rem 2.5rem 1.5rem 2.5rem;\n  color:black;\n}\n\n\n/*answer options*/\n.answerOptions{\n  margin: 0;\n  padding: 0;\n  list-style:none;\n}\n\n.answerOption:hover{\n  background-color:#eefbfe;\n}\n\n[type=\"radio\"]:not(:checked)+label, [type=\"radio\"]:checked+label {\n  font-size: 2em;\n  margin:12px;\n}\n[type=\"radio\"]+label:before, [type=\"radio\"]+label:after {\n  width:20px;\n  height:20px;\n  border: 2px solid black;\n}\n\n[type=\"radio\"]:not(:checked)+label:before, [type=\"radio\"]:not(:checked)+label:after {\n    border: 2px solid #000000;\n}\n\n.radioLabel {\n  color:black;\n  position: relative;\n  width: 50%;\n  left: 16%;\n  text-align: left;\n}\n\ninput[type=\"text\"] {\n    font-size: 2em;\n    text-align: center;\n    color: black;\n}\n\nlabel.checkCustomLabel {\n    font-size: 2em;\n    margin: 10px;\n    color:black;\n}\n\n[type=\"checkbox\"]:checked+label:before {\n  width: 14px;\n    height: 24px;\n}\n\n/* Result Details */\n.detail-container {\n  width: 75%\n}\n\n.detail-topsection {\n  margin-bottom: 20px;\n}\n\n.detail-study-title {\n  font-size: 2.8em;\n  text-align: center;\n  font-weight: bold;\n}\n\n.detail-description {\n  border-top: .2em solid black;\n}\n\n.detail-title {\n  text-align: center;\n  font-weight: bold;\n  font-size: 1.5em;\n}\n\n.detail-phase, .detail-eligibility, .detail-studylink {\n  height: 150px;\n  text-align: center;\n}\n\n.detail-study-phase {\n  font-size: 2.5em;\n  text-align: center;\n}\n\n.detail-studylink {\n  padding-top: 35px;\n  font-size: 2.0em;\n}\n\n.detail-contact {\n  height: 450px;\n}\n\ndiv.col-md-6.detail-map {\n  padding-right: 0;\n  padding-left: 0;\n}\n\nbutton.col-md-6.detail-back {\n  height: 100px;\n}\n\n/*animation*/\n.fade-enter{\n  opacity:0;\n}\n\n.fade-enter .fade-enter-active{\n  opacity: 1;\n  transition: opacity 0.5s ease-in-out 0.3s;\n}\n\n.fade-leave {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  opacity: 1;\n}\n\n.fade-leave .fade-leave-active{\n  opacity: 0;\n  transition: opacity 0.5s ease-in-out;\n}\n\n.fade-appear{\n  opacity: 0;\n}\n\n.fade-apear .fade-apear-active {\n  opacity: 1;\n  transition: opacity 0.5s ease-in-out;\n}", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n}\n\nh1 {\n  font-size: 3.0em;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background: #d4d2d2;\n  font-family: sans-serif;\n}\n\n.header {\n  margin-top: 0; \n  background-color: #20759c;\n  min-height:255;\n  border-top: solid #545454 8px;\n}\n\n.logo {\n  font-family: Arial;\n  letter-spacing: -6px;\n  font-size: 2.7em;\n  padding-right: 14px;\n  font-style: italic;\n  color: #CCC515;\n}\n\n.container {\n  width:100%;\n}\n\n/*quiz */\n.quiz {\n  position: relative;\n  max-width: 800px;\n  margin: 0 auto;\n  background:#fff;\n  border-radius: 3px;\n  text-align: center;\n  padding: 30px 12px;\n}\n\n/*Landing Page*/\n.topStyle {\n    background: #060d16;\n    padding: 0px;\n    text-align: center;\n    position: relative;\n    overflow: auto;\n    color:white;\n    margin: 0px;\n\n}\n\n.info {\n  margin-top: 20px;\n}\n\n.synapseImage {\n  width: 45%;\n  display: block;\n}\n\n.startInfo {\n  font-size:23px;\n}\n\n.latin {\n  overflow:auto;\n  padding:35px;\n  background:white;\n}\n\n.latinImage {\n  max-width: 600px;\n}\n\n.stepContainer {\n  padding-top: 30px;\n  text-align: center;\n}\n\n.step {\n  margin: 32px;\n  background: #334f54;\n  border-radius: 22px;\n  text-align: center;\n  padding:12px;\n}\n\nh2.stepNumber {\n  height: 100px;\n  width: 100px;\n  background-color: #56a7a0;\n  border-radius: 50%;\n  line-height: 100px;\n  color: white;\n  font-size: 40px;\n  margin: 10px;\n  display: inline-block;\n  border: white solid 2px;\n}\n\np.stepDesc {\n    font-size: 22px;\n    font-weight: bold;\n    padding: 10px;\n    color: white;\n}\n\n\n\n \n\n /*Result*/\n.result {\n  padding: 1.5rem 2.5rem;\n  text-align: center;\n}\n\ntd, th {\n  padding:10px;\n}\n\n/*question */\n.question {\n  margin: 0;\n  padding: 0.5rem 0rem 1.5rem 0rem;\n  color:black;\n}\n\n\n/*answer options*/\n.answerOptions{\n  margin: 0;\n  padding: 0;\n  list-style:none;\n}\n\n.answerOption:hover{\n  background-color:#eefbfe;\n}\n\n[type=\"radio\"]:not(:checked)+label, [type=\"radio\"]:checked+label {\n  font-size: 2em;\n  margin:12px;\n}\n[type=\"radio\"]+label:before, [type=\"radio\"]+label:after {\n  width:20px;\n  height:20px;\n  border: 2px solid black;\n}\n\n[type=\"radio\"]:not(:checked)+label:before, [type=\"radio\"]:not(:checked)+label:after {\n    border: 2px solid #000000;\n}\n\n.radioLabel {\n  color:black;\n  position: relative;\n  width: 50%;\n  left: 16%;\n  text-align: left;\n}\n\ninput[type=\"text\"] {\n    font-size: 2em;\n    text-align: center;\n    color: black;\n}\n\nlabel.checkCustomLabel {\n    font-size: 2em;\n    margin: 10px;\n    color:black;\n}\n\n[type=\"checkbox\"]:checked+label:before {\n  width: 14px;\n    height: 24px;\n}\n\n/* Result Details */\n.detail-container {\n  width: 75%\n}\n\n.detail-topsection {\n  margin-bottom: 20px;\n}\n\n.detail-study-title {\n  font-size: 2.8em;\n  text-align: center;\n  font-weight: bold;\n}\n\n.detail-description {\n  border-top: .2em solid black;\n}\n\n.detail-title {\n  text-align: center;\n  font-weight: bold;\n  font-size: 1.5em;\n}\n\n.detail-phase, .detail-eligibility, .detail-studylink {\n  height: 150px;\n  text-align: center;\n}\n\n.detail-study-phase {\n  font-size: 2.5em;\n  text-align: center;\n}\n\n.detail-studylink {\n  padding-top: 35px;\n  font-size: 2.0em;\n}\n\n.detail-contact {\n  height: 450px;\n}\n\ndiv.col-md-6.detail-map {\n  padding-right: 0;\n  padding-left: 0;\n}\n\nbutton.col-md-6.detail-back {\n  height: 100px;\n}\n\n/*animation*/\n.fade-enter{\n  opacity:0;\n}\n\n.fade-enter .fade-enter-active{\n  opacity: 1;\n  transition: opacity 0.5s ease-in-out 0.3s;\n}\n\n.fade-leave {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  opacity: 1;\n}\n\n.fade-leave .fade-leave-active{\n  opacity: 0;\n  transition: opacity 0.5s ease-in-out;\n}\n\n.fade-appear{\n  opacity: 0;\n}\n\n.fade-apear .fade-apear-active {\n  opacity: 1;\n  transition: opacity 0.5s ease-in-out;\n}", ""]);
 
 // exports
 
@@ -52296,7 +52296,7 @@ module.exports = {
         password: process.env.ZIP_PASSWORD || 'notProvided'
     },
     googlemaps: process.env.GOOGLE_KEY || 'notProvided',
-    node_env: process.env.NODE_ENV || 'dev'
+    node_env: process.env.NODE_ENV || 'prod'
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
@@ -52316,7 +52316,7 @@ var questionaire = [{
     options: '',
     followupQ: ''
 }, {
-    question: 'Age in Years',
+    question: 'Age in years',
     type: 'text',
     options: '',
     followupQ: ''
@@ -52327,11 +52327,11 @@ var questionaire = [{
     followupQ: ''
 
 }, {
-    question: 'Genetic testing done?',
+    question: 'Have you had genetic testing done?',
     type: 'radio',
     options: ['Yes', 'No'],
     followupQ: [{
-        question: 'Is APOE4 detected?',
+        question: 'Was APOE4 detected?',
         type: 'radio',
         options: ['Yes', 'No']
 
@@ -52341,7 +52341,7 @@ var questionaire = [{
         options: ['Yes', 'No']
     }]
 }, {
-    question: 'Would you consent to a MRI?',
+    question: 'Would you consent to an MRI?',
     type: 'radio',
     options: ['Yes', 'No'],
     followupQ: ''
@@ -52368,12 +52368,12 @@ var questionaire = [{
     options: ['Aricept', 'Exelon', 'Razadyne ER', 'Namenda', 'None'],
     followupQ: [{
         parentAnswer: '',
-        question: 'Have you been On selected medication(s) for more than 10 weeks?',
+        question: 'Have you been on selected medication(s) for more than 10 weeks?',
         type: 'radio',
         options: ['Yes', 'No']
     }]
 }, {
-    question: 'Availability of family member/caregiver to accompany you for trial visits.',
+    question: 'Do you have an available family member/caregiver for trial visits?',
     type: 'radio',
     options: ['Yes', 'No'],
     followupQ: ''
@@ -52383,7 +52383,7 @@ var questionaire = [{
     options: ['Yes', 'No'],
     followupQ: ''
 }, {
-    question: "Why are you using this app? Check all that apply.",
+    question: "Why are you using this application? Check all that apply.",
     type: 'checkbox',
     options: ["Family history of Alzhimer's Disease", "Interested in Clinical research", "Memory Complants", "Other"],
     followupQ: [{
