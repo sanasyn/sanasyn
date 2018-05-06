@@ -38,7 +38,8 @@ class Main extends Component {
         opinion: {
           list:[],
           otherText:""
-        }
+        },
+        race: ""
       },
       inputError:true,
       results:[],
@@ -155,7 +156,9 @@ class Main extends Component {
           //console.log("answer after splice: ", answer);
         }
       } else {
+        
         answer=event.currentTarget.value;
+        console.log("curr answer: ", answer);
       }
     
     this.setState({
@@ -369,6 +372,24 @@ class Main extends Component {
         
         break;
 
+        case 12:
+          //for question 13 race question
+          if(this.state.followupQFlag) {
+            if (this.state.followupQCnt === 0) { 
+              updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
+            }
+          } else {
+            updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
+          }
+          // console.log("store currAnswer into the asnwer object");
+          // console.log("currAnswer: ", this.state.currAnswer);
+          // console.log("updateAnswer: ", updateAnswer);
+          this.setState({
+            answer:updateAnswer
+          });
+
+        break;
+
       default:
           // console.log("current counter: ", counter," this current counter is not been handle in the switch statement. Moss likely there is additional questions in the questionaire.js that is not being handled for storing user input.");
         break;
@@ -459,15 +480,27 @@ class Main extends Component {
                   //for reason for using the app question
                   if (this.state.currAnswer.includes("Other")) {
                     setTimeout(()=>this.setFollowupQuestion(counter,0),300);
+                  }
+                  else{
+                    setTimeout(()=>this.setNextQuestion(),300);
+                  }
+
+              break;
+            
+             case 12:
+                  //for race
+                  if (this.state.currAnswer.includes("Other")) {
+                    setTimeout(()=>this.setFollowupQuestion(counter,0),300);
                   } else{
                     //in the last question so send answer object
                     this.setState({
                       loading:true
                     });
                     setTimeout(()=> this.getMatchResult(),300);
-                    setTimeout(()=> this.postUseReason(),400);
+                    //setTimeout(()=> this.postUseReason(),400);
                   }
-              break;
+              break;  
+            
 
             default:
               setTimeout(()=>this.setFollowupQuestion(counter,0),300);
