@@ -27,12 +27,12 @@ function getConnectionOptions() {
 }
 
 function runQuery(req, res) {
-	// console.log("BODY: ", req.body);
-	console.time("TIME");
+	console.log("BODY: ", req.body);
+	// console.time("TIME");
 	let query = req.body;
 	return knex
 	// .distinct()
-	.select('nct_id','official_title','facility_id','city','state','zip','country')
+	.select('nct_id','official_title','facility_id','city','state','zip','country','criteria_ex')
 	// .count()
 	.from('aact_master')
 	.where(function() {
@@ -65,11 +65,11 @@ function runQuery(req, res) {
 	// 		{arraySearch: petQuery(query.pet)}
 	// 		))
 	// //GOOD
-	.andWhere(knex.raw("criteria_ex NOT LIKE any ( :spinalSearch)", 
+	.andWhere(knex.raw("criteria_ex NOT LIKE ALL ( :spinalSearch)", 
 		{spinalSearch: spinalQuery(query.spinalTap)}
 		))
 	// //GOOD
-	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :strokeSearch)", 
+	// .andWhere(knex.raw("criteria_ex NOT ILIKE ALL ( :strokeSearch)",
 	// 		{strokeSearch: strokeQuery(query.stroke)}
 	// 		))
 	// // //GOOD
@@ -81,7 +81,7 @@ function runQuery(req, res) {
 	// 		{careSearch: caregiverQueryInc(query.informant)}
 	// 		))
 
-	.andWhere(knex.raw("criteria_ex NOT ILIKE any ( :multipleSearch)", 
+	.andWhere(knex.raw("criteria_ex NOT ILIKE ALL ( :multipleSearch)", 
 		{multipleSearch: buildNotILikeQueryEx(query)}
 		))
 	// .limit(10)
@@ -92,7 +92,7 @@ function runQuery(req, res) {
 				res.send(results)
 			})
 	})
-	.then(()=>{console.timeEnd("TIME");})
+	// .then(()=>{console.timeEnd("TIME");})
 	.catch((error) => {
 		res.send(new Error('Error querying database. ', error));
 	});
@@ -109,13 +109,16 @@ function buildNotILikeQueryEx(request) {
 		medicationsQuery(request.medications),
 		caregiverQueryInc(request.informant)
 	];
-	console.log("FUNCTION ARRAY: ", functionArray);
+	// console.log("FUNCTION ARRAY: ", functionArray);
 	for (let i=0; i<functionArray.length; i++) {
 		if (functionArray[i].join().length) {
 			buildArray.push(...functionArray[i]);
 		}
 	}
-	console.log("BUILD ARRRAY: ", buildArray);
+	if (!buildArray.length) {
+		buildArray=[''];
+	}
+	// console.log("BUILD ARRRAY: ", buildArray);
 	return buildArray;
 }
 
