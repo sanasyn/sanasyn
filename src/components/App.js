@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LandingPage from './LandingPage';
 import Main from './Main';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import headerImage from '../dist/SanaTitle.svg';
 
@@ -13,8 +13,10 @@ class App extends Component {
       <div>
         <MuiThemeProvider>
           <header className='header'>
+            <Link to='/' style={{textDecoration: "none"}}>
               <span className='logo'>S&#423;</span>
-              < Image src={headerImage}/>
+              <Image src={headerImage}/>
+            </Link>
           </header>
           <div>
             <Switch>

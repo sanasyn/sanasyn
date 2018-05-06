@@ -64,7 +64,7 @@ class Result extends Component {
     render(){
         const instructions = (
           <div className="instructions" style={{textAlign: "center"}}>
-            <h2 style={{fontSize: "2.5em", fontWeight: "bold"}}>Click on the title for study details.</h2>
+            <h2 className='userInfo'>Click on the title for study details.</h2>
           </div>
           )
 
@@ -108,12 +108,12 @@ class Result extends Component {
             {this.state.showDetails ? detailPage : null }
 
             {this.state.showResults ? (
-                <div className="pagenation" style={{textAlign: "center"}}>
+                <div className="pagenation">
               {this.state.currentPage <= 1 ? (
-                  <FlatButton style={{visibility:'hidden'}}><i className="glyphicon glyphicon-triangle-left" /></FlatButton>
-                ): <FlatButton style={{visibility:'visible'}} onClick={() => {this.previousPageNumber()}}><i className="glyphicon glyphicon-triangle-left" /></FlatButton>}
-                <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"25px"}}>{this.state.currentPage}</div>
-                <FlatButton onClick={() => {this.nextPageNumber()}}><i className="glyphicon glyphicon-triangle-right" /></FlatButton>
+                  <FlatButton style={{visibility:'hidden', fontSize: '2.0em'}}><i className="glyphicon glyphicon-triangle-left" /></FlatButton>
+                ): <FlatButton style={{visibility:'visible', fontSize: '2.0em'}} onClick={() => {this.previousPageNumber()}}><i className="glyphicon glyphicon-triangle-left" /></FlatButton>}
+                <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2.5em"}}>{this.state.currentPage}</div>
+                <FlatButton style={{fontSize: '2.0em'}} onClick={() => {this.nextPageNumber()}}><i className="glyphicon glyphicon-triangle-right" /></FlatButton>
             </div>
               ): null}  
           </div>

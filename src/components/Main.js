@@ -573,11 +573,16 @@ class Main extends Component {
 
   renderLoading() {
     return (
-      <RefreshIndicator
-        size={200}
-        status="loading"
-        style={{ zIndex:"100", display:"absolute", top:"30%", left:"45%"}}
-      />
+      <div className='refreshIndicator'>
+        <h2 className='userInfo'>Searching for results...</h2>
+          <RefreshIndicator
+            size={200}
+            top={50}
+            left={-100}
+            style={{marginLeft: '50%', marginTop: '20px'}}
+            status={'loading'}
+          />
+      </div>
     );
   }
 
