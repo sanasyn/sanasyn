@@ -55,7 +55,7 @@ const questionaire = [
 
     },
     {
-        question: 'Did you have a cerebrovascular or cardiovascular event in the last year? (myocardial infarction; congestive heart failure, valvular disease, hypertrophic cardiomyopathy, transient ischemic attack, stroke)',
+        question: 'Did you have a cerebrovascular or cardiovascular event in the last year? |(myocardial infarction; congestive heart failure, valvular disease, hypertrophic cardiomyopathy, transient ischemic attack, stroke)',
         type:'radio',
         options:[ 'Yes','No'],
         followupQ:''
@@ -96,8 +96,17 @@ const questionaire = [
             options:''
 
         }]
+    },
+    {
+        question:"Race",
+        type:'radio',
+        options:["Native American/Alaska Native","Asian/Pacific Islander","Hispanic","Black non-Hispanic","White non-Hispanic","Other"],
+        followupQ:[{
+            question:"Please write in your race.",
+            type:'text',
+            options:''
 
-        
+        }]
     }
 
 ]
