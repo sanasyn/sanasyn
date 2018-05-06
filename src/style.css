@@ -36,12 +36,12 @@ body {
 /*quiz */
 .quiz {
   position: relative;
-  max-width: 800px;
+  max-width: 820px;
   margin: 0 auto;
   background:#fff;
   border-radius: 3px;
   text-align: center;
-  padding: 30px 12px;
+  padding: 25px 10px;
 }
 
 /*Landing Page*/
@@ -141,6 +141,10 @@ td, th {
   list-style:none;
 }
 
+.answerInput {
+    padding: 15px 0px;
+}
+
 .answerOption:hover{
   background-color:#eefbfe;
 }
@@ -171,6 +175,7 @@ input[type="text"] {
     font-size: 2em;
     text-align: center;
     color: black;
+    width: 80%;
 }
 
 label.checkCustomLabel {
