@@ -1,4 +1,4 @@
-const config = require('../config/config').local;
+const config = require('../config/config').heroku;
 const knex = require('knex')(getConnectionOptions());
 
 function getConnectionOptions() {
@@ -20,11 +20,16 @@ function insertReason(req, res){
     .then((val) => {
       return knex
         .insert([{
+          timestamp: val.timestamp,
+          age: val.age,
+          sex: val.sex,
+          race: val.race,
+          zip: val.zip,
           family_history: val.familyHistory, 
           research_interest: val.researchInterest, 
           memory_complaints: val.memoryComplaints, 
-          other: val.other, 
-          other_reason: val.otherReason
+          other_reason_select: val.otherReasonSelect, 
+          other_reason_text: val.otherReasonText
         }])
         .into('user_demographics')
     })
@@ -37,18 +42,23 @@ function insertReason(req, res){
 function setValues(req){
   // Object to hold default values for app use reasons
   let reason = {
+    timestamp: new Date(),
+    age: req.age,
+    sex: req.gender,
+    race: req.race,
+    zip: req.zipcode,
     familyHistory: false,
     researchInterest: false,
     memoryComplaints: false,
-    other: false,
-    otherReason: ""
+    otherReasonSelect: false,
+    otherReasonText: ""
   }
   
-  if (req.list.indexOf("Family history of Alzhimer's Disease") !== -1 ) reason.familyHistory = true;
-  if (req.list.indexOf("Interested in Clinical research") !== -1) reason.researchInterest = true;
-  if (req.list.indexOf("Memory Complants") !== -1) reason.memoryComplaints = true;
-  if (req.list.indexOf("Other") !== -1) reason.other = true;
-  if (req.otherText.length > 0) reason.otherReason = req.otherText;
+  if (req.opinion.list.indexOf("Family history of Alzheimer's disease") !== -1 ) reason.familyHistory = true;
+  if (req.opinion.list.indexOf("Interested in clinical research") !== -1) reason.researchInterest = true;
+  if (req.opinion.list.indexOf("Memory complaints") !== -1) reason.memoryComplaints = true;
+  if (req.opinion.list.indexOf("Other") !== -1) reason.otherReasonSelect = true;
+  if (req.opinion.otherText.length > 0) reason.otherReasonText = req.opinion.otherText;
 
   return Promise.resolve(reason)
 }

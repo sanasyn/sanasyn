@@ -126,7 +126,7 @@ class Main extends Component {
   }
 
   postUserDemographics() {
-    axios.post('/api/userDemographics', this.state.answer.opinion)
+    axios.post('/api/userDemographics', this.state.answer)
       .then((val) => console.log(val.data))
       .catch(error => {
         console.log("ERROR: ", error)
