@@ -145,7 +145,7 @@ td, th {
 /*question */
 .question {
   margin: 0;
-  padding: 0.5rem 0rem 1.5rem 0rem;
+  padding: 0.5rem 0rem;
   color:black;
 }
 
@@ -187,24 +187,24 @@ td, th {
 .radioLabel {
   color:black;
   position: relative;
-  width: 50%;
-  left: 20%;
+  width: 100%;
+  left: 42%;
   text-align: left;
 }
 
 .radioLabel2 {
   color:black;
   position: relative;
-  width: 50%;
-  left: 19%;
+  width: 100%;
+  left: 27.5%;
   text-align: left;
 }
 
 .radioLabel3 {
   color:black;
   position: relative;
-  width: 50%;
-  left: 5%;
+  width: 100%;
+  left: 43.5%;
   text-align: left;
 }
 

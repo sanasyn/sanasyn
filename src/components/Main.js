@@ -109,8 +109,8 @@ class Main extends Component {
   }
 
   getMatchResult() {
-    console.log("getMatchResult");
-    console.log("answer: ", this.state.answer);
+    // console.log("getMatchResult");
+    // console.log("answer: ", this.state.answer);
     axios.post('/api/query', this.state.answer)
       .then((results) => {
         // console.log("results: ", results.data);
@@ -127,7 +127,7 @@ class Main extends Component {
 
   postUserDemographics() {
     axios.post('/api/userDemographics', this.state.answer)
-      .then((val) => console.log(val.data))
+      // .then((val) => console.log(val.data))
       .catch(error => {
         console.log("ERROR: ", error)
         console.log(error.response)
@@ -158,7 +158,7 @@ class Main extends Component {
       } else {
         
         answer=event.currentTarget.value;
-        console.log("curr answer: ", answer);
+        // console.log("curr answer: ", answer);
       }
     
     this.setState({
@@ -579,7 +579,7 @@ class Main extends Component {
             size={200}
             top={50}
             left={-100}
-            style={{marginLeft: '50%', marginTop: '20px'}}
+            style={{marginLeft: '50%', marginTop: '30px'}}
             status={'loading'}
           />
       </div>
