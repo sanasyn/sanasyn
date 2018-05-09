@@ -69,7 +69,7 @@ function AnswerInput(props){
                 {
                     
                     return(
-                        <input type="text" name={props.questionId} value={props.currAnswer} onChange={props.onTextChange}/>
+                        <input type="text" name={props.questionId} value={props.currAnswer} onChange={props.onTextChange} ref={input => input && input.focus()}/>
                     );
                 }else
                 {

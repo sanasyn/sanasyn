@@ -64,6 +64,7 @@ function AnswerOption(props){
                     name={props.groupName}
                     value={props.currAnswer}
                     onChange={props.onTextChange}
+                    ref={input => input && input.focus()}
                 />
             </li>
     
