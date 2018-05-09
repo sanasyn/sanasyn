@@ -13,7 +13,7 @@ function AnswerInput(props){
             <AnswerOption 
                 key={data}
                 inputClassName='radioInput'
-                labelClassName="radioLabel"
+                labelClassName={props.questionId === 3 ? "radioLabel" : props.questionId === 13 ? "radioLabel2" : "radioLabel3"}
                 answerContent={data}
                 inputType={props.answerInputType}
                 groupName="radioGroup"

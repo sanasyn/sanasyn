@@ -10,8 +10,8 @@ class App extends Component {
   render() {
     return (
     <BrowserRouter>
-      <div>
-        <MuiThemeProvider>
+      <MuiThemeProvider>
+        <div>
           <header className='header'>
             <Link to='/' style={{textDecoration: "none"}}>
               <span className='logo'>S&#423;</span>
@@ -24,8 +24,8 @@ class App extends Component {
               <Route exact path="/quiz" component={Main} />
             </Switch>
           </div>
-        </MuiThemeProvider>
-      </div>
+        </div>
+      </MuiThemeProvider>
     </BrowserRouter>
     );
   }
