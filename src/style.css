@@ -150,7 +150,8 @@ td, th {
 }
 
 .subtext{
-  color:#ccc;
+  color:rgb(128, 128, 128);
+  font-size: 14pt;
   font-style: italic;
 }
 
