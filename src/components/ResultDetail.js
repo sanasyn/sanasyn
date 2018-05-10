@@ -36,6 +36,19 @@ class ResultDetail extends Component {
       />
     ];
 
+    var showCityStateZip, genericFacilityContact;
+    if(this.props.contact.facility_contact_name === null && this.props.contact.pi_name === null )
+      {
+        showCityStateZip = true;
+        genericFacilityContact= this.props.contact.city + " " + this.props.contact.state + ", "+ this.props.contact.zip + " " + this.props.contact.country;
+      }
+    else
+      {
+        showCityStateZip = false;
+      }
+
+
+
     return (
       <div className="row detail-container">
         <Card className="col-md-12 detail-topsection">
@@ -95,6 +108,7 @@ class ResultDetail extends Component {
             <CardText>
               <CardTitle style={{padding: '0px'}} subtitleStyle={{fontSize: '1.5em'}} subtitle="Facility Contact" />
               <List>
+                
                 <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">person</FontIcon> {this.props.contact.facility_contact_name === null ? 'N/A' : this.props.contact.facility_contact_name}</ListItem>
                 <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">email</FontIcon> {this.props.contact.facility_contact_email === null ? 'N/A' : this.props.contact.facility_contact_email}</ListItem>
                 <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.facility_contact_phone === null ? 'N/A' : this.props.contact.facility_contact_phone}</ListItem>
@@ -109,6 +123,8 @@ class ResultDetail extends Component {
               </List>
             </CardText>
           </Card>
+
+          {/* google map */}
           <Card className="col-md-6 detail-map">
             <CardMedia>
         

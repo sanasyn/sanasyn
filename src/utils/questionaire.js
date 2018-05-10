@@ -19,6 +19,17 @@ const questionaire = [
       
     },
     {
+        question:"Race",
+        type:'radio',
+        options:["Native American/Alaska Native","Asian/Pacific Islander","Hispanic","Black non-Hispanic","White non-Hispanic","Other"],
+        followupQ:[{
+            question:"Please write in your race.",
+            type:'text',
+            options:''
+
+        }]
+    },
+    {
         question: 'Have you had genetic testing done?',
         type:'radio',
         options:[ 'Yes','No'],
@@ -97,18 +108,7 @@ const questionaire = [
             options:''
 
         }]
-    },
-    {
-        question:"Race",
-        type:'radio',
-        options:["Native American/Alaska Native","Asian/Pacific Islander","Hispanic","Black non-Hispanic","White non-Hispanic","Other"],
-        followupQ:[{
-            question:"Please write in your race.",
-            type:'text',
-            options:''
-
-        }]
-    }
+    } 
 
 ]
 

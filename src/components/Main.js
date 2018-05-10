@@ -138,8 +138,8 @@ class Main extends Component {
   handleAnswerSelected(event) {
     let answer=this.state.currAnswer;
     
-      //for question 8 medication, handle this for medication list
-      if((this.state.counter === 8 || this.state.counter ===11) && !this.state.followupQFlag) {
+      //for question 10 medication, handle this for medication list
+      if((this.state.counter === 9 || this.state.counter ===12) && !this.state.followupQFlag) {
         if(event.currentTarget.checked && !answer) {
           //grab the first element
           answer=[event.currentTarget.value];
@@ -259,8 +259,26 @@ class Main extends Component {
           answer:updateAnswer
         });
         break;
+
+        case 3:
+        //for question 4 race question
+        if(this.state.followupQFlag) {
+          if (this.state.followupQCnt === 0) { 
+            updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
+          }
+        } else {
+          updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
+        }
+        // console.log("store currAnswer into the asnwer object");
+        // console.log("currAnswer: ", this.state.currAnswer);
+        // console.log("updateAnswer: ", updateAnswer);
+        this.setState({
+          answer:updateAnswer
+        });
+
+      break;
       
-      case 3:
+      case 4:
 
         if(!this.state.followupQFlag && this.state.currAnswer === 'Yes')
         {
@@ -289,8 +307,8 @@ class Main extends Component {
         });
         break;
       
-      case 4:
-        //for question 5 MRI
+      case 5:
+        //for question 6 MRI
         updateAnswer = update(this.state.answer,{mri:{$set:this.state.currAnswer.toLowerCase()}});
         this.setState({
           answer:updateAnswer
@@ -298,16 +316,16 @@ class Main extends Component {
       
         break;
       
-      case 5:
-        //for question 6 PET Scan
+      case 6:
+        //for question 7 PET Scan
         updateAnswer = update(this.state.answer,{pet:{$set:this.state.currAnswer.toLowerCase()}});
         this.setState({
           answer:updateAnswer
         });
         break;
 
-      case 6:
-        //for question 7 spinal tap 
+      case 7:
+        //for question 8 spinal tap 
         updateAnswer = update(this.state.answer,{spinalTap:{$set:this.state.currAnswer.toLowerCase()}});
         this.setState({
           answer:updateAnswer
@@ -315,16 +333,16 @@ class Main extends Component {
 
         break;
 
-      case 7:
-        //for question 8 stroke in last 12 months
+      case 8:
+        //for question 9 stroke in last 12 months
         updateAnswer = update(this.state.answer,{stroke:{$set:this.state.currAnswer.toLowerCase()}});
         this.setState({
           answer:updateAnswer
         });
         break;
 
-      case 8:
-        //for question 9 medication 
+      case 9:
+        //for question 10 medication 
         if (this.state.followupQFlag) {
           if (this.state.followupQCnt ===0) { 
             updateAnswer = update(this.state.answer,{medications:{acceptableTime:{$set:this.state.currAnswer.toLowerCase()}}});
@@ -338,23 +356,23 @@ class Main extends Component {
       
         break;
 
-      case 9:
-        //for question 10 family memeber/caregiver
+      case 10:
+        //for question 11 family memeber/caregiver
         updateAnswer = update(this.state.answer,{informant:{$set:this.state.currAnswer.toLowerCase()}});
         this.setState({
           answer:updateAnswer
         });
         break;
-      case 10:
-        //for question 11 primary care
+      case 11:
+        //for question 12 primary care
         updateAnswer = update(this.state.answer,{primaryCare:{$set:this.state.currAnswer.toLowerCase()}});
         this.setState({
           answer:updateAnswer
         });
         break;
 
-      case 11:
-        //for question 12 reason to use this app
+      case 12:
+        //for question 13 reason to use this app
         if(this.state.followupQFlag) {
           if (this.state.followupQCnt === 0) { 
             updateAnswer = update(this.state.answer,{opinion:{otherText:{$set:this.state.currAnswer}}});
@@ -370,24 +388,6 @@ class Main extends Component {
         });
 
         
-        break;
-
-        case 12:
-          //for question 13 race question
-          if(this.state.followupQFlag) {
-            if (this.state.followupQCnt === 0) { 
-              updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
-            }
-          } else {
-            updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
-          }
-          // console.log("store currAnswer into the asnwer object");
-          // console.log("currAnswer: ", this.state.currAnswer);
-          // console.log("updateAnswer: ", updateAnswer);
-          this.setState({
-            answer:updateAnswer
-          });
-
         break;
 
       default:
@@ -410,14 +410,14 @@ class Main extends Component {
        })
 
        //for genetic testing question only if the taken is no then display the second follow up question
-       if (counter === 3 && this.state.answer.geneticTesting.taken === 'no') {
+       if (counter === 4 && this.state.answer.geneticTesting.taken === 'no') {
           setTimeout(()=>this.setFollowupQuestion(counter,1),300);
        } else {
         setTimeout(()=>this.setNextQuestion(),300);
        }
        
        //other than genetic testing question follow the same followup question set up flow
-       if (counter !== 3 ) {
+       if (counter !== 4 ) {
           setTimeout(()=>this.setFollowupQuestion(counter,followupQCnt),300);
       }
 
@@ -449,7 +449,16 @@ class Main extends Component {
 
            //set up followupQuestion for genetic testing and medication questions
            switch(counter) {
-             case 3:
+              case 3:
+                //for race
+                if (this.state.currAnswer.includes("Other")) {
+                  setTimeout(()=>this.setFollowupQuestion(counter,0),300);
+                } else{
+                  setTimeout(()=>this.setNextQuestion(),300);
+                }
+              break;
+
+             case 4:
                   //for genetic testing quetion
                   if (this.state.currAnswer === 'Yes') {
                     //if the answer from genetic testing is yes then display the first follow up question
@@ -467,7 +476,7 @@ class Main extends Component {
 
               break;
 
-             case 8:
+             case 9:
                 if (this.state.currAnswer.includes("None")) {
                   setTimeout(()=>this.setNextQuestion(),300);
                 } else {
@@ -476,30 +485,24 @@ class Main extends Component {
               
               break;
             
-             case 11:
+             case 12:
                   //for reason for using the app question
                   if (this.state.currAnswer.includes("Other")) {
                     setTimeout(()=>this.setFollowupQuestion(counter,0),300);
                   }
                   else{
-                    setTimeout(()=>this.setNextQuestion(),300);
-                  }
-
-              break;
-            
-             case 12:
-                  //for race
-                  if (this.state.currAnswer.includes("Other")) {
-                    setTimeout(()=>this.setFollowupQuestion(counter,0),300);
-                  } else{
                     //in the last question so send answer object
                     this.setState({
                       loading:true
                     });
                     setTimeout(()=> this.getMatchResult(),300);
                     setTimeout(()=> this.postUserDemographics(),400);
+                    
                   }
-              break;  
+
+              break;
+            
+              
             
 
             default:
