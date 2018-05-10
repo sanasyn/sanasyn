@@ -39,7 +39,8 @@ class Main extends Component {
           list:[],
           otherText:""
         },
-        race: ""
+        race: "",
+        cancer:""
       },
       inputError:true,
       results:[],
@@ -138,8 +139,8 @@ class Main extends Component {
   handleAnswerSelected(event) {
     let answer=this.state.currAnswer;
     
-      //for question 10 medication, handle this for medication list
-      if((this.state.counter === 9 || this.state.counter ===12) && !this.state.followupQFlag) {
+      //for question 10 medication, handle this for medication list and question 14 , reason for using this app
+      if((this.state.counter === 9 || this.state.counter ===13) && !this.state.followupQFlag) {
         if(event.currentTarget.checked && !answer) {
           //grab the first element
           answer=[event.currentTarget.value];
@@ -363,6 +364,7 @@ class Main extends Component {
           answer:updateAnswer
         });
         break;
+
       case 11:
         //for question 12 primary care
         updateAnswer = update(this.state.answer,{primaryCare:{$set:this.state.currAnswer.toLowerCase()}});
@@ -372,7 +374,16 @@ class Main extends Component {
         break;
 
       case 12:
-        //for question 13 reason to use this app
+        //for question 13 cancer diagnois
+        updateAnswer = update(this.state.answer,{cancer:{$set:this.state.currAnswer.toLowerCase()}});
+        this.setState({
+          answer:updateAnswer
+        });
+        break;
+
+
+      case 13:
+        //for question 14 reason to use this app
         if(this.state.followupQFlag) {
           if (this.state.followupQCnt === 0) { 
             updateAnswer = update(this.state.answer,{opinion:{otherText:{$set:this.state.currAnswer}}});
@@ -485,7 +496,7 @@ class Main extends Component {
               
               break;
             
-             case 12:
+             case 13:
                   //for reason for using the app question
                   if (this.state.currAnswer.includes("Other")) {
                     setTimeout(()=>this.setFollowupQuestion(counter,0),300);

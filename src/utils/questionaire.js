@@ -99,6 +99,12 @@ const questionaire = [
         followupQ:''
     },
     {
+        question: 'Have you been diagnosed with cancer in the last 5 years?',
+        type:'radio',
+        options:[ 'Yes','No'],
+        followupQ:''
+    },
+    {
         question:"Why are you using this application? Check all that apply.",
         type:'checkbox',
         options:["Family history of Alzheimer's disease","Interested in clinical research","Memory complaints","Other"],
