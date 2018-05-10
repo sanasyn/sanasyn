@@ -60,8 +60,15 @@ img.headerImage {
     position: relative;
     overflow: auto;
     color:white;
-    margin: 0px;
+    margin: 0px auto;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
+.synapseImage{
+  max-width: 100%;
+  padding-left:15px;
+  display:block;
 }
 
 .info {
@@ -72,15 +79,6 @@ img.headerImage {
   font-size:23px;
 }
 
-.latin {
-  overflow:auto;
-  padding:35px;
-  background:white;
-}
-
-.latinImage {
-  max-width: 600px;
-}
 
 .stepContainer {
   padding-top: 30px;
@@ -310,11 +308,8 @@ button.col-md-6.detail-back {
   transition: opacity 0.5s ease-in-out;
 }
 
-/*@media only screen and (min-width: 0) {
-  html {
-    font-size: 14px;
+@media print {
+  .container {
+    max-width: 100%;
   }
-  img {
-    width:85%;
-  }
-}*/
+}
