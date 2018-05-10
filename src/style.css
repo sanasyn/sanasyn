@@ -24,6 +24,10 @@ a:hover {
   border-top: solid #545454 8px;
 }
 
+img.headerImage {
+    width: 18.5em;
+}
+
 .logo {
   font-family: Arial;
   letter-spacing: -6px;
@@ -62,11 +66,6 @@ a:hover {
 
 .info {
   margin-top: 20px;
-}
-
-.synapseImage {
-  width: 45%;
-  display: block;
 }
 
 .startInfo {
@@ -310,3 +309,12 @@ button.col-md-6.detail-back {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+
+/*@media only screen and (min-width: 0) {
+  html {
+    font-size: 14px;
+  }
+  img {
+    width:85%;
+  }
+}*/

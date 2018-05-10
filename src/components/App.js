@@ -15,7 +15,7 @@ class App extends Component {
           <header className='header'>
             <Link to='/' style={{textDecoration: "none"}}>
               <span className='logo'>S&#423;</span>
-              <Image src={headerImage}/>
+              <Image className='headerImage' src={headerImage}/>
             </Link>
           </header>
           <div>
