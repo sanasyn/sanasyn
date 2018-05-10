@@ -307,9 +307,3 @@ button.col-md-6.detail-back {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
-
-@media print {
-  .container {
-    max-width: 100%;
-  }
-}
