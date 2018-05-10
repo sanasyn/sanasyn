@@ -103,16 +103,27 @@ class ResultDetail extends Component {
         </div>
 
         <div className="row detail-endsection">
+          {/* Contact Info Section */}
           <Card className="col-md-6 detail-contact">
             <CardTitle className="detail-title">Contact Information</CardTitle>
             <CardText>
               <CardTitle style={{padding: '0px'}} subtitleStyle={{fontSize: '1.5em'}} subtitle="Facility Contact" />
-              <List>
                 
-                <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">person</FontIcon> {this.props.contact.facility_contact_name === null ? 'N/A' : this.props.contact.facility_contact_name}</ListItem>
-                <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">email</FontIcon> {this.props.contact.facility_contact_email === null ? 'N/A' : this.props.contact.facility_contact_email}</ListItem>
-                <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.facility_contact_phone === null ? 'N/A' : this.props.contact.facility_contact_phone}</ListItem>
-              </List>
+                {showCityStateZip ? 
+                  <List>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">store</FontIcon> {genericFacilityContact}</ListItem>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">import_contacts</FontIcon> {this.props.contact.facility_name === null ? 'Please refer to the central contact' : this.props.contact.facility_name}</ListItem>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.props.contact.facility_contact_phone}</ListItem>
+                  </List>
+                  :
+                  <List>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">person</FontIcon> 
+                  {this.props.contact.facility_contact_name === null ? " Primary Investigator: " +this.props.contact.pi_name : this.props.contact.facility_contact_name}</ListItem>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">email</FontIcon> {this.props.contact.facility_contact_email === null ? 'N/A' : this.props.contact.facility_contact_email}</ListItem>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.props.contact.facility_contact_phone}</ListItem>
+                  </List>
+                }
+          
             </CardText>
             <CardText>
               <CardTitle style={{padding: '0px'}} subtitleStyle={{fontSize: '1.5em'}} subtitle="Central Contact" />
