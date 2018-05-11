@@ -8,6 +8,7 @@ const mriQuery = require('./translate').mriQuery;
 const petQuery = require('./translate').petQuery;
 const spinalQuery = require('./translate').spinalQuery;
 const strokeQuery = require('./translate').strokeQuery;
+const cancerQuery = require('./translate').cancerQuery;
 const medicationsQuery = require('./translate').medicationsQuery;
 const medicationsQueryNot = require('./translate').medicationsQueryNot;
 const caregiverQueryInc = require('./translate').caregiverQueryInc;
@@ -27,7 +28,7 @@ function getConnectionOptions() {
 }
 
 function runQuery(req, res) {
-	console.log("BODY: ", req.body);
+	console.log("Request: ", req.body);
 	// console.time("TIME");
 	let query = req.body;
 	return knex
@@ -106,6 +107,7 @@ function buildNotILikeQueryEx(request) {
 		mriQuery(request.mri),
 		petQuery(request.pet),
 		strokeQuery(request.stroke),
+		cancerQuery(request.cancer),
 		medicationsQuery(request.medications),
 		caregiverQueryInc(request.informant)
 	];

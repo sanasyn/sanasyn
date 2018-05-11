@@ -60,6 +60,15 @@ function strokeQuery(stroke) {
 	return strokeArray;
 }
 
+function cancerQuery(cancer) {
+	let cancerArray = [''];
+	if (cancer === 'yes') {
+		cancerArray = ['%cancer%']
+	}
+	// console.log("CANCER ARRAY: ", cancerArray);
+	return cancerArray;
+}
+
 // builds array used to query for medications inclusion
 function medicationsQuery(medications) {
 	let buildArray = [];
@@ -158,5 +167,6 @@ module.exports = {
 	strokeQuery: strokeQuery,
 	medicationsQuery: medicationsQuery,
 	medicationsQueryNot: medicationsQueryNot,
-	caregiverQueryInc: caregiverQueryInc
+	caregiverQueryInc: caregiverQueryInc,
+	cancerQuery: cancerQuery
 }
