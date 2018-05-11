@@ -47,6 +47,9 @@ class ResultDetail extends Component {
         showCityStateZip = false;
       }
 
+      var inclusion=this.props.study.criteria_inc.replace("   ","<br>");
+      console.log("in result detial: ", inclusion);
+
 
 
     return (
@@ -79,7 +82,7 @@ class ResultDetail extends Component {
                   <Tab label="Inclusion Criteria" value="include">
                     <div>
                       <p>
-                       {this.props.study.criteria_inc}
+                       {inclusion}
                       </p>
                     </div>
                   </Tab>
