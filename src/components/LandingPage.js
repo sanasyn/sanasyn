@@ -20,7 +20,7 @@ export default () => {
     			<Image className="col-sm-6 synapseImage" circle src={Background}/>
     			<div className="col-sm-4 col-sm-offset-1 info" >
 	    			<h1 className="healingConn">A Healing Connection</h1>
-	 		        <p className="startInfo">We connect you to clinical trials for Alzheimer's Disease based on your needs.</p>
+	 		        <p className="startInfo">We connect you to an Alzheimer’s disease clinical trial that’s right for you.</p>
 	 		        <Link to="/quiz">
  		        			<FlatButton style={StyleButton}>Get Started
  		        			</FlatButton>
@@ -30,15 +30,15 @@ export default () => {
         <div className="stepContainer col-md-offset-3 col-md-6">
           <div className="step">
             <h2 className="stepNumber">1</h2>
-            <p className="stepDesc">Click Get Started in order to begin a short questionaire.</p>
+            <p className="stepDesc">Click Get Started to begin a short questionnaire.</p>
           </div>
           <div className="step">
             <h2 className="stepNumber">2</h2>
-            <p className="stepDesc">We will return a list of studies that fit your needs in a location close to you.</p>
+            <p className="stepDesc">Returned list includes relevant studies in locations closest to you.</p>
           </div>
           <div className="step">
             <h2 className="stepNumber">3</h2>
-            <p className="stepDesc">Click on a study to learn more about it and receive contact information for the facility.</p>
+            <p className="stepDesc">Click on study title for important details including study contact information.</p>
           </div>
         </div>
     	</div>
