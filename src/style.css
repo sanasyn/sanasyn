@@ -309,3 +309,29 @@ button.col-md-6.detail-back {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+
+/* Footer and About Us */
+.footer {
+  text-align: center;
+  font-size: 1.3em;
+  line-height: 2.5em;
+  margin-top: 0; 
+  background-color: #20759c;
+  height: 3em;
+  border-bottom: solid #545454 8px;
+  bottom: 0;
+  width: 100%;
+}
+
+.aboutLink, .footerLogo {
+  color: #CCC515;
+}
+
+.aboutCard {
+  margin: 2em 5em 2em 5em;
+  padding: 2em 2em 0 2em;
+}
+
+.aboutTitle {
+  font-weight: bold;
+}
