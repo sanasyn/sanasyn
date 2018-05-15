@@ -5,7 +5,7 @@
 	},
 	"proxies": {
 	    "/api/": {
-	      "origin": "https://obscure-mesa-75116.herokuapp.com/"
+	      "origin": "https://safe-thicket-52701.herokuapp.com/"
 	    }
   	}
 }
