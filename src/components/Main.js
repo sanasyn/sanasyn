@@ -52,6 +52,7 @@ class Main extends Component {
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
     this.handleClickNext=this.handleClickNext.bind(this);
     this.handleClickBack=this.handleClickBack.bind(this);
+    this.handleEnterNext=this.handleEnterNext.bind(this);
     this.skipToResults=this.skipToResults.bind(this);
     this.handleTextChange=this.handleTextChange.bind(this);
     this.validateInputValue=this.validateInputValue.bind(this);
@@ -231,7 +232,7 @@ class Main extends Component {
    //counter for current question
     const counter = this.state.counter;
     let updateAnswer=this.state.answer;
-
+    
     //put the currAnswer value into the answer object
     //
     switch(counter)
@@ -540,6 +541,12 @@ class Main extends Component {
     }
   }
 
+  handleEnterNext(event){
+    if(event.key === "Enter"){
+      this.handleClickNext();
+    }
+  }
+
   //validate the input value before the user can hit 
   //return true when the value is not valid
   //return false when the value is valid
@@ -576,6 +583,7 @@ class Main extends Component {
         onAnswerSelected ={this.handleAnswerSelected}
         onClickNext={this.handleClickNext}
         onClickBack={this.handleClickBack}
+        onEnterNext={this.handleEnterNext}
         onTextChange={this.handleTextChange}
         inputError={this.state.inputError}
         validateInputValue={this.validateInputValue}

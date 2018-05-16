@@ -26,6 +26,7 @@ function Quiz(props){
             transitionLeaveTimeout={500}
             transitionAppear
             transitionAppearTimeout={500}
+            onKeyPress={props.onEnterNext}
         >
             <div className="quiz">
 
