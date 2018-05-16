@@ -47,7 +47,7 @@ class About extends Component {
           <hr/>
           <CardTitle className="aboutTitle" title="What does SanaSyn mean?"/>
           <CardText style={{padding:'0 16px 1em 16px'}}>
-            Sana in latin means heal and syn is from synapse which by definition is the a junction between two nerve cells allowing for 
+            Sana in latin means heal and syn is from synapse which by definition is the junction between two nerve cells allowing for 
             the passage of neurotransmitters. A combination of those two words gives us SanaSyn. The word is the core mission of our app: 
             we want to connect you to the right study so you can be a part of the medical community trying to validate new therapies to 
             heal Alzheimer’s disease.
