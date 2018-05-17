@@ -27,6 +27,7 @@ class ResultDetail extends Component {
     });
   };
 
+
   render(){
     const actions = [
       <FlatButton
@@ -46,12 +47,23 @@ class ResultDetail extends Component {
       {
         showCityStateZip = false;
       }
+      var inclusion=this.props.study.criteria_inc;
+      var exclusion=this.props.study.criteria_ex;
+      
+      
+      if (typeof inclusion === 'string')
+      {
+        //look for multiple whitspace following by a - to split up the string into multiple lines
+        inclusion=inclusion.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>);
+      }
 
-      var inclusion=this.props.study.criteria_inc.replace("   ","<br>");
-      console.log("in result detial: ", inclusion);
-
-
-
+      if (typeof exclusion === 'string')
+      {
+        //look for multiple whitspace following by a - to split uptthe string into multiple lines
+        exclusion=exclusion.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>);
+      }
+      console.log("in render: inclusion ", inclusion, " exclusion ", exclusion);
+    
     return (
       <div className="row detail-container">
         <Card className="col-md-12 detail-topsection">
@@ -62,7 +74,7 @@ class ResultDetail extends Component {
         <div className="row detail-midsection">
           <Card className="col-md-4 detail-phase">
             <CardTitle className="detail-title">Trial Phase</CardTitle>
-            <CardText className="detail-study-phase" style={{fontSize: '2.5em'}}>{this.props.study.phase}</CardText>
+            <CardText className="detail-study-phase" style={{fontSize: '2em'}}>{this.props.study.phase}</CardText>
           </Card>
           <Card className="col-md-4 detail-eligibility">
             <div>
@@ -73,7 +85,7 @@ class ResultDetail extends Component {
                 modal={true}
                 open={this.state.elg_info_open}
                 autoScrollBodyContent={true}
-                contentStyle={{height:'70%'}}
+                contentStyle={{height:'100%'}}
               >
                 <Tabs
                   value={this.state.tab_value}
@@ -81,16 +93,12 @@ class ResultDetail extends Component {
                 >
                   <Tab label="Inclusion Criteria" value="include">
                     <div>
-                      <p>
-                       {inclusion}
-                      </p>
+                    {inclusion}
                     </div>
                   </Tab>
                   <Tab label="Exclusion Criteria" value="exclusion">
                     <div>
-                      <p>
-                      {this.props.study.criteria_ex}
-                      </p>
+                      {exclusion}
                     </div>
                   </Tab>
                 </Tabs>
