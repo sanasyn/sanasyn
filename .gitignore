@@ -1,5 +1,0 @@
-node_modules
-**/.DS_Store
-config/*
-src/node_modules
-src/dist/assets/bundle.js
