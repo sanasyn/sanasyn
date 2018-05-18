@@ -41,6 +41,10 @@ img.headerImage {
   width:100%;
 }
 
+.menuBtn {
+  float: right;
+}
+
 /*quiz */
 .quiz {
   position: relative;
