@@ -62,7 +62,7 @@ class ResultDetail extends Component {
         //look for multiple whitspace following by a - to split uptthe string into multiple lines
         exclusion=exclusion.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>);
       }
-      console.log("in render: inclusion ", inclusion, " exclusion ", exclusion);
+     // console.log("in render: inclusion ", inclusion, " exclusion ", exclusion);
     
     return (
       <div className="row detail-container">
@@ -78,7 +78,7 @@ class ResultDetail extends Component {
           </Card>
           <Card className="col-md-4 detail-eligibility">
             <div>
-              <RaisedButton label="Eligibility Info" onClick={()=>{this.handleToggle()}} />
+              <RaisedButton label="Eligibility Info" fullWidth={true} style={{margin:'50px auto'}} onClick={()=>{this.handleToggle()}} />
               <Dialog
                 title="Eligibility Information"
                 actions={actions}

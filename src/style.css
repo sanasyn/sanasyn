@@ -45,7 +45,14 @@ img.headerImage {
   float: right;
 }
 
+
 /*quiz */
+.quiz_wrapper
+{
+  min-height:500px;
+  padding: 25px 10px;
+}
+
 .quiz {
   position: relative;
   max-width: 925px;
@@ -53,8 +60,14 @@ img.headerImage {
   background:#fff;
   border-radius: 3px;
   text-align: center;
-  padding: 25px 10px;
+  padding: 45px 10px;
   overflow-x: hidden;
+  
+}
+
+.refreshIndicator
+{
+  min-height:350px;
 }
 
 /*Landing Page*/
@@ -71,7 +84,7 @@ img.headerImage {
 }
 
 .synapseImage{
-  max-width: 100%;
+  max-width: 45%;
   padding-left:15px;
   display:block;
 }
@@ -86,8 +99,9 @@ img.headerImage {
 
 
 .stepContainer {
-  padding-top: 30px;
+  padding-top: 20px;
   text-align: center;
+  float: none; /*take out bootstrap's float to allow this section be in the main container */
 }
 
 .step {

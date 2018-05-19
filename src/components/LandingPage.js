@@ -18,7 +18,7 @@ export default () => {
     	<div>
     		<div className="topStyle row">
     			<Image className="col-sm-6 synapseImage" circle src={Background}/>
-    			<div className="col-sm-4 col-sm-offset-1 info" >
+    			<div className="col-sm-5 col-sm-offset-1 info" >
 	    			<h1 className="healingConn">A Healing Connection</h1>
 	 		        <p className="startInfo">We connect you to an Alzheimer’s disease clinical trial that’s right for you.</p>
 	 		        <Link to="/quiz">
