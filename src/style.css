@@ -187,6 +187,11 @@ td, th {
   background-color:#eefbfe;
 }
 
+.reasonTextArea{
+  width:70%;
+  height:100px;
+}
+
 [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
   font-size: 2em;
   margin:12px;
@@ -242,6 +247,8 @@ label.checkCustomLabel {
   width: 14px;
     height: 24px;
 }
+
+
 
 /* Result Details */
 .detail-container {

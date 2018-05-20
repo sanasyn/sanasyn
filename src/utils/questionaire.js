@@ -110,7 +110,7 @@ const questionaire = [
         options:["Family history of Alzheimer's disease","Interested in clinical research","Memory complaints","Other"],
         followupQ:[{
             question:"Please write in your reason.",
-            type:'text',
+            type:'textarea',
             options:''
 
         }]
