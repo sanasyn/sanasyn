@@ -41,6 +41,10 @@ export default () => {
             <p className="stepDesc">Click on study title for important details including study contact information.</p>
           </div>
         </div>
+        <footer className='footer'>
+            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
+            <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+        </footer>
     	</div>
 
     )
