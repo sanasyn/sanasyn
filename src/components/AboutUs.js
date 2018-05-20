@@ -57,7 +57,7 @@ class About extends Component {
           <div className="row">
             <div className="col-md-4 col-md-offset-1">
                 <img src={founderImage} />
-                <p><a href="https://www.linkedin.com/in/marjanasarker/" target="_blank">Marjana Saker, PhD.</a> <b>Founder</b></p>
+                <p><a href="https://www.linkedin.com/in/marjanasarker/" target="_blank">Marjana Sarker, PhD.</a> <b>Founder</b></p>
             </div>
             <div className="col-md-6">
                 <img src={teamImage} style={{width: '100%'}}/>

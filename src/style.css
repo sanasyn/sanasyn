@@ -34,7 +34,7 @@ img.headerImage {
   font-size: 2.7em;
   padding-right: 14px;
   font-style: italic;
-  color: #CCC515;
+  color: rgb(238,255,123);
 }
 
 .container {
@@ -349,7 +349,7 @@ button.col-md-6.detail-back {
 }
 
 .aboutLink, .footerLogo {
-  color: #CCC515;
+  color:rgb(238,255,123); /*#CCC238;*/
 }
 
 .aboutCard {

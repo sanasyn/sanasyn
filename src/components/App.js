@@ -20,7 +20,7 @@ class App extends Component {
         <div className='mainContainer'>
           <header className='header'>
             <Link to='/' style={{textDecoration: "none"}}>
-              <span className='logo'>S&#423;</span>
+              <span className='logo'>S &#423;</span>
               <Image className='headerImage' src={headerImage}/>
             </Link>
             <IconMenu
