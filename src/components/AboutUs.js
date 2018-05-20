@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
+import founderImage from '../dist/MJ.png';
+import teamImage from '../dist/team.png';
+import { Link } from 'react-router-dom';
 
 class About extends Component {
   render(){
     return(
       <div>
         <Card className="aboutCard">
-          <CardTitle className="aboutTitle" title="Current state of affairs"/>
+          {/* <CardTitle className="aboutTitle" title="Current state of affairs"/>
           <CardText style={{padding:'0 16px 1em 16px'}}>
             In the last 20 years basic science research has made great strides in understanding Alzheimer’s 
             disease and Alzheimer’s like diseases providing an exciting plethora of new targets along with technological 
@@ -30,7 +33,7 @@ class About extends Component {
             to get younger participants to sign up, it is a lot harder to sign up elderly participants. Some may not be actively 
             using their email addresses and most prefer a simpler paper and pen survey.
           </CardText>
-          <hr/>
+          <hr/> */}
           <CardTitle className="aboutTitle" title="Why SanaSyn?"/>
           <CardText style={{padding:'0 16px 1em 16px'}}>
             SanaSyn is a specialized app version of a simplified survey like questionnaire which returns a collection of actively 
@@ -45,6 +48,31 @@ class About extends Component {
             and geriatric disease clinical trials/studies in our app.
           </CardText>
           <hr/>
+          <CardTitle className="aboutTitle" title="The SanaSyn team"/>
+          <CardText style={{padding:'0 16px 1em 16px'}}>
+            We are a small team of 4 STEM professionals based in the great state of Texas who are taking an active approach to addressing 
+            some of the pressing issues affecting recruitment for Alzheimer’s disease. 
+          </CardText>
+          <CardText style={{padding:'0 16px 1em 16px'}}>
+          <div className="row">
+            <div className="col-md-4 col-md-offset-1">
+                <img src={founderImage} />
+                <p><a href="https://www.linkedin.com/in/marjanasarker/" target="_blank">Marjana Saker, PhD.</a> <b>Founder</b></p>
+            </div>
+            <div className="col-md-6">
+                <img src={teamImage} style={{width: '100%'}}/>
+                <p> THE TEAM</p>
+                <p><span>From left to right: </span><a href="https://www.linkedin.com/in/marissa-pels/" target="_blank">Marissa Pels</a>, <a href="https://www.linkedin.com/in/aelly-liu/" target="_blank">Aelly Liu</a>, <a href="https://www.linkedin.com/in/whitney-wong/" target="_blank">Whiteny Wong</a></p>
+            </div>
+          </div>
+          </CardText>
+          <hr/>
+          <CardTitle className="aboutTitle" title="Contact Us"/>
+          <CardText style={{padding:'0 16px 1em 16px'}}>
+            We are yet to have a super savvy web bot or a telephone number but we are available via <a href="mailto:team.1@sanasyn.com">team.1@sanasyn.com</a> We are here 24/7 to 
+            answer your queries and read your suggestions. 
+          </CardText>
+          <hr/>
           <CardTitle className="aboutTitle" title="What does SanaSyn mean?"/>
           <CardText style={{padding:'0 16px 1em 16px'}}>
             Sana in latin means heal and syn is from synapse which by definition is the junction between two nerve cells allowing for 
@@ -52,23 +80,15 @@ class About extends Component {
             we want to connect you to the right study so you can be a part of the medical community trying to validate new therapies to 
             heal Alzheimer’s disease.
           </CardText>
-          <hr/>
-          <CardTitle className="aboutTitle" title="The SanaSyn team"/>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
-            We are a small team of 4 STEM professionals based in the great state of Texas who are taking an active approach to addressing 
-            some of the pressing issues affecting recruitment for Alzheimer’s disease. 
-          </CardText>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
-            More updates in this section in the near future so come back to check us out! 
-          </CardText>
-          <hr/>
-          <CardTitle className="aboutTitle" title="Contact Us"/>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
-            We are yet to have a super savvy web bot or a telephone number but we are available via <a href="mailto:team.1@sanasyn.com">team.1@sanasyn.com</a> 24/7 to 
-            answer your queries and read your suggestions. 
-          </CardText>
         </Card>
+
+        <footer className='footer'>
+      <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
+      <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+      </footer>
       </div>
+
+      
     )
   }
 }
