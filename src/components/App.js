@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LandingPage from './LandingPage';
 import Main from './Main';
-import About from './AboutUs'
+import About from './AboutUs';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
@@ -41,10 +41,6 @@ class App extends Component {
               <Route exact path="/about" component={About} />
             </Switch>
           </div>
-          <footer className='footer'>
-            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
-            <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
-          </footer>
         </div>
       </MuiThemeProvider>
     </BrowserRouter>

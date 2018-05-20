@@ -5,6 +5,7 @@ import update from 'react-addons-update';
 import Result from './Result';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Main extends Component {
   constructor(props){
@@ -573,23 +574,29 @@ class Main extends Component {
 
   renderQuiz() {
     return (
-      <Quiz
-        currAnswer={this.state.currAnswer}
-        answerInputType={this.state.answerInputType}
-        answerOptions ={this.state.answerOptions}
-        questionId={this.state.questionId}
-        question={this.state.question}
-        questionTotal={questionaire.length}
-        onAnswerSelected ={this.handleAnswerSelected}
-        onClickNext={this.handleClickNext}
-        onClickBack={this.handleClickBack}
-        onEnterNext={this.handleEnterNext}
-        onTextChange={this.handleTextChange}
-        inputError={this.state.inputError}
-        validateInputValue={this.validateInputValue}
-        counter={this.state.counter}
-        skipToResults={this.skipToResults}
-        />
+      <div>
+        <Quiz
+          currAnswer={this.state.currAnswer}
+          answerInputType={this.state.answerInputType}
+          answerOptions ={this.state.answerOptions}
+          questionId={this.state.questionId}
+          question={this.state.question}
+          questionTotal={questionaire.length}
+          onAnswerSelected ={this.handleAnswerSelected}
+          onClickNext={this.handleClickNext}
+          onClickBack={this.handleClickBack}
+          onEnterNext={this.handleEnterNext}
+          onTextChange={this.handleTextChange}
+          inputError={this.state.inputError}
+          validateInputValue={this.validateInputValue}
+          counter={this.state.counter}
+          skipToResults={this.skipToResults}
+          />
+          <footer className='footer' style={{position:'fixed'}}>
+            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
+            <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+          </footer>
+        </div>
     );
   }
 
@@ -604,13 +611,23 @@ class Main extends Component {
             style={{marginLeft: '50%', marginTop: '30px'}}
             status={'loading'}
           />
+        <footer className='footer' style={{position:'fixed'}}>
+            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
+            <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+          </footer>
       </div>
     );
   }
 
   renderResult() {
     return (
-      <Result results={this.state.results}/>
+      <div>
+        <Result results={this.state.results}/>
+        <footer className='footer'>
+            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
+            <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+        </footer>
+      </div>
     );
   }
 
