@@ -77,6 +77,7 @@ function medicationsQuery(medications) {
 	const exelon = ['%rivastigmine%', '%exelon%', '%cholinesterase%'];
 	const razadyne = ['%galantamine%', '%razadyne%', '%cholinesterase%'];
 	const namenda = ['%memantine%', '%namenda%'];
+	const cognex = ['%tacrine%', '%cognex%', '%cholinesterase%'];
 
 	if (medications.acceptableTime === 'yes'){
 		if (medications.list.indexOf('Aricept') > -1) {
@@ -90,6 +91,9 @@ function medicationsQuery(medications) {
 		};
 		if (medications.list.indexOf('Namenda') > -1) {
 			buildArray = buildArray.concat(namenda);
+		};
+		if (medications.list.indexOf('Cognex') > -1) {
+			buildArray = buildArray.concat(cognex);
 		};
 	}
 
