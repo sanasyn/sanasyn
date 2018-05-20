@@ -76,7 +76,7 @@ const questionaire = [
     {
         question: 'Memory enhancing medications. Check all that apply',
         type:'checkbox',
-        options:['Aricept','Exelon','Razadyne ER','Namenda','None'],
+        options:['Aricept','Exelon','Razadyne ER','Namenda','Cognex','None'],
         followupQ:[
             {
                 parentAnswer:'',
