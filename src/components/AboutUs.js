@@ -51,7 +51,7 @@ class About extends Component {
           <CardTitle className="aboutTitle" title="The SanaSyn team"/>
           <CardText style={{padding:'0 16px 1em 16px'}}>
             We are a small team of 4 STEM professionals based in the great state of Texas who are taking an active approach to addressing 
-            some of the pressing issues affecting recruitment for Alzheimer’s disease. 
+            some of the pressing issues affecting recruitment for Alzheimer’s disease clinical trials. 
           </CardText>
           <CardText style={{padding:'0 16px 1em 16px'}}>
           <div className="row">
