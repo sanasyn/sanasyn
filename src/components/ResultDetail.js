@@ -41,7 +41,7 @@ class ResultDetail extends Component {
     if(this.props.contact.facility_contact_name === null && this.props.contact.pi_name === null )
       {
         showCityStateZip = true;
-        genericFacilityContact= this.props.contact.city + " " + this.props.contact.state + ", "+ this.props.contact.zip + " " + this.props.contact.country;
+        genericFacilityContact= this.props.contact.city + ", " + this.props.contact.state + ", "+ this.props.contact.zip + " " + this.props.contact.country;
       }
     else
       {
@@ -122,12 +122,13 @@ class ResultDetail extends Component {
                 
                 {showCityStateZip ? 
                   <List>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">store</FontIcon> {genericFacilityContact}</ListItem>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">import_contacts</FontIcon> {this.props.contact.facility_name === null ? 'Please refer to the central contact' : this.props.contact.facility_name}</ListItem>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">import_contacts</FontIcon> {genericFacilityContact}</ListItem>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">store</FontIcon> {this.props.contact.facility_name === null ? 'Please refer to the central contact' : this.props.contact.facility_name}</ListItem>
                   <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.props.contact.facility_contact_phone}</ListItem>
                   </List>
                   :
                   <List>
+                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">store</FontIcon> {this.props.contact.facility_name}</ListItem>
                   <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">person</FontIcon> 
                   {this.props.contact.facility_contact_name === null ? " Primary Investigator: " +this.props.contact.pi_name : this.props.contact.facility_contact_name}</ListItem>
                   <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">email</FontIcon> {this.props.contact.facility_contact_email === null ? 'N/A' : this.props.contact.facility_contact_email}</ListItem>
