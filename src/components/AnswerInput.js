@@ -96,6 +96,22 @@ function AnswerInput(props){
                     </ul> 
                             
                 );
+            case "textarea":
+                if(typeof props.answerOptions ==='string')
+                {
+                    console.log("calling renderTextarea()");
+                    return(
+                        <ul className="answerOptions">
+                             <textarea 
+                             className="reasonTextArea"
+                            name="textarea" 
+                            placeholder="Please write down your reason(s)."
+                            value={props.currAnswer}
+                            onChange={props.onTextChange} 
+                            autoFocus></textarea>
+                        </ul>
+                    );
+                }
                     
             default:
                 return (<p>no input type</p>);
