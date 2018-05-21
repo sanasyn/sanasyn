@@ -62,7 +62,7 @@ class About extends Component {
             <div className="col-md-6">
                 <img src={teamImage} style={{width: '100%'}}/>
                 <p> THE TEAM</p>
-                <p><span>From left to right: </span><a href="https://www.linkedin.com/in/marissa-pels/" target="_blank">Marissa Pels</a>, <a href="https://www.linkedin.com/in/aelly-liu/" target="_blank">Aelly Liu</a>, <a href="https://www.linkedin.com/in/whitney-wong/" target="_blank">Whiteny Wong</a></p>
+                <p><span>From left to right: </span><a href="https://www.linkedin.com/in/marissa-pels/" target="_blank">Marissa Pels</a>, <a href="https://www.linkedin.com/in/aelly-liu/" target="_blank">Aelly Liu</a>, <a href="https://www.linkedin.com/in/whitney-wong/" target="_blank">Whitney Wong</a></p>
             </div>
           </div>
           </CardText>
