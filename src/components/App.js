@@ -30,8 +30,8 @@ class App extends Component {
               anchorOrigin={{horizontal: 'right', vertical: 'top'}}
               targetOrigin={{horizontal: 'right', vertical: 'top'}}
             >
-              <Link to="/quiz" style={{textDecoration: "none"}}><MenuItem value="1" primaryText="Find Trials" /></Link>
-              <Link to="/about" style={{textDecoration: "none"}}><MenuItem value="2" primaryText="About Us" /></Link>
+              <MenuItem componentClass={Link} value="1" primaryText="Find Trials" href='/quiz' to='/quiz' />
+              <MenuItem componentClass={Link} value="2" primaryText="About Us" href='/about' to='/about' />
             </IconMenu>
           </header>
           <div>
