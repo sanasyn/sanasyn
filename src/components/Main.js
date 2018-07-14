@@ -623,10 +623,10 @@ class Main extends Component {
     return (
       <div>
         <Result results={this.state.results}/>
-        <footer className='footer'>
+        {/* <footer className='footer'>
             <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
             <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
-        </footer>
+        </footer> */}
       </div>
     );
   }

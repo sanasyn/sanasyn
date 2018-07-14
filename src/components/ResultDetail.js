@@ -65,7 +65,9 @@ class ResultDetail extends Component {
      // console.log("in render: inclusion ", inclusion, " exclusion ", exclusion);
     
     return (
+      
       <div className="row detail-container">
+      <div className="overallContainer" style={{overflow: 'scroll', height: '80vh'}}>
         <Card className="col-md-12 detail-topsection">
           <CardTitle className="detail-study-title">{this.props.study.official_title}</CardTitle>
           <CardText className="detail-description" style={{fontSize:'1.2em'}}>{this.props.study.description}</CardText>
@@ -173,13 +175,15 @@ class ResultDetail extends Component {
           </CardMedia>
           </Card>
         </div>
+        </div>
         
-        <div className="row detail-back-row">
+        <div className="row detail-back-row" style={{fontSize: '20px', fontWeight: 'bold'}}>
           <div className="col-md-3"></div>
           <FlatButton className="col-md-6 detail-back" style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} onClick={this.props.back}>Back</FlatButton>
         </div>
 
       </div>
+      
     )
   }
 }
