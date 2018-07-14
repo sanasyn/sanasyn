@@ -69,7 +69,7 @@ class ResultDetail extends Component {
       <div className="row detail-container">
       <div className="overallContainer" style={{overflow: 'scroll', height: '80vh'}}>
         <Card className="col-md-12 detail-topsection">
-          <CardTitle className="detail-study-title">{this.props.study.official_title}</CardTitle>
+          <CardTitle className="detail-study-title">{this.props.study.brief_title}</CardTitle>
           <CardText className="detail-description" style={{fontSize:'1.2em'}}>{this.props.study.description}</CardText>
         </Card>
 

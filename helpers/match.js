@@ -33,7 +33,7 @@ function runQuery(req, res) {
 	let query = req.body;
 	return knex
 	// .distinct()
-	.select('nct_id','official_title','facility_id','city','state','zip','country','criteria_ex')
+	.select('nct_id','brief_title','facility_id','city','state','zip','country','criteria_ex')
 	// .count()
 	.from('aact_master')
 	.where(function() {

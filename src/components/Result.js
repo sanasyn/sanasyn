@@ -84,7 +84,7 @@ class Result extends Component {
                     <TableRowColumn 
                       style={{padding: '15px', width: '55%', whiteSpace: 'normal', fontSize: '1.3em'}} 
                     >
-                      <a onClick={this.onStudySelect.bind(this, study)}>{study.official_title}</a>
+                      <a onClick={this.onStudySelect.bind(this, study)}>{study.brief_title}</a>
                       <span style={{fontStyle:'italic', color:'#a0a0a0'}}>( {study.nct_id})</span>
                     </TableRowColumn>
                     <TableRowColumn style={{padding: '15px', width: '18%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
