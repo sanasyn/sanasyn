@@ -179,7 +179,7 @@ class ResultDetail extends Component {
         
         <div className="row detail-back-row" style={{fontSize: '20px', fontWeight: 'bold'}}>
           <div className="col-md-3"></div>
-          <FlatButton className="col-md-6 detail-back" style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} onClick={this.props.back}>Back to Result List</FlatButton>
+          <FlatButton className="col-md-6 detail-back" style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} onClick={this.props.back}>Back to Results</FlatButton>
         </div>
 
       </div>
