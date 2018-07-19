@@ -360,3 +360,13 @@ button.col-md-6.detail-back {
 .aboutTitle {
   font-weight: bold;
 }
+
+.aboutCrdEle{
+  padding:0 16px 1em 16px;
+}
+
+
+/*generic*/
+.picwidth100{
+  width:100%;
+}
