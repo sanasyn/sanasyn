@@ -2,4 +2,3 @@ node_modules
 **/.DS_Store
 src/node_modules
 src/dist/assets/bundle.js
-config
