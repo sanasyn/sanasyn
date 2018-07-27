@@ -1,5 +1,6 @@
 const config = require('../config/config').heroku;
 const knex = require('knex')(getConnectionOptions());
+const env = require('../config/config').node_env;
 
 function getConnectionOptions() {
 	return {
@@ -32,7 +33,7 @@ function insertReason(req, res){
           other_reason_select: val.otherReasonSelect, 
           other_reason_text: val.otherReasonText
         }])
-        .into('user_demographics')
+        .into(setDatabase(env))
     })
     .then(() => res.send("User demographics inserted into db"))
     .catch((err) => Promise.reject(err))
@@ -63,6 +64,12 @@ function setValues(req){
   if (req.opinion.otherText.length > 0) reason.otherReasonText = req.opinion.otherText;
 
   return Promise.resolve(reason)
+}
+
+// Helper function to set database depending on app environment
+function setDatabase(appEnv){
+  if (appEnv === 'dev') return 'user_demographics_dev'
+  else if (appEnv === 'production') return 'user_demographics'
 }
 
 module.exports = insertReason;
