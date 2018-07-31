@@ -591,6 +591,7 @@ class Main extends Component {
           validateInputValue={this.validateInputValue}
           counter={this.state.counter}
           skipToResults={this.skipToResults}
+          {...this.props}
           />
           <footer className='footer' style={{position:'fixed'}}>
             <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 

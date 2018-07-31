@@ -2,9 +2,10 @@
 //container component - define how thing work together
 //this is also a presentation component
 
-import React from 'react';
+import React, { Component } from 'react';
 import Question from '../components/Question';
-// import QuestionCount from '../components/QuestionCount';
+import questionaire from '../utils/questionaire';
+import { withRouter } from 'react-router-dom';
 import AnswerInput from '../components/AnswerInput';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
@@ -14,49 +15,62 @@ import config from '../../config/config.js'
 // import AnswerOption from '../components/AnswerOption'
 
 
-function Quiz(props){
-   
+class Quiz extends Component {
+    constructor(props) {
+        console.log("PROPS: ", props)
+        super(props);
+        this.state = {
+            questionId: props.questionId
+        }
+      }
+
+    render() {
+        return (
+            <ReactCSSTransitionGroup
+                className="quiz_wrapper"
+                component="div"
+                transitionName="fade"
+                transitionEnterTimeout={800}
+                transitionLeaveTimeout={500}
+                transitionAppear
+                transitionAppearTimeout={500}
+                onKeyPress={this.props.onEnterNext}
+            >
+                <div className="quiz">
+                    <LinearProgress 
+                        className= "progressBar" 
+                        mode="determinate" 
+                        min={0} 
+                        max={this.props.questionTotal} 
+                        value={this.props.counter} 
+                    />
     
-    return (
-        <ReactCSSTransitionGroup
-            className="quiz_wrapper"
-            component="div"
-            transitionName="fade"
-            transitionEnterTimeout={800}
-            transitionLeaveTimeout={500}
-            transitionAppear
-            transitionAppearTimeout={500}
-            onKeyPress={props.onEnterNext}
-        >
-            <div className="quiz">
-
-                <LinearProgress mode="determinate" min={0} max={props.questionTotal} color="#d40027" style={{height: "7px", margin: "0px auto 30px auto", width: "80%"}} value={props.counter} />
-
-                <Question content={props.question}/>
-                          
-                <AnswerInput 
-                answerInputType={props.answerInputType}
-                answerOptions={props.answerOptions}
-                questionId={props.questionId}
-                currAnswer={props.currAnswer}
-                onAnswerSelected={props.onAnswerSelected}
-                onTextChange={props.onTextChange}
-                />
-                
-                {props.counter > 0 ? (
-                    <FlatButton style={{backgroundColor: "#3b4e8c",fontSize:"2em", hoverColor: "#b63d34", marginTop:"20px", margin:"10px", color:'#fff'}} onClick={props.onClickBack}>BACK</FlatButton>
-                    ): null}
-                
-
-                <FlatButton style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em",}} onClick={props.onClickNext}> NEXT</FlatButton>
-
-                {config.node_env ==='dev' ? (<FlatButton style={{backgroundColor: "red", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em",}} onClick={props.skipToResults}> Results</FlatButton>):null}
-                
-
-                
-            </div>
-        </ReactCSSTransitionGroup>
-    );
+                    <Question content={this.props.question}/>
+                              
+                    <AnswerInput 
+                    answerInputType={this.props.answerInputType}
+                    answerOptions={this.props.answerOptions}
+                    questionId={this.state.questionId}
+                    currAnswer={this.props.currAnswer}
+                    onAnswerSelected={this.props.onAnswerSelected}
+                    onTextChange={this.props.onTextChange}
+                    />
+                    
+                    {this.props.counter > 0 ? (
+                        <FlatButton className="quizBackButton" onClick={this.props.onClickBack}>BACK</FlatButton>
+                        ): null}
+                    
+    
+                    <FlatButton className="quizNextButton"  onClick={this.props.onClickNext}> NEXT</FlatButton>
+    
+                    {config.node_env ==='dev' ? (<FlatButton className="quizResultsButton" onClick={this.props.skipToResults}> Results</FlatButton>):null}
+                    
+    
+                    
+                </div>
+            </ReactCSSTransitionGroup>
+        );
+    }
 }
 
 Quiz.propTypes ={
@@ -69,4 +83,4 @@ Quiz.propTypes ={
     onAnswerSelected: PropTypes.func.isRequired
 }
 
-export default Quiz;
+export default withRouter(Quiz);

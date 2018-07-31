@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LandingPage from './LandingPage';
 import Main from './Main';
 import About from './AboutUs';
+import ResultDetail from './ResultDetail';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
@@ -12,8 +13,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
     <BrowserRouter>
       <MuiThemeProvider>
@@ -36,9 +36,22 @@ class App extends Component {
           </header>
           <div>
             <Switch>
-              <Route exact path="/" component={LandingPage} />
-              <Route exact path="/quiz" component={Main} />
-              <Route exact path="/about" component={About} />
+              <Route 
+                exact path="/" 
+                component={LandingPage} 
+              />
+              <Route 
+                exact path="/quiz" 
+                component={Main} 
+              />
+              <Route 
+                exact path="/about" 
+                component={About} 
+              />
+              <Route 
+                exact path="/about" 
+                component={About} 
+              />
             </Switch>
           </div>
         </div>
@@ -46,7 +59,5 @@ class App extends Component {
     </BrowserRouter>
     );
   }
-
-}
 
 export default App;

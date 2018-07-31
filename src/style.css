@@ -65,6 +65,24 @@ img.headerImage {
   
 }
 
+.progressBar {
+  color: #d40027 !important;
+  height: 7px !important;
+  margin: 0px auto 30px auto !important;
+  width: 80% !important;
+}
+
+.quizBackButton, .quizNextButton, .quizResultsButton {
+  background-color: #3b4e8c !important;
+  font-size: 2em !important;
+  margin: 10px !important;
+  color: #fff !important;
+}
+
+.quizResultsButton {
+  background-color: red !important;
+}
+
 .refreshIndicator
 {
   min-height:350px;
