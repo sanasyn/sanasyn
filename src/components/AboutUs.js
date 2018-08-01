@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
-import founderImage from '../dist/MJ.png';
-import teamImage from '../dist/team.png';
+import teamImage from '../dist/groupPic.jpg';
 import { Link } from 'react-router-dom';
 
 class About extends Component {
@@ -55,14 +54,10 @@ class About extends Component {
           </CardText>
           <CardText className="aboutCrdEle">
           <div className="row">
-            <div className="col-md-4 col-md-offset-1">
-                <img src={founderImage} />
-                <p><a href="https://www.linkedin.com/in/marjanasarker/" target="_blank">Marjana Sarker, PhD.</a> <b>Founder</b></p>
-            </div>
-            <div className="col-md-6">
+            <div className="col-md-8 col-md-offset-2">
                 <img src={teamImage} className="picwidth100"/>
                 <p> THE TEAM</p>
-                <p><span>From left to right: </span><a href="https://www.linkedin.com/in/marissa-pels/" target="_blank">Marissa Pels</a>, <a href="https://www.linkedin.com/in/aelly-liu/" target="_blank">Aelly Liu</a>, <a href="https://www.linkedin.com/in/whitney-wong/" target="_blank">Whitney Wong</a></p>
+                <p><span>From left to right: </span><a href="https://www.linkedin.com/in/marjanasarker/" target="_blank">Marjana Sarker, PhD.</a>  <b>Founder</b> ,<a href="https://www.linkedin.com/in/aelly-liu/" target="_blank">Aelly Liu</a>,<a href="https://www.linkedin.com/in/marissa-pels/" target="_blank">Marissa Pels</a>, <a href="https://www.linkedin.com/in/whitney-wong/" target="_blank">Whitney Wong</a></p>
             </div>
           </div>
           </CardText>
