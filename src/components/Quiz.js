@@ -29,7 +29,7 @@ function Quiz(props){
         >
             <div className="quiz">
 
-                <LinearProgress mode="determinate" min={0} max={props.questionTotal} color="#d40027" className="progressBar" value={props.counter} />
+                <LinearProgress mode="determinate" min={0} max={props.questionTotal} color="#d40027" style={{height: "7px", margin: "0px auto 30px auto", width: "80%"}} value={props.counter} />
 
                 <Question content={props.question}/>
                           
@@ -45,10 +45,10 @@ function Quiz(props){
                 
 
                 {props.counter > 0 ? (
-                    <FlatButton className="quizBtn" onClick={props.onClickBack}>BACK</FlatButton>
+                    <FlatButton style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em"}} onClick={props.onClickBack}>BACK</FlatButton>
                     ): null}
 
-                <FlatButton className="quizBtn" onClick={props.onClickNext}> NEXT</FlatButton>
+                <FlatButton style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em"}} onClick={props.onClickNext}> NEXT</FlatButton>
 
                 {config.node_env ==='dev' ? (<FlatButton style={{backgroundColor: "red", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em"}} onClick={props.skipToResults}> Results</FlatButton>):null}
                 
