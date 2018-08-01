@@ -6,6 +6,7 @@ import React from 'react';
 import Question from '../components/Question';
 // import QuestionCount from '../components/QuestionCount';
 import AnswerInput from '../components/AnswerInput';
+import HelpModal from '../components/HelpModal';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
@@ -15,8 +16,6 @@ import config from '../../config/config.js'
 
 
 function Quiz(props){
-   
-    
     return (
         <ReactCSSTransitionGroup
             className="quiz_wrapper"
@@ -43,15 +42,17 @@ function Quiz(props){
                 onTextChange={props.onTextChange}
                 />
                 
+                
+
                 {props.counter > 0 ? (
                     <FlatButton className="quizBtn" onClick={props.onClickBack}>BACK</FlatButton>
                     ): null}
-                
 
                 <FlatButton className="quizBtn" onClick={props.onClickNext}> NEXT</FlatButton>
 
                 {config.node_env ==='dev' ? (<FlatButton style={{backgroundColor: "red", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff',fontSize:"2em"}} onClick={props.skipToResults}> Results</FlatButton>):null}
                 
+                {props.help.length ? (<HelpModal helpText={props.help}/>):null}
 
                 
             </div>

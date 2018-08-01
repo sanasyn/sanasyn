@@ -17,6 +17,7 @@ class Main extends Component {
       question: "",
       answerInputType:"",
       answerOptions: [],
+      help: [],
       followupQ:"",
       followupQFlag: false,
       followupQCnt:"",
@@ -67,6 +68,7 @@ class Main extends Component {
       question: questionaire[0].question,
       answerInputType: questionaire[0].type,
       answerOptions: questionaire[0].options,
+      help: questionaire[0].help,
       followupQ:questionaire[0].followupQ
     });
   }
@@ -90,6 +92,7 @@ class Main extends Component {
       question: questionaire[counter].question,
       answerInputType:questionaire[counter].type,
       answerOptions: questionaire[counter].options,
+      help: questionaire[counter].help,
       followupQ:questionaire[counter].followupQ,
       followupQFlag:false,
       followupQCnt:'',
@@ -106,6 +109,7 @@ class Main extends Component {
       question: questionaire[counter].followupQ[followupQCnt].question,
       answerInputType:questionaire[counter].followupQ[followupQCnt].type,
       answerOptions: questionaire[counter].followupQ[followupQCnt].options,
+      help: questionaire[counter].followupQ[followupQCnt].help,
       followupQFlag:true,
       currAnswer:''
     });
@@ -225,6 +229,7 @@ class Main extends Component {
       question: questionaire[counter].question,
       answerInputType:questionaire[counter].type,
       answerOptions: questionaire[counter].options,
+      help: questionaire[counter].help,
       followupQ:questionaire[counter].followupQ
     })
   }
@@ -581,6 +586,7 @@ class Main extends Component {
           answerOptions ={this.state.answerOptions}
           questionId={this.state.questionId}
           question={this.state.question}
+          help={this.state.help}
           questionTotal={questionaire.length}
           onAnswerSelected ={this.handleAnswerSelected}
           onClickNext={this.handleClickNext}
