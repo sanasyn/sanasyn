@@ -81,14 +81,12 @@ class Result extends Component {
               {this.resultsOnPage().map((study, i) => {
                 return (
                   <TableRow key={i}>
-                    <TableRowColumn 
-                      style={{padding: '15px', width: '55%', whiteSpace: 'normal', fontSize: '1.3em'}} 
-                    >
+                    <TableRowColumn className="tableCol">
                       <a onClick={this.onStudySelect.bind(this, study)}>{study.brief_title}</a>
                       <span style={{fontStyle:'italic', color:'#a0a0a0'}}>( {study.nct_id})</span>
                     </TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '18%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
-                    <TableRowColumn style={{padding: '15px', width: '13%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>
+                    <TableRowColumn className="tableCol">{study.city}, {study.state}</TableRowColumn>
+                    <TableRowColumn className="tableCol">{study.zip}</TableRowColumn>
                   </TableRow>
                 )
               }
