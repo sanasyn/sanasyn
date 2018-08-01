@@ -11,7 +11,6 @@ import RaisedButton from 'material-ui/RaisedButton';
  */
 export default class HelpModal extends React.Component {
     constructor(props){
-        console.log("PROPS: ", props);
         super(props)
 
         this.state = {
