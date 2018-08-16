@@ -161,6 +161,23 @@ p.stepDesc {
   font-weight: bold;
 }
 
+.progressBar{
+  height: 7px;
+  margin: 0px auto 30px auto;
+  width: 80%;
+}
+
+.quizBtn{
+  background-color: #3b4e8c;
+  font-size:2em;
+  margin-top: 20px;
+  margin: 10px;
+  color:#fff;
+}
+.quizBtn:hover{
+  background-color:#b63d34;
+}
+
  /*Result*/
 .result {
   padding: 1.5rem 2.5rem;
@@ -174,6 +191,18 @@ p.stepDesc {
 
 td, th {
   padding:10px;
+}
+
+.tableHeader{
+  padding: 15px;
+  width: 55%;
+  font-size: 1.3em;
+}
+
+.tableCol{
+  padding: 15px;
+  white-space: normal;
+  font-size: 1.3em;
 }
 
 /*question */
@@ -377,4 +406,14 @@ button.col-md-6.detail-back {
 
 .aboutTitle {
   font-weight: bold;
+}
+
+.aboutCrdEle{
+  padding:0 16px 1em 16px;
+}
+
+
+/*generic*/
+.picwidth100{
+  width:100%;
 }

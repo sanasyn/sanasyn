@@ -5,8 +5,9 @@
 import React, { Component } from 'react';
 import Question from '../components/Question';
 import questionaire from '../utils/questionaire';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AnswerInput from '../components/AnswerInput';
+import HelpModal from '../components/HelpModal';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
@@ -17,11 +18,7 @@ import config from '../../config/config.js'
 
 class Quiz extends Component {
     constructor(props) {
-        console.log("PROPS: ", props)
         super(props);
-        this.state = {
-            questionId: props.questionId
-        }
       }
 
     render() {
@@ -45,28 +42,37 @@ class Quiz extends Component {
                         value={this.props.counter} 
                     />
     
-                    <Question content={this.props.question}/>
+                    <Question content={questionaire[this.props.counter].question}/>
                               
                     <AnswerInput 
-                    answerInputType={this.props.answerInputType}
-                    answerOptions={this.props.answerOptions}
-                    questionId={this.state.questionId}
+                    answerInputType={questionaire[this.props.counter].type}
+                    answerOptions={questionaire[this.props.counter].options}
+                    questionId={this.props.counter}
                     currAnswer={this.props.currAnswer}
                     onAnswerSelected={this.props.onAnswerSelected}
                     onTextChange={this.props.onTextChange}
                     />
                     
-                    {this.props.counter > 0 ? (
-                        <FlatButton className="quizBackButton" onClick={this.props.onClickBack}>BACK</FlatButton>
-                        ): null}
-                    
-    
-                    <FlatButton className="quizNextButton"  onClick={this.props.onClickNext}> NEXT</FlatButton>
+                    <Link
+                        to={`${this.props.setQuestion}`}
+                    >
+                        {this.props.counter > 0 ? (
+                            <FlatButton className="quizBackButton" onClick={this.props.onClickBack}>BACK</FlatButton>
+                            ): null}
+                    </Link>
+                        
+                    {/* <Link
+                        to={`${this.props.setQuestion}`}
+                    > */}
+                        <FlatButton className="quizNextButton"  onClick={
+                            this.props.onClickNext
+                            }> NEXT</FlatButton>
+                    {/* </Link> */}
     
                     {config.node_env ==='dev' ? (<FlatButton className="quizResultsButton" onClick={this.props.skipToResults}> Results</FlatButton>):null}
-                    
-    
-                    
+                
+                    {questionaire[this.props.counter].help.length ? (<HelpModal helpText={questionaire[this.props.counter].help}/>):null}
+
                 </div>
             </ReactCSSTransitionGroup>
         );
@@ -77,8 +83,8 @@ Quiz.propTypes ={
     //currAnswer: PropTypes.string.isRequired,
     //answerOptions:PropTypes.array.isRequired,
     //counter: PropTypes.number.isRequired,
-    question: PropTypes.string.isRequired,
-    questionId: PropTypes.number.isRequired,
+    // question: PropTypes.string.isRequired,
+    // questionId: PropTypes.number.isRequired,
     questionTotal: PropTypes.number.isRequired,
     onAnswerSelected: PropTypes.func.isRequired
 }

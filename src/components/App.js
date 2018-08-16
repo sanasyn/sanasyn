@@ -41,12 +41,8 @@ const App = () => {
                 component={LandingPage} 
               />
               <Route 
-                exact path="/quiz" 
+                path="/quiz/question/:questionId" 
                 component={Main} 
-              />
-              <Route 
-                exact path="/about" 
-                component={About} 
               />
               <Route 
                 exact path="/about" 
