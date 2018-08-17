@@ -11,8 +11,6 @@ class Main extends Component {
   constructor(props){
     super(props);
 
-    console.log("PROPS TEST: ", props)
-
     this.state ={
       setQuestion: 0,
       currAnswer:"",
@@ -175,7 +173,7 @@ setNextOrPreviousQuestion(questionsToSkip) {
   }
 
   handleClickBack() {
-    let counter = this.props.match.params.questionId;
+    let counter = Number(this.props.match.params.questionId);
     switch(counter)
     {
       case 5:
@@ -202,9 +200,7 @@ setNextOrPreviousQuestion(questionsToSkip) {
   //when next button is clicked, set up the next question to be displayed
   handleClickNext() {
    //counter for current question
-    console.log("PARAMS: ", this.props.match.params.questionId);
     let counter = Number(this.props.match.params.questionId);
-    console.log("COUNTER: ", counter);
     let updateAnswer=this.state.answer;
     
     this.setState({
@@ -213,33 +209,24 @@ setNextOrPreviousQuestion(questionsToSkip) {
     
     switch(counter) {
       case 3:
-        console.log("count 3")
-        console.log("state: ", this.state.answer.race);
         this.state.answer.race !== "Other" ?
         this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
       case 5:
-        console.log("count 5")
-        console.log("state: ", this.state.answer.geneticTesting.taken);
         this.state.answer.geneticTesting.taken === 'No' ?this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
       case 12:
-      console.log("count 12")
-      console.log("state: ", this.state.answer.medications);
-        !this.state.answer.medications.list.includes('None') ?this.setNextOrPreviousQuestion(2) :
+        this.state.answer.medications.list.includes('None') ?this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
       case 17: 
-      console.log("count 17")
-      console.log("state: ", this.state.answer.opinion.list);
         !this.state.answer.opinion.list.includes('Other') ?
         this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
       case 19:
-        console.log("count 19")
         this.getMatchResult();
         break;
       default:
@@ -284,8 +271,6 @@ setNextOrPreviousQuestion(questionsToSkip) {
         <Quiz
           currAnswer={this.state.currAnswer}
           counter={this.props.match.params.questionId}
-          setQuestion={this.state.setQuestion}
-          questionTotal={questionaire.length}
           onAnswerSelected ={this.handleAnswerSelected}
           onClickNext={this.handleClickNext}
           onClickBack={this.handleClickBack}

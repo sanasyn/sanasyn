@@ -38,8 +38,8 @@ class Quiz extends Component {
                         className= "progressBar" 
                         mode="determinate" 
                         min={0} 
-                        max={this.props.questionTotal} 
-                        value={this.props.counter} 
+                        max={questionaire.length} 
+                        value={Number(this.props.counter)} 
                     />
     
                     <Question content={questionaire[this.props.counter].question}/>
@@ -53,21 +53,13 @@ class Quiz extends Component {
                     onTextChange={this.props.onTextChange}
                     />
                     
-                    <Link
-                        to={`${this.props.setQuestion}`}
-                    >
                         {this.props.counter > 0 ? (
                             <FlatButton className="quizBackButton" onClick={this.props.onClickBack}>BACK</FlatButton>
                             ): null}
-                    </Link>
-                        
-                    {/* <Link
-                        to={`${this.props.setQuestion}`}
-                    > */}
+
                         <FlatButton className="quizNextButton"  onClick={
                             this.props.onClickNext
                             }> NEXT</FlatButton>
-                    {/* </Link> */}
     
                     {config.node_env ==='dev' ? (<FlatButton className="quizResultsButton" onClick={this.props.skipToResults}> Results</FlatButton>):null}
                 
@@ -85,7 +77,7 @@ Quiz.propTypes ={
     //counter: PropTypes.number.isRequired,
     // question: PropTypes.string.isRequired,
     // questionId: PropTypes.number.isRequired,
-    questionTotal: PropTypes.number.isRequired,
+    // questionTotal: PropTypes.number.isRequired,
     onAnswerSelected: PropTypes.func.isRequired
 }
 
