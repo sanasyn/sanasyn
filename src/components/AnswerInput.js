@@ -69,7 +69,7 @@ function AnswerInput(props){
                 {
                     
                     return(
-                        <input type="text" name={props.questionId} value={props.currAnswer} onChange={props.onTextChange} ref={input => input && input.focus()}/>
+                        <input type="text" name={props.questionId} value={props.currAnswer} onChange={props.onAnswerSelected} ref={input => input && input.focus()}/>
                     );
                 }else
                 {
@@ -107,7 +107,7 @@ function AnswerInput(props){
                             name="textarea" 
                             placeholder="Please write down your reason(s)."
                             value={props.currAnswer}
-                            onChange={props.onTextChange} 
+                            onChange={props.onAnswerSelected} 
                             autoFocus></textarea>
                         </ul>
                     );

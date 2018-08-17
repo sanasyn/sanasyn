@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Quiz from './Quiz';
 import questionaire from '../utils/questionaire';
-import update from 'react-addons-update';
 import Result from './Result';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import axios from 'axios';
@@ -25,6 +24,9 @@ class Main extends Component {
           taken: "no",  //could also be apoE4_0 or apoE4_1
           consent: "yes" // mark as yes if already taken
         },
+        pet: "",
+        mri: "",
+        spinalTap: "",
         stroke: "", 
         medications: {
             list: [],
@@ -53,7 +55,6 @@ class Main extends Component {
     this.handleClickBack=this.handleClickBack.bind(this);
     this.handleEnterNext=this.handleEnterNext.bind(this);
     this.skipToResults=this.skipToResults.bind(this);
-    this.handleTextChange=this.handleTextChange.bind(this);
     this.validateInputValue=this.validateInputValue.bind(this);
     this.renderResult=this.renderResult.bind(this);
     this.renderLoading=this.renderLoading.bind(this);
@@ -102,45 +103,49 @@ setNextOrPreviousQuestion(questionsToSkip) {
 
   //this function will set the answer for the current question and check for any follwo up question and display follow up questions.
   handleAnswerSelected(event) {
-
-
     let counter = this.props.match.params.questionId;
-    let answer=this.state.currAnswer;
-    console.log("EVENT: ", event.currentTarget);
-    
-      //for question 10 medication, handle this for medication list and question 14 , reason for using this app
-      if((counter === 9 || counter ===13)) {
-        if(event.currentTarget.checked && !answer) {
-          //grab the first element
-          answer=[event.currentTarget.value];
-        }
-        else if(event.currentTarget.checked && answer.indexOf(event.currentTarget.value) <= -1) {
-          //when answer has 1+ elements, check if current checked element are already in the array to be stored.
-          answer.push(event.currentTarget.value);
-        } else {
-          //console.log("event.currentTarget.checked: "+ event.currentTarget.checked);
-          
-          //console.log("answer before splice: ", answer);
-          let tempCheckedValue=event.currentTarget.value;
-          answer.splice(answer.indexOf(tempCheckedValue),1);
-          //console.log("answer after splice: ", answer);
-        }
-      } else {
-        
-        answer=event.currentTarget.value;
-        // console.log("curr answer: ", answer);
-      }
-    
-    this.setState({
-      currAnswer:answer
-    });  
-    
-  }
+    let answerTest = this.state.answer;
+    let answerState1 = questionaire[counter].answerState;
+    let nestedAnswerState2 = questionaire[counter].answerState2 || '';
 
-  handleTextChange(event) {
-    this.setState({
-      currAnswer: event.currentTarget.value
-    });
+    if (event.target.type === 'radio' || event.target.type === 'text' ||event.target.type === 'textarea') {
+      nestedAnswerState2 ?
+      answerTest[answerState1][nestedAnswerState2] = event.target.value :
+      answerTest[answerState1] = event.target.value;
+      this.setState({
+        currAnswer: event.target.value,
+        answer: answerTest,
+      })
+    } else {
+      let updateStateArray = nestedAnswerState2 ?
+      answerTest[answerState1][nestedAnswerState2] :
+      answerTest[answerState1];
+
+      if (event.target.checked && !updateStateArray.includes(event.target.value)) {
+        updateStateArray.push(event.target.value);
+
+        nestedAnswerState2 ?
+        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
+        answerTest[answerState1] = updateStateArray;
+
+        this.setState({
+          currAnswer: updateStateArray,
+          answer: answerTest,
+        })
+
+      } else if (!event.target.checked && updateStateArray.includes(event.target.value)) {
+        updateStateArray.splice(updateStateArray.indexOf(event.target.value),1);
+
+        nestedAnswerState2 ?
+        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
+        answerTest[answerState1] = updateStateArray;
+
+        this.setState({
+          currAnswer: updateStateArray,
+          answer: answerTest,
+        })
+      }
+    }
   }
 
   skipToResults() {
@@ -197,205 +202,49 @@ setNextOrPreviousQuestion(questionsToSkip) {
   //when next button is clicked, set up the next question to be displayed
   handleClickNext() {
    //counter for current question
-    let counter = this.props.match.params.questionId;
+    console.log("PARAMS: ", this.props.match.params.questionId);
+    let counter = Number(this.props.match.params.questionId);
     console.log("COUNTER: ", counter);
     let updateAnswer=this.state.answer;
     
-    //put the currAnswer value into the answer object
-    switch(counter)
-    {
-      case 0:
-        //for question 1 zipcode
-        updateAnswer = update(this.state.answer,{zipcode:{$set:this.state.currAnswer}});
-        console.log("UPDATE ANSWER: ", updateAnswer);
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 1:
-        //for question 2 age
-        updateAnswer = update(this.state.answer,{age:{$set:this.state.currAnswer}});
-        console.log("UPDATE ANSWER: ", updateAnswer);
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 2:
-        //for question 3 sex
-        updateAnswer = update(this.state.answer,{gender:{$set:this.state.currAnswer}});
-        console.log("UPDATE ANSWER: ", updateAnswer);
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 3:
-        //for question 4 race question
-        updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
-        console.log("UPDATE ANSWER: ", updateAnswer);
-        this.setState({
-          answer:updateAnswer
-        });
-
-      case 4:
-        //for question 4 race question
-        updateAnswer = update(this.state.answer,{race:{$set:this.state.currAnswer}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-      
-      case 5:
-        updateAnswer = update(this.state.answer,{geneticTesting:{taken:{$set:this.state.currAnswer.toLowerCase()}}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 6:
-        if (this.state.currAnswer==='Yes') { 
-          updateAnswer = update(this.state.answer,{geneticTesting:{taken:{$set:"apoE4_1"}}});
-        } else {
-          updateAnswer = update(this.state.answer,{geneticTesting:{taken:{$set:"apoE4_0"}}});
-        }
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 7:
-        if (this.state.currAnswer === 'Yes') {
-          updateAnswer = update(this.state.answer,{geneticTesting:{consent:{$set:"yes"}}});
-        } else {
-          updateAnswer = update(this.state.answer,{geneticTesting:{taken:{$set:"no"}}});
-        }
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-      
-      case 8:
-        //for question 6 MRI
-        
-        updateAnswer = update(this.state.answer,{mri:{$set:this.state.currAnswer.toLowerCase()}});
-        this.setState({
-          answer:updateAnswer
-        });
-      
-        break;
-      
-      case 9:
-        //for question 7 PET Scan
-        updateAnswer = update(this.state.answer,{pet:{$set:this.state.currAnswer.toLowerCase()}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 10:
-        //for question 8 spinal tap 
-        updateAnswer = update(this.state.answer,{spinalTap:{$set:this.state.currAnswer.toLowerCase()}});
-        this.setState({
-          answer:updateAnswer
-        });
-
-        break;
-
-      case 11:
-        //for question 9 stroke in last 12 months
-        updateAnswer = update(this.state.answer,{stroke:{$set:this.state.currAnswer.toLowerCase()}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 12:
-        updateAnswer = update(this.state.answer,{medications:{list:{$push:this.state.currAnswer}}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 13:
-        updateAnswer = update(this.state.answer,{medications:{acceptableTime:{$set:this.state.currAnswer.toLowerCase()}}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 14:
-        //for question 11 family memeber/caregiver
-        updateAnswer = update(this.state.answer,{informant:{$set:this.state.currAnswer.toLowerCase()}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 15:
-        //for question 12 primary care
-        updateAnswer = update(this.state.answer,{primaryCare:{$set:this.state.currAnswer.toLowerCase()}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 16:
-        //for question 13 cancer diagnois
-        updateAnswer = update(this.state.answer,{cancer:{$set:this.state.currAnswer.toLowerCase()}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-
-      case 17:
-        //for question 14 reason to use this app
-        updateAnswer = update(this.state.answer,{opinion:{list:{$push:this.state.currAnswer}}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      case 18:
-        updateAnswer = update(this.state.answer,{opinion:{otherText:{$set:this.state.currAnswer}}});
-        this.setState({
-          answer:updateAnswer
-        });
-        break;
-
-      default:
-        break;
-
-    }
+    this.setState({
+      currAnswer: ''
+    })
     
     switch(counter) {
-      case 2:
+      case 3:
+        console.log("count 3")
+        console.log("state: ", this.state.answer.race);
         this.state.answer.race !== "Other" ?
         this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
       case 5:
+        console.log("count 5")
+        console.log("state: ", this.state.answer.geneticTesting.taken);
         this.state.answer.geneticTesting.taken === 'No' ?this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
       case 12:
+      console.log("count 12")
+      console.log("state: ", this.state.answer.medications);
         !this.state.answer.medications.list.includes('None') ?this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
       case 17: 
+      console.log("count 17")
+      console.log("state: ", this.state.answer.opinion.list);
         !this.state.answer.opinion.list.includes('Other') ?
         this.setNextOrPreviousQuestion(2) :
         this.setNextOrPreviousQuestion(1)
         break;
+      case 19:
+        console.log("count 19")
+        this.getMatchResult();
+        break;
       default:
         this.setNextOrPreviousQuestion(1);
         break;
-    }
-
-    if (counter === 18) {
-      this.getMatchResult();
     }
   }
 
@@ -441,7 +290,6 @@ setNextOrPreviousQuestion(questionsToSkip) {
           onClickNext={this.handleClickNext}
           onClickBack={this.handleClickBack}
           onEnterNext={this.handleEnterNext}
-          onTextChange={this.handleTextChange}
           inputError={this.state.inputError}
           validateInputValue={this.validateInputValue}
           skipToResults={this.skipToResults}
@@ -493,7 +341,6 @@ setNextOrPreviousQuestion(questionsToSkip) {
       </div>
     );
   }
-
 }
 
 export default withRouter(Main);
