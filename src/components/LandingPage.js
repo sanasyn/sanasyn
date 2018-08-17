@@ -2,7 +2,7 @@ import React from 'react';
 import Background from '../dist/synapse.jpg';
 import FlatButton from 'material-ui/FlatButton';
 import { Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 export default () => {
 	const StyleButton = {
@@ -21,7 +21,7 @@ export default () => {
     			<div className="col-sm-5 col-sm-offset-1 info" >
 	    			<h1 className="healingConn">A Healing Connection</h1>
 	 		        <p className="startInfo">We connect you to an Alzheimer’s disease clinical trial that’s right for you.</p>
-	 		        <Link to="/quiz">
+	 		        <Link to={`/quiz/question/0`}>
  		        			<FlatButton style={StyleButton}>Get Started
  		        			</FlatButton>
  		        		</Link>

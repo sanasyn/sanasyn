@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
-import founderImage from '../dist/MJ.png';
-import teamImage from '../dist/team.png';
+import teamImage from '../dist/groupPic.jpg';
 import { Link } from 'react-router-dom';
 
 class About extends Component {
@@ -35,12 +34,12 @@ class About extends Component {
           </CardText>
           <hr/> */}
           <CardTitle className="aboutTitle" title="Why SanaSyn?"/>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
+          <CardText className="aboutCrdEle">
             SanaSyn is a specialized app version of a simplified survey like questionnaire which returns a collection of actively 
             recruiting clinical trial studies which a person with Alzheimer's/mild cognitive impairment, caregivers or even a healthy 
             volunteer qualifies for. Our goal is to make trial finding easier for anyone and everyone interested in participating. 
           </CardText>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
+          <CardText className="aboutCrdEle">
             One of the main reasons behind the simplistic design of this website is to give potential participants a feel of a virtual 
             paper and pen survey with real time results. We have also decided for the time being to cover only currently recruiting 
             Alzheimer’s disease clinical trials as we want to establish specificity within searches for one disease. As we actively 
@@ -49,32 +48,28 @@ class About extends Component {
           </CardText>
           <hr/>
           <CardTitle className="aboutTitle" title="The SanaSyn team"/>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
+          <CardText className="aboutCrdEle">
             We are a small team of 4 STEM professionals based in the great state of Texas who are taking an active approach to addressing 
             some of the pressing issues affecting recruitment for Alzheimer’s disease clinical trials. 
           </CardText>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
+          <CardText className="aboutCrdEle">
           <div className="row">
-            <div className="col-md-4 col-md-offset-1">
-                <img src={founderImage} />
-                <p><a href="https://www.linkedin.com/in/marjanasarker/" target="_blank">Marjana Sarker, PhD.</a> <b>Founder</b></p>
-            </div>
-            <div className="col-md-6">
-                <img src={teamImage} style={{width: '100%'}}/>
+            <div className="col-md-8 col-md-offset-2">
+                <img src={teamImage} className="picwidth100"/>
                 <p> THE TEAM</p>
-                <p><span>From left to right: </span><a href="https://www.linkedin.com/in/marissa-pels/" target="_blank">Marissa Pels</a>, <a href="https://www.linkedin.com/in/aelly-liu/" target="_blank">Aelly Liu</a>, <a href="https://www.linkedin.com/in/whitney-wong/" target="_blank">Whitney Wong</a></p>
+                <p><span>From left to right: </span><a href="https://www.linkedin.com/in/marjanasarker/" target="_blank">Marjana Sarker, PhD.</a>  <b>Founder</b> ,<a href="https://www.linkedin.com/in/aelly-liu/" target="_blank">Aelly Liu</a>,<a href="https://www.linkedin.com/in/marissa-pels/" target="_blank">Marissa Pels</a>, <a href="https://www.linkedin.com/in/whitney-wong/" target="_blank">Whitney Wong</a></p>
             </div>
           </div>
           </CardText>
           <hr/>
           <CardTitle className="aboutTitle" title="Contact Us"/>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
+          <CardText className="aboutCrdEle">
             We are yet to have a super savvy web bot or a telephone number but we are available via <a href="mailto:team.1@sanasyn.com">team.1@sanasyn.com</a> We are here 24/7 to 
             answer your queries and read your suggestions. 
           </CardText>
           <hr/>
           <CardTitle className="aboutTitle" title="What does SanaSyn mean?"/>
-          <CardText style={{padding:'0 16px 1em 16px'}}>
+          <CardText className="aboutCrdEle">
             Sana in latin means heal and syn is from synapse which by definition is the junction between two nerve cells allowing for 
             the passage of neurotransmitters. A combination of those two words gives us SanaSyn. The word is the core mission of our app: 
             we want to connect you to the right study so you can be a part of the medical community trying to validate new therapies to 
