@@ -54,7 +54,6 @@ function AnswerInput(props){
                 currAnswer={props.curAnswer}
                 questionId={props.questionId}
                 onAnswerSelected={props.onAnswerSelected}
-                onTextChange={props.onTextChange}
             />
 
         );

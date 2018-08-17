@@ -50,7 +50,6 @@ class Quiz extends Component {
                     questionId={this.props.counter}
                     currAnswer={this.props.currAnswer}
                     onAnswerSelected={this.props.onAnswerSelected}
-                    onTextChange={this.props.onTextChange}
                     />
                     
                         {this.props.counter > 0 ? (
