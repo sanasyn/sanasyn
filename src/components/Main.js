@@ -222,12 +222,24 @@ setNextOrPreviousQuestion(questionsToSkip) {
         this.setNextOrPreviousQuestion(1)
         break;
       case 17: 
-        !this.state.answer.opinion.list.includes('Other') ?
-        this.setNextOrPreviousQuestion(2) :
-        this.setNextOrPreviousQuestion(1)
-        break;
-      case 19:
-        this.getMatchResult();
+        if (!this.state.answer.opinion.list.includes('Other')) {
+          this.setState({
+            loading:true
+          });
+          setTimeout(()=> this.getMatchResult(),300);
+          setTimeout(()=> this.postUserDemographics(),400);
+          break;
+        } else {
+          this.setNextOrPreviousQuestion(1)
+          break;
+        }
+        
+      case 18:
+        this.setState({
+          loading:true
+        });
+        setTimeout(()=> this.getMatchResult(),300);
+        setTimeout(()=> this.postUserDemographics(),400);
         break;
       default:
         this.setNextOrPreviousQuestion(1);
@@ -241,9 +253,6 @@ setNextOrPreviousQuestion(questionsToSkip) {
     }
   }
 
-  //validate the input value before the user can hit 
-  //return true when the value is not valid
-  //return false when the value is valid
   validateInputValue(currAnswer) {
     const counter = this.props.match.params.questionId;
 
@@ -311,10 +320,6 @@ setNextOrPreviousQuestion(questionsToSkip) {
     return (
       <div>
         <Result results={this.state.results}/>
-        {/* <footer className='footer'>
-            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
-            <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
-        </footer> */}
       </div>
     );
   }
