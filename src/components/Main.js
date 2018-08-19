@@ -19,8 +19,9 @@ class Main extends Component {
         age: "",
         gender: "",
         geneticTesting: {
-          taken: "no",  //could also be apoE4_0 or apoE4_1
-          consent: "yes" // mark as yes if already taken
+          taken: "No",
+          apoe4Present: "No",
+          consent: "Yes"
         },
         pet: "",
         mri: "",
@@ -28,7 +29,7 @@ class Main extends Component {
         stroke: "", 
         medications: {
             list: [],
-            acceptableTime:"no" //default to 0
+            acceptableTime:"No" //default to 0
          },
         informant: "",
         primaryCare: "",

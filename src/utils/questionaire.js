@@ -48,7 +48,7 @@ const questionaire = [
         options:[ 'Yes','No'],
         help: ['APOe4 is present in approximately 10-15% of the human population\'s DNA. The presence of APOe4 indicates a greater risk for Alzheimer\'s; it does not indicate whether a person will develop Alzheimer\'s or whether a person has Alzheimer\'s.'],
         answerState: 'geneticTesting',
-        answerState2: 'taken'
+        answerState2: 'apoe4Present'
     },
     {
         question: 'Would you consent to genetic testing?',
