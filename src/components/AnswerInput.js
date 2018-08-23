@@ -37,6 +37,7 @@ function AnswerInput(props){
                 currAnswer={props.currAnswer}
                 questionId={props.questionId}
                 onAnswerSelected={props.onAnswerSelected}
+                disableActive={props.disableActive}
             />
 
         );
