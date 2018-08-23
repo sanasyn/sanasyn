@@ -122,12 +122,10 @@ setNextOrPreviousQuestion(questionsToSkip) {
       answerTest[answerState1];
 
       if(event.currentTarget.checked && event.currentTarget.value === 'None'){
-        console.log("🌹 None is selected. Disable other options.");
         updateStateArray=['None'];
         this.setState({ disabled:true,currAnswer:updateStateArray })
       }
       else if(!event.currentTarget.checked && event.currentTarget.value === 'None'){
-        console.log("🌈 None deselected. Enable other options.");
         updateStateArray=[]
         this.setState({ disabled:false,currAnswer:updateStateArray })
       }
