@@ -121,13 +121,28 @@ setNextOrPreviousQuestion(questionsToSkip) {
       answerTest[answerState1][nestedAnswerState2] :
       answerTest[answerState1];
 
+      console.log("updateStateArray: ", updateStateArray)
+      console.log("🌈", answerTest[answerState1][nestedAnswerState2])
+      console.log("🔥", answerTest[answerState1])
+      console.log(answerTest)
+      // Need to add validation functions to existing nestedAnswerState --> handle validation there
       if(event.currentTarget.checked && event.currentTarget.value === 'None'){
         updateStateArray=['None'];
-        this.setState({ disabled:true,currAnswer:updateStateArray })
+
+        nestedAnswerState2 ?
+        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
+        answerTest[answerState1] = updateStateArray;
+
+        this.setState({ disabled:true,currAnswer:updateStateArray,answer:answerTest })
       }
       else if(!event.currentTarget.checked && event.currentTarget.value === 'None'){
-        updateStateArray=[]
-        this.setState({ disabled:false,currAnswer:updateStateArray })
+        updateStateArray=[];
+
+        nestedAnswerState2 ?
+        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
+        answerTest[answerState1] = updateStateArray;
+
+        this.setState({ disabled:false,currAnswer:updateStateArray,answer:answerTest })
       }
       else if (event.target.checked && !updateStateArray.includes(event.target.value)) {
         updateStateArray.push(event.target.value);
