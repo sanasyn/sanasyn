@@ -50,6 +50,7 @@ class Quiz extends Component {
                     questionId={this.props.counter}
                     currAnswer={this.props.currAnswer}
                     onAnswerSelected={this.props.onAnswerSelected}
+                    disableActive={this.props.disableActive}
                     />
                     
                         {this.props.counter > 0 ? (

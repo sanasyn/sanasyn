@@ -44,6 +44,7 @@ class Main extends Component {
       results:[],
       start:false,
       loading:false,
+      disabled:false
     }
 
     props.history.push(this.state.setQuestion);
@@ -120,7 +121,25 @@ setNextOrPreviousQuestion(questionsToSkip) {
       answerTest[answerState1][nestedAnswerState2] :
       answerTest[answerState1];
 
-      if (event.target.checked && !updateStateArray.includes(event.target.value)) {
+      if(event.currentTarget.checked && event.currentTarget.value === 'None'){
+        updateStateArray=['None'];
+
+        nestedAnswerState2 ?
+        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
+        answerTest[answerState1] = updateStateArray;
+
+        this.setState({ disabled:true,currAnswer:updateStateArray,answer:answerTest })
+      }
+      else if(!event.currentTarget.checked && event.currentTarget.value === 'None'){
+        updateStateArray=[];
+
+        nestedAnswerState2 ?
+        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
+        answerTest[answerState1] = updateStateArray;
+
+        this.setState({ disabled:false,currAnswer:updateStateArray,answer:answerTest })
+      }
+      else if (event.target.checked && !updateStateArray.includes(event.target.value)) {
         updateStateArray.push(event.target.value);
 
         nestedAnswerState2 ?
@@ -203,9 +222,10 @@ setNextOrPreviousQuestion(questionsToSkip) {
    //counter for current question
     let counter = Number(this.props.match.params.questionId);
     let updateAnswer=this.state.answer;
-    
+
     this.setState({
-      currAnswer: ''
+      currAnswer: '',
+      disabled:false 
     })
     
     switch(counter) {
@@ -288,6 +308,7 @@ setNextOrPreviousQuestion(questionsToSkip) {
           inputError={this.state.inputError}
           validateInputValue={this.validateInputValue}
           skipToResults={this.skipToResults}
+          disableActive={this.state.disabled}
           {...this.props}
           />
           <footer className='footer' style={{position:'fixed'}}>

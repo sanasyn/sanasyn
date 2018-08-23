@@ -31,7 +31,24 @@ function AnswerOption(props){
     if(props.inputType === 'checkbox')
     {
         return(
-    
+            props.disableActive && props.answerContent!=='None'
+            ?
+            <li className="answerOption">
+                <input 
+                    type={props.inputType}
+                    className={props.inputClassName}
+                    name={props.groupName}
+                    id={props.answerContent}
+                    value={props.answerContent}
+                    onChange={props.onAnswerSelected}
+                    checked={false}
+                    disabled
+                />
+                <label className={props.labelClassName} htmlFor={props.answerContent} >
+                    {props.answerContent}
+                </label>
+            </li> 
+            :    
             <li className="answerOption">
                 <input 
                     type={props.inputType}
