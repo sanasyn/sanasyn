@@ -33,7 +33,7 @@ class Result extends Component {
         this.onStudySelect=this.onStudySelect.bind(this)
     }
 
-    resultsOnPage(results) {
+    resultsOnPage() {
       const indexOfLastResult = this.state.currentPage * this.state.resultsPerPage;
       const indexOfFirstResult = indexOfLastResult - this.state.resultsPerPage;
       const results = this.props.results.slice(indexOfFirstResult, indexOfLastResult);
