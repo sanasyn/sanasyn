@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import questionaire from '../utils/questionaire';
 // checked={props.answerContent === props.answer}
 
-
 class AnswerOption extends Component {
     constructor(props) {
         super(props)

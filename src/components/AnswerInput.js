@@ -25,6 +25,7 @@ function AnswerInput(props){
             <AnswerOption 
                 currAnswer={props.currAnswer}
                 questionId={props.questionId}
+                disableActive={props.disableActive}
             />
         );
     }

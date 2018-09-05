@@ -44,6 +44,7 @@ class Main extends Component {
       results:[],
       start:false,
       loading:false,
+      disabled:false
     }
 
     // props.history.push(this.state.setQuestion);
@@ -99,7 +100,7 @@ class Main extends Component {
         console.log(error.response)
       });
   }
-
+  
   skipToResults() {
     this.setState({
       loading:true,
@@ -156,6 +157,7 @@ class Main extends Component {
           inputError={this.state.inputError}
           validateInputValue={this.validateInputValue}
           skipToResults={this.skipToResults}
+          disableActive={this.state.disabled}
           {...this.props}
           />
           <footer className='footer' style={{position:'fixed'}}>

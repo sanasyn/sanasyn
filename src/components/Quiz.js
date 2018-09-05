@@ -53,7 +53,6 @@ class Quiz extends Component {
           default:
             this.setNextOrPreviousQuestion(counter, -1);
             break;
-    
         }
       }
 
