@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import LandingPage from './LandingPage';
 import Main from './Main';
+import Quiz from './Quiz';
 import About from './AboutUs';
+import Result from './Result';
 import ResultDetail from './ResultDetail';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
@@ -42,11 +44,15 @@ const App = () => {
               />
               <Route 
                 path="/quiz/question/:questionId" 
-                component={Main} 
+                component={Quiz} 
               />
               <Route 
                 exact path="/about" 
                 component={About} 
+              />
+              <Route 
+                path="/results" 
+                component={Result} 
               />
             </Switch>
           </div>
