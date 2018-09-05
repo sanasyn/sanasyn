@@ -3,88 +3,47 @@
 
 import React from 'react';
 import PropTypes from "prop-types";
+import questionaire from '../utils/questionaire';
 import AnswerOption from "./AnswerOption";
 
 
 function AnswerInput(props){
-
-    function renderRadioInputOption(data){
+    function renderMultipleChoice(data){
         return(
             <AnswerOption 
                 key={data}
-                inputClassName='radioInput'
-                labelClassName={props.questionId === 3 ? "radioLabel" : props.questionId === 4 ? "radioLabel2" : "radioLabel3"}
                 answerContent={data}
-                inputType={props.answerInputType}
-                groupName="radioGroup"
                 currAnswer={props.currAnswer}
                 questionId={props.questionId}
-                onAnswerSelected={props.onAnswerSelected}
             />
         )
        
     }
 
-    function renderCheckboxInputOption(data){
+    function renderTextInputOption(){
         return(
             <AnswerOption 
-                key={data}
-                inputClassName='checkCustomButton'
-                labelClassName="checkCustomLabel"
-                answerContent={data}
-                inputType={props.answerInputType}
-                groupName={data}
                 currAnswer={props.currAnswer}
                 questionId={props.questionId}
-                onAnswerSelected={props.onAnswerSelected}
                 disableActive={props.disableActive}
             />
-
         );
     }
-    
-    function renderMultiTextInputOption(data){
-        return(
-            <AnswerOption 
-                key={data}
-                inputClassName='textCustomInput'
-                labelClassName="textCustomLabel"
-                answerContent={data}
-                inputType={props.answerInputType}
-                groupName={data}
-                currAnswer={props.curAnswer}
-                questionId={props.questionId}
-                onAnswerSelected={props.onAnswerSelected}
-            />
-
-        );
-    }
-
 
     function determineInputType(type){
        
         switch(type){
             case "text":
-                if(typeof props.answerOptions ==='string')
-                {
-                    
-                    return(
-                        <input type="text" name={props.questionId} value={props.currAnswer} onChange={props.onAnswerSelected} ref={input => input && input.focus()}/>
-                    );
-                }else
-                {
                     return(
                         <ul className="answerOptions">
-                        {props.answerOptions.map(renderMultiTextInputOption)}
+                            {renderTextInputOption()}
                         </ul>
                     );
-                }
 
             case "radio":
                 return(
-                
                     <ul className="answerOptions">
-                        {props.answerOptions.map(renderRadioInputOption)}
+                        {questionaire[props.questionId].options.map((option) => renderMultipleChoice(option))}
                     </ul> 
                             
                 );
@@ -92,27 +51,16 @@ function AnswerInput(props){
                 return(
                 
                     <ul className="answerOptions">
-                        {props.answerOptions.map(renderCheckboxInputOption)}
+                        {questionaire[props.questionId].options.map((option) => renderMultipleChoice(option))}
                     </ul> 
                             
                 );
             case "textarea":
-                if(typeof props.answerOptions ==='string')
-                {
-                    console.log("calling renderTextarea()");
-                    return(
-                        <ul className="answerOptions">
-                             <textarea 
-                             className="reasonTextArea"
-                            name="textarea" 
-                            placeholder="Please write down your reason(s)."
-                            value={props.currAnswer}
-                            onChange={props.onAnswerSelected} 
-                            autoFocus></textarea>
-                        </ul>
-                    );
-                }
-                    
+                return(
+                    <ul className="answerOptions">
+                        {renderTextInputOption()}
+                    </ul>
+                );
             default:
                 return (<p>no input type</p>);
 
@@ -121,22 +69,16 @@ function AnswerInput(props){
     
 
     return(
-      
-        
-        // if({props.answerInputType} === 'text'){
-        //     renderTextInput();
-        // }
-       // <input type="text" id="age" name="age"/>
-       <div className="answerInput">{determineInputType(props.answerInputType)}</div>
+       <div className="answerInput">{determineInputType(questionaire[props.questionId].type)}</div>
 
     );
 }
 
 AnswerInput.propTypes={
-    answerInputType: PropTypes.string.isRequired,
+    // answerInputType: PropTypes.string.isRequired,
     // answerContent: PropTypes.string.isRequired,
     //currAnswer: PropTypes.string.isRequired,
-   onAnswerSelected: PropTypes.func.isRequired
+//    onAnswerSelected: PropTypes.func.isRequired
 };
 
 export default AnswerInput;

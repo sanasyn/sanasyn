@@ -12,7 +12,7 @@ class Main extends Component {
     super(props);
 
     this.state ={
-      setQuestion: 0,
+      // setQuestion: 0,
       currAnswer:"",
       answer:{
         zipcode:"",
@@ -47,13 +47,13 @@ class Main extends Component {
       disabled:false
     }
 
-    props.history.push(this.state.setQuestion);
+    // props.history.push(this.state.setQuestion);
 
     // all of these functions should be handled using arrow functions to bind this
-    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
-    this.handleClickNext=this.handleClickNext.bind(this);
-    this.handleClickBack=this.handleClickBack.bind(this);
-    this.handleEnterNext=this.handleEnterNext.bind(this);
+    // this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
+    // this.handleClickNext=this.handleClickNext.bind(this);
+    // this.handleClickBack=this.handleClickBack.bind(this);
+    // this.handleEnterNext=this.handleEnterNext.bind(this);
     this.skipToResults=this.skipToResults.bind(this);
     this.validateInputValue=this.validateInputValue.bind(this);
     this.renderResult=this.renderResult.bind(this);
@@ -70,13 +70,13 @@ class Main extends Component {
     });
   }
 
-setNextOrPreviousQuestion(questionsToSkip) {
-    let counter = Number(this.props.match.params.questionId);
-    const setQuestion = counter + questionsToSkip;
-    this.props.history.push(`/quiz/question/${setQuestion}`);
-    this.setState({setQuestion: setQuestion})
+// setNextOrPreviousQuestion(questionsToSkip) {
+//     let counter = Number(this.props.match.params.questionId);
+//     const setQuestion = counter + questionsToSkip;
+//     this.props.history.push(`/quiz/question/${setQuestion}`);
+//     this.setState({setQuestion: setQuestion})
 
-  }
+//   }
 
   getMatchResult() {
     axios.post('/api/query', this.state.answer)
@@ -100,72 +100,7 @@ setNextOrPreviousQuestion(questionsToSkip) {
         console.log(error.response)
       });
   }
-
-  //this function will set the answer for the current question and check for any follwo up question and display follow up questions.
-  handleAnswerSelected(event) {
-    let counter = this.props.match.params.questionId;
-    let answerTest = this.state.answer;
-    let answerState1 = questionaire[counter].answerState;
-    let nestedAnswerState2 = questionaire[counter].answerState2 || '';
-
-    if (event.target.type === 'radio' || event.target.type === 'text' ||event.target.type === 'textarea') {
-      nestedAnswerState2 ?
-      answerTest[answerState1][nestedAnswerState2] = event.target.value :
-      answerTest[answerState1] = event.target.value;
-      this.setState({
-        currAnswer: event.target.value,
-        answer: answerTest,
-      })
-    } else {
-      let updateStateArray = nestedAnswerState2 ?
-      answerTest[answerState1][nestedAnswerState2] :
-      answerTest[answerState1];
-
-      if(event.currentTarget.checked && event.currentTarget.value === 'None'){
-        updateStateArray=['None'];
-
-        nestedAnswerState2 ?
-        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
-        answerTest[answerState1] = updateStateArray;
-
-        this.setState({ disabled:true,currAnswer:updateStateArray,answer:answerTest })
-      }
-      else if(!event.currentTarget.checked && event.currentTarget.value === 'None'){
-        updateStateArray=[];
-
-        nestedAnswerState2 ?
-        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
-        answerTest[answerState1] = updateStateArray;
-
-        this.setState({ disabled:false,currAnswer:updateStateArray,answer:answerTest })
-      }
-      else if (event.target.checked && !updateStateArray.includes(event.target.value)) {
-        updateStateArray.push(event.target.value);
-
-        nestedAnswerState2 ?
-        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
-        answerTest[answerState1] = updateStateArray;
-
-        this.setState({
-          currAnswer: updateStateArray,
-          answer: answerTest,
-        })
-
-      } else if (!event.target.checked && updateStateArray.includes(event.target.value)) {
-        updateStateArray.splice(updateStateArray.indexOf(event.target.value),1);
-
-        nestedAnswerState2 ?
-        answerTest[answerState1][nestedAnswerState2] = updateStateArray :
-        answerTest[answerState1] = updateStateArray;
-
-        this.setState({
-          currAnswer: updateStateArray,
-          answer: answerTest,
-        })
-      }
-    }
-  }
-
+  
   skipToResults() {
     this.setState({
       loading:true,
@@ -190,88 +125,6 @@ setNextOrPreviousQuestion(questionsToSkip) {
       }
     });
     setTimeout(()=> this.getMatchResult(),300);
-  }
-
-  handleClickBack() {
-    let counter = Number(this.props.match.params.questionId);
-    switch(counter)
-    {
-      case 5:
-        this.setNextOrPreviousQuestion(-2);
-        break;
-      case 7:
-        this.state.answer.geneticTesting.taken !== 'yes' ? this.setNextOrPreviousQuestion(-2) :
-        this.setNextOrPreviousQuestion(-1)
-        break;
-      case 8:
-        this.state.answer.geneticTesting.taken !== 'no' ?this.setNextOrPreviousQuestion(-2) :
-        this.setNextOrPreviousQuestion(-1)
-        break;
-      case 14:
-        this.state.answer.medications.list.includes('None') ?this.setNextOrPreviousQuestion(-2) :
-        this.setNextOrPreviousQuestion(-1)
-        break;
-      default:
-        this.setNextOrPreviousQuestion(-1);
-        break;
-
-    }
-  }
-  //when next button is clicked, set up the next question to be displayed
-  handleClickNext() {
-   //counter for current question
-    let counter = Number(this.props.match.params.questionId);
-    let updateAnswer=this.state.answer;
-
-    this.setState({
-      currAnswer: '',
-      disabled:false 
-    })
-    
-    switch(counter) {
-      case 3:
-        this.state.answer.race !== "Other" ?
-        this.setNextOrPreviousQuestion(2) :
-        this.setNextOrPreviousQuestion(1)
-        break;
-      case 5:
-        this.state.answer.geneticTesting.taken === 'No' ?this.setNextOrPreviousQuestion(2) :
-        this.setNextOrPreviousQuestion(1)
-        break;
-      case 12:
-        this.state.answer.medications.list.includes('None') ?this.setNextOrPreviousQuestion(2) :
-        this.setNextOrPreviousQuestion(1)
-        break;
-      case 17: 
-        if (!this.state.answer.opinion.list.includes('Other')) {
-          this.setState({
-            loading:true
-          });
-          setTimeout(()=> this.getMatchResult(),300);
-          setTimeout(()=> this.postUserDemographics(),400);
-          break;
-        } else {
-          this.setNextOrPreviousQuestion(1)
-          break;
-        }
-        
-      case 18:
-        this.setState({
-          loading:true
-        });
-        setTimeout(()=> this.getMatchResult(),300);
-        setTimeout(()=> this.postUserDemographics(),400);
-        break;
-      default:
-        this.setNextOrPreviousQuestion(1);
-        break;
-    }
-  }
-
-  handleEnterNext(event){
-    if(event.key === "Enter"){
-      this.handleClickNext();
-    }
   }
 
   validateInputValue(currAnswer) {
@@ -300,11 +153,7 @@ setNextOrPreviousQuestion(questionsToSkip) {
       <div>
         <Quiz
           currAnswer={this.state.currAnswer}
-          counter={this.props.match.params.questionId}
-          onAnswerSelected ={this.handleAnswerSelected}
-          onClickNext={this.handleClickNext}
-          onClickBack={this.handleClickBack}
-          onEnterNext={this.handleEnterNext}
+          // onAnswerSelected ={this.handleAnswerSelected}
           inputError={this.state.inputError}
           validateInputValue={this.validateInputValue}
           skipToResults={this.skipToResults}
