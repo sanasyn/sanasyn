@@ -23,8 +23,6 @@ class ResultDetail extends Component {
         contact: '',
         gettingStudy: true
       }
-
-      console.log("PROPS: ", this.props.match.params);
   }
 
   getStudy(facilityId) {
