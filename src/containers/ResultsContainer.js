@@ -9,30 +9,30 @@ export default class ResultsContainer extends Container {
         setQuestion: 0,
         currAnswer:"",
         answer:{
-          zipcode:"",
-          age: "",
-          gender: "",
+          zipcode:"78758",
+          age: "60",
+          gender: "Female",
           geneticTesting: {
             taken: "No",
             apoe4Present: "No",
             consent: "Yes"
           },
-          pet: "",
-          mri: "",
-          spinalTap: "",
-          stroke: "", 
+          pet: "Yes",
+          mri: "Yes",
+          spinalTap: "Yes",
+          stroke: "No", 
           medications: {
-              list: [],
-              acceptableTime:"No" //default to 0
+              list: ["None"],
+              acceptableTime:"Yes"
             },
-          informant: "",
-          primaryCare: "",
+          informant: "Yes",
+          primaryCare: "Yes",
           opinion: {
             list:[],
-            otherText:""
+            otherText:"Test"
           },
-          race: "",
-          cancer:""
+          race: "White non-Hispanic",
+          cancer:"No"
         },
         inputError:true,
         results:[],
