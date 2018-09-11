@@ -76,33 +76,21 @@ class Quiz extends Component {
             this.setNextOrPreviousQuestion(counter, 1)
             break;
           case 17:
-            console.log("CASE 17: ", this.state.questionNumber); 
             if (!results.state.answer.opinion.list.includes('Other')) {
-              // results.setState({
-              //   loading:true
-              // });
-              // setTimeout(()=> results.getMatchResult(),300);
               results.postUserDemographics();
               setTimeout(()=> this.handleSubmit(),300);
               ;
               break;
             } else {
-              console.log("CASE 17: ", this.state.questionNumber); 
               this.setNextOrPreviousQuestion(counter, 1)
               break;
             }
             
           case 18:
-          console.log("CASE 18: ", this.state.questionNumber); 
-            // results.setState({
-            //   loading:true
-            // });
-            // setTimeout(()=> results.getMatchResult(),300);
             results.postUserDemographics();
             setTimeout(()=> this.handleSubmit(),300);
             break;
           default:
-          console.log("CASE: ", this.state.questionNumber); 
             this.setNextOrPreviousQuestion(counter, 1);
             break;
         }
@@ -113,11 +101,11 @@ class Quiz extends Component {
         this.setState({questionNumber: setQuestion})
       }
 
-      handleEnterNext(event){
-        if(event.key === "Enter"){
-          this.handleClickNext(this.state.questionNumber);
-        }
-      }
+      // handleEnterNext(event){
+      //   if(event.key === "Enter"){
+      //     this.handleClickNext(this.state.questionNumber);
+      //   }
+      // }
 
     render() {
         return (
@@ -131,7 +119,7 @@ class Quiz extends Component {
                     transitionLeaveTimeout={500}
                     transitionAppear
                     transitionAppearTimeout={500}
-                    onKeyPress={this.handleEnterNext(event)}
+                    // onKeyPress={this.handleEnterNext(event)}
                 >
                     <div className="quiz">
                         <LinearProgress 

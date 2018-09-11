@@ -54,6 +54,10 @@ const App = () => {
                 path="/results" 
                 component={Result} 
               />
+              <Route 
+                path="/study/:facilityId" 
+                component={ResultDetail} 
+              />
             </Switch>
           </div>
         </div>
