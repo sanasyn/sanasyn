@@ -87,10 +87,10 @@ class Result extends Component {
                           return (
                             <TableRow key={i}>
                               <TableRowColumn style={{padding: '15px', width: '55%', whiteSpace: 'normal', fontSize: '1.3em'}}>
-                                <Link to={`/study/${study.facility_id}`}>
+                                <Link to={`/study/${study.facility_id} `}>
                                   {study.brief_title}
                                 </Link>
-                                <span style={{fontStyle:'italic', color:'#a0a0a0'}}>( {study.nct_id})</span>
+                                <span style={{fontStyle:'italic', color:'#a0a0a0'}}>({study.nct_id})</span>
                               </TableRowColumn>
                               <TableRowColumn style={{padding: '15px', width: '18%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
                               <TableRowColumn style={{padding: '15px', width: '13%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>

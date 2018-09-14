@@ -74,7 +74,10 @@ class AnswerOption extends Component {
                             value={this.props.answerContent}
                             onChange={(e) => this.handleAnswerSelected(e, results)}
                         />
-                        <label className='radioLabel' htmlFor={this.props.answerContent} >
+                        <label 
+                            className={this.props.questionId === 3 ? 'radioLabel2' : 'radioLabel'} 
+                            htmlFor={this.props.answerContent} 
+                        >
                             {this.props.answerContent}
                         </label>
             
