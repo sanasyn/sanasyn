@@ -24,7 +24,6 @@ class Quiz extends Component {
         this.state = {
             questionNumber: Number(props.match.params.questionId)
         }
-
         this.handleSubmit=this.handleSubmit.bind(this);
       }
 
@@ -99,6 +98,7 @@ class Quiz extends Component {
       setNextOrPreviousQuestion(counter, questionsToSkip) {
         const setQuestion = counter + questionsToSkip;
         this.setState({questionNumber: setQuestion})
+        this.props.history.push(`/quiz/question/${setQuestion}`);
       }
 
       // handleEnterNext(event){
@@ -123,6 +123,7 @@ class Quiz extends Component {
                 >
                     <div className="quiz">
                         <LinearProgress 
+                            color='#d40027'
                             className= "progressBar" 
                             mode="determinate" 
                             min={0} 
@@ -139,19 +140,22 @@ class Quiz extends Component {
                         />
                         
                             {this.state.questionNumber > 0 ? (
-                                <FlatButton className="quizBackButton"     onClick={() => {
+                                <FlatButton 
+                                  className="quizBackButton"
+                                  onClick={() => {
                                     this.handleClickBack(results, this.state.questionNumber);
-                                    this.props.history.push(`/quiz/question/${this.state.questionNumber}`);
-                                }}>BACK</FlatButton>
-                                ): null}
+                                  }} 
+                                >
+                                  BACK
+                                </FlatButton> ): null}
 
                             <FlatButton className="quizNextButton"  
-                                onClick={() => {
-                                    this.handleClickNext(results, this.state.questionNumber);
-                                    this.props.history.push(`/quiz/question/${this.state.questionNumber}`);
-                                }
-                                    
-                                }> NEXT</FlatButton>
+                              onClick={() => {
+                                  this.handleClickNext(results, this.state.questionNumber);
+                              }}
+                            > 
+                              NEXT
+                            </FlatButton>
         
                         {config.node_env ==='dev' ? (<FlatButton className="quizResultsButton" onClick={this.props.skipToResults}> Results</FlatButton>):null}
                     
