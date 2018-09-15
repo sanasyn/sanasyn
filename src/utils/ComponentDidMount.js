@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 * */
 
 class ComponentDidMount extends Component {
-  componentWillMount() {
+  componentDidMount() {
     return this.props.handler && this.props.handler();
   }
 

@@ -42,9 +42,8 @@ export default class ResultsContainer extends Container {
   }
 
   postUserDemographics() {
-    console.log("POST USER DEMOGRAPHICS")
     axios.post('/api/userDemographics', this.state.answer)
-      .then((val) => console.log("Successfully posted user demographics: ",val.data))
+      .then((val) => console.log("Successfully posted user demographics"))
       .catch(error => {
         console.log("ERROR: ", error)
         console.log(error.response)
@@ -52,7 +51,6 @@ export default class ResultsContainer extends Container {
   }
 
   getMatchResult() {
-    console.log("ANSWER STATE: ", this.state.answer)
     this.setState({
       loading:true
     })
