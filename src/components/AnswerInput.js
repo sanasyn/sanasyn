@@ -16,8 +16,7 @@ function AnswerInput(props){
                 currAnswer={props.currAnswer}
                 questionId={props.questionId}
             />
-        )
-       
+        )   
     }
 
     function renderTextInputOption(){
@@ -63,14 +62,12 @@ function AnswerInput(props){
                 );
             default:
                 return (<p>no input type</p>);
-
         }
     }
     
 
     return(
        <div className="answerInput">{determineInputType(questionaire[props.questionId].type)}</div>
-
     );
 }
 

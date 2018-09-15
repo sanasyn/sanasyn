@@ -31,6 +31,8 @@ class ResultDetail extends Component {
         this.setState({ 
           study: results.data.study[0],
           contact: results.data.contact[0],
+        });
+        this.setState({
           gettingStudy: false
         })
       })
@@ -54,39 +56,12 @@ class ResultDetail extends Component {
         onClick={()=>{this.handleToggle()}}
       />
     ];
-
-    var showCityStateZip, genericFacilityContact;
-    if(this.state.contact.facility_contact_name === null && this.state.contact.pi_name === null )
-      {
-        showCityStateZip = true;
-        genericFacilityContact= this.state.contact.city + ", " + this.state.contact.state + ", "+ this.state.contact.zip + " " + this.state.contact.country;
-      }
-    else
-      {
-        showCityStateZip = false;
-      }
-      var inclusion=this.state.study.criteria_inc;
-      var exclusion=this.state.study.criteria_ex;
-      
-      
-      if (typeof inclusion === 'string')
-      {
-        //look for multiple whitspace following by a - to split up the string into multiple lines
-        inclusion=inclusion.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>);
-      }
-
-      if (typeof exclusion === 'string')
-      {
-        //look for multiple whitspace following by a - to split uptthe string into multiple lines
-        exclusion=exclusion.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>);
-      }
-     // console.log("in render: inclusion ", inclusion, " exclusion ", exclusion);
     
     return (
       <div className="row detail-container">
         <ComponentDidMount
           handler={() => {
-            this.getStudy({facility_id: this.props.match.params.facilityId});
+            this.getStudy({facility_id: Number(this.props.match.params.facilityId)});
           }}
         >
         {!this.state.gettingStudy ? (
@@ -118,12 +93,12 @@ class ResultDetail extends Component {
                   >
                     <Tab label="Inclusion Criteria" value="include">
                       <div>
-                      {inclusion}
+                      {this.state.study.criteria_inc.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
                       </div>
-                    </Tab>
+                    </Tab> 
                     <Tab label="Exclusion Criteria" value="exclusion">
                       <div>
-                        {exclusion}
+                        {this.state.study.criteria_ex.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
                       </div>
                     </Tab>
                   </Tabs>
@@ -145,9 +120,9 @@ class ResultDetail extends Component {
               <CardText>
                 <CardTitle style={{padding: '0px'}} subtitleStyle={{fontSize: '1.5em'}} subtitle="Facility Contact" />
                   
-                  {showCityStateZip ? 
+                  {this.state.contact.facility_contact_name === null && this.state.contact.pi_name === null ? 
                     <List>
-                    <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">import_contacts</FontIcon> {genericFacilityContact}</ListItem>
+                    <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">import_contacts</FontIcon> {this.state.contact.city + ", " + this.state.contact.state + ", "+ this.state.contact.zip + " " + this.state.contact.country}</ListItem>
                     <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">store</FontIcon> {this.state.contact.facility_name === null ? 'Please refer to the central contact' : this.state.contact.facility_name}</ListItem>
                     <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.state.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.state.contact.facility_contact_phone}</ListItem>
                     </List>

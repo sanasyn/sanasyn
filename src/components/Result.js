@@ -77,23 +77,32 @@ class Result extends Component {
                     <Table style={{maxWidth:"90%", margin:"auto"}}>
                       <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow>
-                          <TableHeaderColumn style={{padding: '15px', width: '55%', fontSize: '1.3em'}}>Title</TableHeaderColumn>
-                          <TableHeaderColumn style={{padding: '15px', width: '18%', fontSize: '1.3em'}}>City, State</TableHeaderColumn>
-                          <TableHeaderColumn style={{padding: '15px', width: '13%', fontSize: '1.3em'}}>Zip Codes</TableHeaderColumn>
+                          <TableHeaderColumn className="tableColumn1">Title</TableHeaderColumn>
+                          <TableHeaderColumn className="tableColumn2">City, State</TableHeaderColumn>
+                          <TableHeaderColumn className="tableColumn3">Zip Codes</TableHeaderColumn>
                         </TableRow>
                       </TableHeader>
                       <TableBody displayRowCheckbox={false}>
                         {this.resultsOnPage(results).map((study, i) => {
                           return (
                             <TableRow key={i}>
-                              <TableRowColumn style={{padding: '15px', width: '55%', whiteSpace: 'normal', fontSize: '1.3em'}}>
+                              <TableRowColumn 
+                                className="tableColumn1">
                                 <Link to={`/study/${study.facility_id} `}>
                                   {study.brief_title}
                                 </Link>
-                                <span style={{fontStyle:'italic', color:'#a0a0a0'}}>({study.nct_id})</span>
+                                <span 
+                                  style={{fontStyle:'italic', color:'#a0a0a0'}}
+                                >
+                                  ({study.nct_id})
+                                </span>
                               </TableRowColumn>
-                              <TableRowColumn style={{padding: '15px', width: '18%', whiteSpace: 'normal', fontSize: '1.3em'}}>{study.city}, {study.state}</TableRowColumn>
-                              <TableRowColumn style={{padding: '15px', width: '13%', fontSize: '1.3em'}}>{study.zip}</TableRowColumn>
+                              <TableRowColumn className="tableColumn2">
+                                {study.city}, {study.state}
+                              </TableRowColumn>
+                              <TableRowColumn className="tableColumn3">
+                                {study.zip}
+                              </TableRowColumn>
                             </TableRow>
                           )
                         }

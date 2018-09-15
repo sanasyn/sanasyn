@@ -303,7 +303,28 @@ label.checkCustomLabel {
     height: 24px;
 }
 
+/* Results*/
 
+.tableColumn1 {
+  padding: 15px !important;
+  font-size: 1.3em !important;
+  width: 55% !important;
+  white-space: normal !important;
+}
+
+.tableColumn2 {
+  padding: 15px !important;
+  font-size: 1.3em !important;
+  width: 18% !important;
+  white-space: normal !important;
+}
+
+.tableColumn3 {
+  padding: 15px !important;
+  font-size: 1.3em !important;
+  width: 13% !important;
+  white-space: normal !important;
+}
 
 /* Result Details */
 .detail-container {
