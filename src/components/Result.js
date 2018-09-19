@@ -29,7 +29,7 @@ class Result extends Component {
         }
     }
 
-    resultsOnPage() {
+    resultsOnPage(results) {
       const indexOfLastResult = this.state.currentPage * this.state.resultsPerPage;
       const indexOfFirstResult = indexOfLastResult - this.state.resultsPerPage;
       const limitResults = results.state.results.slice(indexOfFirstResult, indexOfLastResult);
