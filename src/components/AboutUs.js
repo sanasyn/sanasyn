@@ -1,12 +1,33 @@
 import React, { Component } from 'react';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 import teamImage from '../dist/groupPic.jpg';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-class About extends Component {
+const StyleButton = {
+  backgroundColor: "#174886",
+  color: "#fff",
+  fontSize: "2em",
+  margin: "20px 10px",
+  padding: "5px",
+  height: "44px",
+}
+
+class About extends Component {  
+
+  emailUser() {
+    //remove this later!
+    console.log("Hi Whitney");
+    axios.post("/api/emailUser", "hi")
+  }
+
   render(){
     return(
       <div>
+
+        <FlatButton style={StyleButton} onClick={() => this.emailUser()}>Email Me!</FlatButton>
+
         <Card className="aboutCard">
           {/* <CardTitle className="aboutTitle" title="Current state of affairs"/>
           <CardText style={{padding:'0 16px 1em 16px'}}>
