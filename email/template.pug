@@ -1,0 +1,16 @@
+//- template.pug
+h1(style={'font-weight': bold}) #{studyTitle}
+h3(style={'border-top': '.2em solid black', 'padding-top': '10px'}) Study Description: #{studyDescription}
+a(target="_blank" href=studyUrl) Clinical Trials Page for #{studyNctId}
+div
+  h3 Contact Information
+    h5 Facility Contact
+      li Facility name: #{facilityName}
+      li Contact name: #{facilityContactName}
+      li Contact phone: #{facilityContactPhone}
+      li Contact email: #{facilityContactEmail}
+    h5 Central Contact
+      li Contact name: #{centralContactName}
+      li Contact phone: #{centralContactPhone}
+      li Contact email: #{centralContactEmail}
+
