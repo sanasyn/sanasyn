@@ -11,6 +11,7 @@ import FontIcon from 'material-ui/FontIcon';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import EmailModal from './EmailModal';
 
 class ResultDetail extends Component {
   constructor(props){
@@ -56,7 +57,7 @@ class ResultDetail extends Component {
         onClick={()=>{this.handleToggle()}}
       />
     ];
-    
+
     return (
       <div className="row detail-container">
         <ComponentDidMount
@@ -67,6 +68,9 @@ class ResultDetail extends Component {
         {!this.state.gettingStudy ? (
           <div>
             <Card className="col-md-12 detail-topsection">
+
+            <EmailModal study={this.state.study} contact={this.state.contact} />
+
             <CardTitle className="detail-study-title">{this.state.study.brief_title}</CardTitle>
             <CardText className="detail-description" style={{fontSize:'1.2em'}}>{this.state.study.description}</CardText>
           </Card>

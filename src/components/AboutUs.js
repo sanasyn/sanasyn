@@ -3,7 +3,7 @@ import {Card, CardTitle, CardText} from 'material-ui/Card';
 import teamImage from '../dist/groupPic.jpg';
 import { Link } from 'react-router-dom';
 
-class About extends Component {
+class About extends Component {  
   render(){
     return(
       <div>
