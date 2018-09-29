@@ -7,6 +7,7 @@ import { Subscribe } from 'unstated';
 import ResultsContainer from '../containers/ResultsContainer';
 import Question from '../components/Question';
 import questionaire from '../utils/questionaire';
+import questionaireSpanish from '../utils/questionaireSpanish';
 import { Link, withRouter } from 'react-router-dom';
 import AnswerInput from '../components/AnswerInput';
 import HelpModal from '../components/HelpModal';
@@ -131,12 +132,15 @@ class Quiz extends Component {
                             value={this.state.questionNumber} 
                         />
         
-                        <Question content={questionaire[this.state.questionNumber].question}/>
+                        <Question 
+                          content={results.state.language === 'spanish' 
+                          ? questionaireSpanish[this.state.questionNumber].question 
+                          : questionaire[this.state.questionNumber].question }/>
                                   
                         <AnswerInput 
-
-                        questionId={this.state.questionNumber}
-                        currAnswer={this.props.currAnswer}
+                          language={results.state.language}
+                          questionId={this.state.questionNumber}
+                          currAnswer={this.props.currAnswer}
                         />
                         
                             {this.state.questionNumber > 0 ? (
@@ -156,10 +160,14 @@ class Quiz extends Component {
                             > 
                               NEXT
                             </FlatButton>
-        
-                        {config.node_env ==='dev' ? (<FlatButton className="quizResultsButton" onClick={this.props.skipToResults}> Results</FlatButton>):null}
                     
-                        {questionaire[this.state.questionNumber].help.length ? (<HelpModal helpText={questionaire[this.state.questionNumber].help}/>):null}
+                        {questionaire[this.state.questionNumber].help.length ? (
+                        <HelpModal 
+                          helpText={results.state.language === 'spanish' 
+                          ? questionaireSpanish[this.state.questionNumber].help
+                          : questionaire[this.state.questionNumber].help
+                        }
+                        />):null}
     
                     </div>
                 </ReactCSSTransitionGroup>

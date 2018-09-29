@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import questionaire from '../utils/questionaire';
+import questionaireSpanish from '../utils/questionaireSpanish';
 import AnswerOption from "./AnswerOption";
 
 
@@ -30,7 +31,7 @@ function AnswerInput(props){
     }
 
     function determineInputType(type){
-       
+       let questionaireVersion = props.language === 'spanish' ? questionaireSpanish : questionaire;
         switch(type){
             case "text":
                     return(
@@ -42,7 +43,7 @@ function AnswerInput(props){
             case "radio":
                 return(
                     <ul className="answerOptions">
-                        {questionaire[props.questionId].options.map((option) => renderMultipleChoice(option))}
+                        {questionaireVersion[props.questionId].options.map((option) => renderMultipleChoice(option))}
                     </ul> 
                             
                 );
@@ -50,7 +51,7 @@ function AnswerInput(props){
                 return(
                 
                     <ul className="answerOptions">
-                        {questionaire[props.questionId].options.map((option) => renderMultipleChoice(option))}
+                        {questionaireVersion[props.questionId].options.map((option) => renderMultipleChoice(option))}
                     </ul> 
                             
                 );

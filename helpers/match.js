@@ -2,16 +2,16 @@ const config = require('../config/config').heroku;
 const pg = require('pg');
 const knex = require('knex')(getConnectionOptions());
 
-const geneticQueryInc = require('./translate').geneticQueryInc;
-const geneticQueryEx = require('./translate').geneticQueryEx;
-const mriQuery = require('./translate').mriQuery;
-const petQuery = require('./translate').petQuery;
-const spinalQuery = require('./translate').spinalQuery;
-const strokeQuery = require('./translate').strokeQuery;
-const cancerQuery = require('./translate').cancerQuery;
-const medicationsQuery = require('./translate').medicationsQuery;
-const medicationsQueryNot = require('./translate').medicationsQueryNot;
-const caregiverQueryInc = require('./translate').caregiverQueryInc;
+const geneticQueryInc = require('./setQuery').geneticQueryInc;
+const geneticQueryEx = require('./setQuery').geneticQueryEx;
+const mriQuery = require('./setQuery').mriQuery;
+const petQuery = require('./setQuery').petQuery;
+const spinalQuery = require('./setQuery').spinalQuery;
+const strokeQuery = require('./setQuery').strokeQuery;
+const cancerQuery = require('./setQuery').cancerQuery;
+const medicationsQuery = require('./setQuery').medicationsQuery;
+const medicationsQueryNot = require('./setQuery').medicationsQueryNot;
+const caregiverQueryInc = require('./setQuery').caregiverQueryInc;
 const getFacilityDistance = require('./location');
 
 function getConnectionOptions() {
