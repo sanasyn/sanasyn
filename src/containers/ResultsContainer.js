@@ -38,6 +38,7 @@ export default class ResultsContainer extends Container {
         results:[],
         start:false,
         loading:false,
+        language: "english"
       }
   }
 
