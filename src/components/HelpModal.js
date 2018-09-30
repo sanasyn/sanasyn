@@ -1,7 +1,10 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -32,16 +35,6 @@ export default class HelpModal extends React.Component {
     };
 
     render() {
-        const actions = [
-        <FlatButton
-            primary={true}
-            onClick={this.handleClose}
-            style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
-        >
-            Close
-        </FlatButton>
-        ];
-
         return (
         <div style={{marginTop:'20px'}}>
             <a
@@ -51,18 +44,36 @@ export default class HelpModal extends React.Component {
                 What does this question mean?
              </a>
             <Dialog
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-            contentStyle={{width: "60%", maxWidth:"60%",fontSize: '2em'}}
+                modal={false}
+                open={this.state.open}
+                onClose={this.handleClose}
             >
-                <h2 style={{fontSize: '2em', fontWeight:'bold'}}>What does this question mean?</h2>
-                {this.props.helpText.map((help, i) => (
-                    <p key={i} style={{fontSize: '1.8em'}}>
+                <DialogTitle 
+                    id="alert-dialog-title"
+                >
+                    {"What does this question mean?"}
+                </DialogTitle>
+
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                    {this.props.helpText.map((help, i) => (
+                    <div className="helpText" key={i}>
                         {help}
-                    </p>
+                    </div>
                 ))}
+                    </DialogContentText>
+                </DialogContent>
+
+                <DialogActions>
+                    <Button
+                        onClick={this.handleClose}
+                        style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    >
+                        Close
+                    </Button>
+                </DialogActions>
+
+                
             </Dialog>
         </div>
         );

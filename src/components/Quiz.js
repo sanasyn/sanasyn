@@ -12,11 +12,10 @@ import { Link, withRouter } from 'react-router-dom';
 import AnswerInput from '../components/AnswerInput';
 import HelpModal from '../components/HelpModal';
 import PropTypes from 'prop-types';
-import FlatButton from 'material-ui/FlatButton';
-import LinearProgress from 'material-ui/LinearProgress';
+import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import config from '../../config/config.js'
-// import AnswerOption from '../components/AnswerOption'
 
 
 class Quiz extends Component {
@@ -124,12 +123,10 @@ class Quiz extends Component {
                 >
                     <div className="quiz">
                         <LinearProgress 
-                            color='#d40027'
+                            color='primary'
                             className= "progressBar" 
-                            mode="determinate" 
-                            min={0} 
-                            max={questionaire.length} 
-                            value={this.state.questionNumber} 
+                            variant="determinate"
+                            value={this.state.questionNumber/questionaire.length*100} 
                         />
         
                         <Question 
@@ -144,22 +141,22 @@ class Quiz extends Component {
                         />
                         
                             {this.state.questionNumber > 0 ? (
-                                <FlatButton 
+                                <Button 
                                   className="quizBackButton"
                                   onClick={() => {
                                     this.handleClickBack(results, this.state.questionNumber);
                                   }} 
                                 >
                                   BACK
-                                </FlatButton> ): null}
+                                </Button> ): null}
 
-                            <FlatButton className="quizNextButton"  
+                            <Button className="quizNextButton"  
                               onClick={() => {
                                   this.handleClickNext(results, this.state.questionNumber);
                               }}
                             > 
                               NEXT
-                            </FlatButton>
+                            </Button>
                     
                         {questionaire[this.state.questionNumber].help.length ? (
                         <HelpModal 

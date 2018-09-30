@@ -94,6 +94,19 @@ h1.healingConn {
   min-height:350px;
 }
 
+/* Quiz */
+#alert-dialog-title h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+}
+.helpText {
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
 /*Landing Page*/
 .topStyle {
     background: #060d16;
@@ -209,6 +222,10 @@ td, th {
   padding: 15px;
   white-space: normal;
   font-size: 1.3em;
+}
+
+table.MuiTable-root-66 {
+  background: #f8f8f8;
 }
 
 /*question */
@@ -371,12 +388,24 @@ label.checkCustomLabel {
 }
 
 div.col-md-6.detail-map {
+  height: 450px;
   padding-right: 0;
   padding-left: 0;
 }
 
-button.col-md-6.detail-back {
-  height: 100px;
+.criteriaDiv {
+  margin-top: 12px;
+  padding: 0 10px;
+  font-size: 1.2em;
+}
+
+button.MuiButtonBase-root-27.MuiTab-root-144.MuiTab-textColorInherit-146 {
+  width: 100%;
+}
+
+.TabIndicator-colorSecondary-158 {
+  background-color: #f50057;
+  width: 50%;
 }
 
 /*animation*/

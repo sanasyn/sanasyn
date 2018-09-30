@@ -3,19 +3,19 @@ import { Subscribe } from 'unstated';
 import { Link, withRouter } from 'react-router-dom';
 import ComponentDidMount from '../utils/ComponentDidMount';
 import ResultsContainer from '../containers/ResultsContainer';
-import ResultDetail from './ResultDetail';
-import FlatButton from 'material-ui/FlatButton';
-import RefreshIndicator from 'material-ui/RefreshIndicator';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
 
 class Result extends Component {
     constructor(props){
@@ -58,11 +58,9 @@ class Result extends Component {
                   {results.state.loading ? (
                     <div className='refreshIndicator'>
                     <h2 className='userInfo'>Searching for results...</h2>
-                      <RefreshIndicator
+                      <CircularProgress
                         size={200}
-                        top={50}
-                        left={-100}
-                        style={{marginLeft: '50%', marginTop: '30px'}}
+                        style={{marginTop: '30px', color: '#a71919'}}
                         status={'loading'}
                       />
                     <footer className='footer' style={{position:'fixed'}}>
@@ -74,19 +72,22 @@ class Result extends Component {
                   ) : (
                     <div className="instructions" style={{textAlign: "center"}}>
                     <h2 className='userInfo'>Click on the title for study details.</h2>
+                    
+
+
                     <Table style={{maxWidth:"90%", margin:"auto"}}>
-                      <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                      <TableHead>
                         <TableRow>
-                          <TableHeaderColumn className="tableColumn1">Title</TableHeaderColumn>
-                          <TableHeaderColumn className="tableColumn2">City, State</TableHeaderColumn>
-                          <TableHeaderColumn className="tableColumn3">Zip Codes</TableHeaderColumn>
+                          <TableCell className="tableColumn1">Title</TableCell>
+                          <TableCell className="tableColumn2">City, State</TableCell>
+                          <TableCell className="tableColumn3">Zip Codes</TableCell>
                         </TableRow>
-                      </TableHeader>
-                      <TableBody displayRowCheckbox={false}>
+                      </TableHead>
+                      <TableBody>
                         {this.resultsOnPage(results).map((study, i) => {
                           return (
                             <TableRow key={i}>
-                              <TableRowColumn 
+                              <TableCell 
                                 className="tableColumn1">
                                 <Link to={`/study/${study.facility_id} `}>
                                   {study.brief_title}
@@ -96,13 +97,13 @@ class Result extends Component {
                                 >
                                   ({study.nct_id})
                                 </span>
-                              </TableRowColumn>
-                              <TableRowColumn className="tableColumn2">
+                              </TableCell>
+                              <TableCell className="tableColumn2">
                                 {study.city}, {study.state}
-                              </TableRowColumn>
-                              <TableRowColumn className="tableColumn3">
+                              </TableCell>
+                              <TableCell className="tableColumn3">
                                 {study.zip}
-                              </TableRowColumn>
+                              </TableCell>
                             </TableRow>
                           )
                         }
@@ -111,26 +112,26 @@ class Result extends Component {
                     </Table>
                     <div className="pagenation">
                       {this.state.currentPage <= 1 ? (
-                        <FlatButton 
+                        <Button 
                           style={{visibility:'hidden', fontSize: '2.0em'}}
                         >
                             <i className="glyphicon glyphicon-triangle-left" />
-                        </FlatButton>
+                        </Button>
                       ) : 
-                        <FlatButton 
+                        <Button 
                           style={{visibility:'visible', fontSize: '2.0em'}} 
                           onClick={() => {this.previousPageNumber()}}
                         >
                           <i className="glyphicon glyphicon-triangle-left" />
-                        </FlatButton>}
+                        </Button>}
                       <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2.5em"}}>          {this.state.currentPage}
                       </div>
-                      <FlatButton 
+                      <Button 
                         style={{fontSize: '2.0em'}} 
                         onClick={() => {this.nextPageNumber()}}
                       >
                         <i className="glyphicon glyphicon-triangle-right" />
-                      </FlatButton>
+                      </Button>
                     </div>
                   </div>
                   ) }

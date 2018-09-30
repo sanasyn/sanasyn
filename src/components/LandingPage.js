@@ -1,6 +1,6 @@
 import React from 'react';
 import Background from '../dist/synapse.jpg';
-import FlatButton from 'material-ui/FlatButton';
+import Button from '@material-ui/core/Button';
 import { Image } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -22,8 +22,8 @@ export default () => {
 	    			<h1 className="healingConn">A Healing Connection</h1>
 	 		        <p className="startInfo">We connect you to an Alzheimer’s disease clinical trial that’s right for you.</p>
 	 		        <Link to={`/quiz/question/0`}>
- 		        			<FlatButton style={StyleButton}>Get Started
- 		        			</FlatButton>
+ 		        			<Button style={StyleButton}>Get Started
+ 		        			</Button>
  		        		</Link>
 	 		    </div>
     		</div>
