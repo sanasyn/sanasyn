@@ -1,6 +1,6 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 
@@ -65,37 +65,37 @@ export default class EmailModal extends React.Component {
 
     render() {
         const actions1 = [
-        <FlatButton
+        <Button
           primary={true}
           onClick={() => this.handleSubmitEmail()}
         style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
         >
           Submit Email
-        </FlatButton>,
-        <FlatButton
+        </Button>,
+        <Button
           primary={true}
           onClick={() => this.handleClose()}
           style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
         >
           Close
-        </FlatButton>
+        </Button>
         ];
 
         const actions2 = [
-          <FlatButton
+          <Button
             primary={true}
             onClick={() => this.emailUser()}
             style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
           >
             Yes, send email
-          </FlatButton>,
-          <FlatButton
+          </Button>,
+          <Button
             primary={true}
             onClick={() => this.handleClose()}
             style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
           >
             Cancel
-          </FlatButton>
+          </Button>
           ];
 
         return (
