@@ -52,27 +52,10 @@ class App extends Component {
                     <span className='logo'>S &#423;</span>
                     <Image className='headerImage' src={headerImage}/>
                   </Link>
-                  <Button
-                    aria-owns={'simple-menu'}
-                    aria-haspopup="true"
-                    onClick={(e) => this.handleModal(e, true)}
-                  >
-                    Open Menu
-                  </Button>
-                  <Menu
-                    id="simple-menu"
-                    anchorEl={this.state.anchorElement}
-                    open={this.state.modalOpen}
-                    onClose={(e) => this.handleModal(e, false)}
-                  >
-                    <MenuItem 
-                      component={Link} 
-                      to={`/quiz/question/0`}
-                    >
-                      Find Trials
-                    </MenuItem>
-                    <MenuItem>About Us</MenuItem>
-                  </Menu>
+                  <div className="headerLinks">
+                    <Link to='/quiz/question/0'>Quiz</Link>
+                    <Link to='/about'>About</Link>
+                  </div>
                 </header>
                 <div>
                   <Switch>
