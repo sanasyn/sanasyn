@@ -1,5 +1,10 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
@@ -68,54 +73,6 @@ export default class EmailModal extends React.Component {
     }
 
     render() {
-        const actions1 = [
-        <Button
-          primary={true}
-          onClick={() => this.handleSubmitEmail()}
-          style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
-        >
-          Submit Email
-        </Button>,
-        <Button
-          primary={true}
-          onClick={() => this.handleClose()}
-          style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
-        >
-          Close
-        </Button>
-        ];
-
-        const actions2 = [
-          <Button
-            primary={true}
-            onClick={() => this.emailUser()}
-            style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
-          >
-            Yes, send email
-          </Button>,
-          <Button
-            primary={true}
-            onClick={() => this.editEmail()}
-            style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
-          >
-            Edit email
-          </Button>,
-          <Button
-            primary={true}
-            onClick={() => this.editEmail()}
-            style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
-          >
-            Edit email
-          </Button>,
-          <Button
-            primary={true}
-            onClick={() => this.handleClose()}
-            style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
-          >
-            Cancel
-          </Button>
-          ];
-
         return (
         <div style={{marginTop:'20px'}}>
             <a
@@ -127,44 +84,109 @@ export default class EmailModal extends React.Component {
              {
                !this.state.emailStored ?
               <Dialog
-              actions={actions1}
-              modal={false}
               open={this.state.open}
-              onRequestClose={() => this.handleClose()}
-              contentStyle={{width: "60%", maxWidth:"60%",fontSize: '2em'}}
+              onClose={() => this.handleClose()}
               >
-                <h2 style={{fontSize: '2em', fontWeight:'bold'}}>Email Me!</h2>
-                <p style={{fontSize: '2em'}}>
-                  To get this study information, please enter your email address here.</p>
-                <input 
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                />
+                <DialogTitle id="alert-dialog-title">{"Email Me!"}</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                    To get this study information, please enter your email address below.
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Email Address"
+                    type="email"
+                    fullWidth
+                    InputProps={{disableUnderline: true}}
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button
+                    color='primary'
+                    onClick={() => this.handleSubmitEmail()}
+                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                  >
+                    Submit Email
+                  </Button>
+                  <Button
+                    color='primary'
+                    onClick={() => this.handleClose()}
+                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                  >
+                    Close
+                  </Button>
+                </DialogActions>
               </Dialog>
               :
               !this.state.editEmail ?
               <Dialog
-              actions={actions2}
-              modal={false}
               open={this.state.open}
-              onRequestClose={() => this.handleClose()}
-              contentStyle={{width: "60%", maxWidth:"60%",fontSize: '2em'}}
+              onClose={() => this.handleClose()}
               >
-                  <h2 style={{fontSize: '2em', fontWeight:'bold'}}>Send email to {this.state.value}?</h2>
+                <DialogTitle>{"Send email to "}{this.state.value}{"?"}</DialogTitle>
+                <DialogActions>
+                  <Button
+                    color='primary'
+                    onClick={() => this.emailUser()}
+                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                  >
+                    Yes, send email
+                  </Button>,
+                  <Button
+                    color='primary'
+                    onClick={() => this.editEmail()}
+                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                  >
+                    Edit email
+                  </Button>,
+                  <Button
+                    color='primary'
+                    onClick={() => this.handleClose()}
+                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                  >
+                    Cancel
+                  </Button>
+                </DialogActions>
               </Dialog>
               :
               <Dialog
-              actions={actions1}
-              modal={false}
               open={this.state.open}
-              onRequestClose={() => this.handleClose()}
-              contentStyle={{width: "60%", maxWidth:"60%",fontSize: '2em'}}
+              onClose={() => this.handleClose()}
               >
-                <h2 style={{fontSize: '2em', fontWeight:'bold'}}>Edit email your email below</h2>
-                <input 
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                />              
+                <DialogTitle>{"Edit email your email below"}</DialogTitle>
+                <DialogContent>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Email Address"
+                    type="email"
+                    fullWidth
+                    InputProps={{disableUnderline: true}}
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button
+                    color='primary'
+                    onClick={() => this.handleSubmitEmail()}
+                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                  >
+                    Submit Email
+                  </Button>
+                  <Button
+                    color='primary'
+                    onClick={() => this.handleClose()}
+                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                  >
+                    Close
+                  </Button>
+                </DialogActions>           
               </Dialog>
              }
         </div>
