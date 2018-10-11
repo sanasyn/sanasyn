@@ -1,7 +1,6 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
-import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 
 /**
@@ -17,6 +16,7 @@ export default class EmailModal extends React.Component {
       this.state = {
           open: false,
           emailStored: false,
+          editEmail: false,
           value: ''
         };
 
@@ -31,6 +31,10 @@ export default class EmailModal extends React.Component {
       else this.setState({ emailStored: false })
     }
 
+    editEmail() {
+      this.setState({ editEmail:true })
+    }
+
     handleOpen() {
       this.checkStorageEmail();
       this.setState({open: true});
@@ -42,7 +46,7 @@ export default class EmailModal extends React.Component {
 
     handleSubmitEmail(){
       sessionStorage.setItem('sanasynEmail', this.state.value);
-      this.setState({ emailStored: true })
+      this.setState({ emailStored: true, editEmail:false })
     }
 
     handleChange(event) {
@@ -68,7 +72,7 @@ export default class EmailModal extends React.Component {
         <Button
           primary={true}
           onClick={() => this.handleSubmitEmail()}
-        style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+          style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
         >
           Submit Email
         </Button>,
@@ -88,6 +92,13 @@ export default class EmailModal extends React.Component {
             style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
           >
             Yes, send email
+          </Button>,
+          <Button
+            primary={true}
+            onClick={() => this.editEmail()}
+            style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+          >
+            Edit email
           </Button>,
           <Button
             primary={true}
@@ -124,6 +135,7 @@ export default class EmailModal extends React.Component {
                 />
               </Dialog>
               :
+              !this.state.editEmail ?
               <Dialog
               actions={actions2}
               modal={false}
@@ -132,6 +144,20 @@ export default class EmailModal extends React.Component {
               contentStyle={{width: "60%", maxWidth:"60%",fontSize: '2em'}}
               >
                   <h2 style={{fontSize: '2em', fontWeight:'bold'}}>Send email to {this.state.value}?</h2>
+              </Dialog>
+              :
+              <Dialog
+              actions={actions1}
+              modal={false}
+              open={this.state.open}
+              onRequestClose={() => this.handleClose()}
+              contentStyle={{width: "60%", maxWidth:"60%",fontSize: '2em'}}
+              >
+                <h2 style={{fontSize: '2em', fontWeight:'bold'}}>Edit email your email below</h2>
+                <input 
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />              
               </Dialog>
              }
         </div>
