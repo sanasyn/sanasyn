@@ -102,6 +102,13 @@ export default class EmailModal extends React.Component {
           </Button>,
           <Button
             primary={true}
+            onClick={() => this.editEmail()}
+            style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+          >
+            Edit email
+          </Button>,
+          <Button
+            primary={true}
             onClick={() => this.handleClose()}
             style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
           >
