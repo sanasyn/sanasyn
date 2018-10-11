@@ -77,7 +77,7 @@ class Result extends Component {
 
                       {this.resultsOnPage(results).map((study, i) => {
                         return (
-                          <Card>
+                          <Card key={i}>
                             <CardContent>
                               <Link to={`/study/${study.facility_id} `} className="studyTitle">
                                 {study.brief_title}
