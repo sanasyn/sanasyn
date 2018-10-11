@@ -9,7 +9,6 @@ const transportConfig = emailConfig.transportConfig;
 function emailStudy(req, res) {
 
     console.log("In emailStudy function!");
-    // console.log(req.body)
 
     let html = compiledFunction({
         studyTitle: req.body.study.brief_title,
@@ -23,6 +22,8 @@ function emailStudy(req, res) {
         centralContactName: req.body.contact.central_contact_name !== null ? req.body.contact.central_contact_name : 'Not Available',
         centralContactPhone: req.body.contact.central_contact_phone !== null ? req.body.contact.central_contact_phone : 'Not Available',
         centralContactEmail: req.body.contact.central_contact_email !== null ? req.body.contact.central_contact_email : 'Not Available',
+        inclusionCriteria: req.body.study.criteria_inc.split(/\s{2,}-/),
+        exclusionCriteria: req.body.study.criteria_ex.split(/\s{2,}-/),
     });
 
     // set transporter
