@@ -140,15 +140,16 @@ h1.healingConn {
     height: 450px;
 }
 
-.synapseImage{
+.synapseImage {
   max-width: 45%;
   padding: 0px;
   display: block;
-  background-size: 100%;
+  background-size: cover;
   height: inherit;
   background-repeat: no-repeat;
   box-shadow: -15px 0px 100px 36px rgb(6,13,22) inset;
-  background-image: url('./dist/synapse.jpg');
+  background-image: url(dist/synapse.jpg);
+  background-position: center;
 }
 
 .info {
@@ -467,7 +468,7 @@ button.MuiButtonBase-root-27.MuiTab-root-144.MuiTab-textColorInherit-146 {
   font-size: 1.3em;
   line-height: 2.5em;
   margin-top: 0; 
-  background-color: #20759c;
+  background-color: rgb(36, 98, 183);
   height: 3em;
   border-bottom: solid #545454 8px;
   bottom: 0;

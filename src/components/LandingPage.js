@@ -36,26 +36,25 @@ export default () => {
 							className="stepNumber"
 							fontSize="large"
 							/>
-            <p className="stepDesc">Click Get Started to begin a short questionnaire.</p>
+            <p className="stepDesc">Click Get Started to answer some questions about yourself and your health.</p>
           </div>
           <div className="col-md-4 step">
 					<LocationIcon 
 							className="stepNumber"
 							fontSize="large"
 							/>
-            <p className="stepDesc">Returned list includes relevant studies in locations closest to you.</p>
+            <p className="stepDesc">We will match you with the clinical trials that best fit your needs in locations nearest to you.</p>
           </div>
           <div className="col-md-4 step">
 					<PeopleIcon 
 							className="stepNumber"
 							fontSize="large"
 							/>
-            <p className="stepDesc">Click on study title for important details including study contact information.</p>
+            <p className="stepDesc">You can click on each study title for important details including study contact information.</p>
           </div>
         </div>
         <footer className='footer'>
-            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
-            <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+            <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link>
         </footer>
     	</div>
 
