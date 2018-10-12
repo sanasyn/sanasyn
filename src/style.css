@@ -374,40 +374,62 @@ p.locationText {
   width: 75%
 }
 
-.detail-topsection {
-  margin-bottom: 20px;
+
+.MuiPaper-root-2.MuiPaper-elevation1-5.MuiPaper-rounded-3.MuiCard-root-1.col-md-12.detail-topsection {
+  margin-top: 20px;
 }
 
-.detail-study-title {
+h2.MuiTypography-root-30.MuiTypography-headline-35.MuiTypography-gutterBottom-48.detail-study-title {
   font-size: 2.8em;
   text-align: center;
   font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: #9e9b9b solid 3px;
+  padding: 10px 0px;
 }
 
-.detail-description {
-  border-top: .2em solid black;
+p.MuiTypography-root-30.MuiTypography-body1-39.detail-description {
+  padding: 10px 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4em;
 }
 
-.detail-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5em;
-}
 
 .detail-phase, .detail-eligibility, .detail-studylink {
   height: 150px;
   text-align: center;
 }
 
-.detail-study-phase {
-  font-size: 2.5em;
-  text-align: center;
+p.MuiTypography-root-30.MuiTypography-headline-35.trial-phase {
+  padding: 10px 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.9em;
 }
 
-.detail-studylink {
-  padding-top: 35px;
-  font-size: 2.0em;
+.MuiPaper-root-2.MuiPaper-elevation1-5.MuiExpansionPanel-root-70 {
+  display: inline-block;
+  margin: 15px 0px;
+  border-radius: 3px;
 }
+
+
+.MuiExpansionPanelSummary-content-77 {
+  /* font-family: Ari; */
+  font-size: 1.9em;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+p.MuiTypography-root-30.MuiTypography-body1-39.study-link {
+  font-size: 1.6em;
+  padding-top: 10px;
+}
+
+.col-md-6.criteria {
+  font-size: 1.3em;
+}
+
 
 .detail-contact {
   height: 450px;
@@ -419,19 +441,8 @@ div.col-md-6.detail-map {
   padding-left: 0;
 }
 
-.criteriaDiv {
-  margin-top: 12px;
-  padding: 0 10px;
-  font-size: 1.2em;
-}
-
 button.MuiButtonBase-root-27.MuiTab-root-144.MuiTab-textColorInherit-146 {
   width: 100%;
-}
-
-.TabIndicator-colorSecondary-158 {
-  background-color: #f50057;
-  width: 50%;
 }
 
 /*animation*/
