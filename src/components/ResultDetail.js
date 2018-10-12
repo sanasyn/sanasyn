@@ -23,6 +23,11 @@ import PersonIcon from '@material-ui/icons/Person';
 import ListItemText from '@material-ui/core/ListItemText';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EmailModal from './EmailModal';
 
 class ResultDetail extends Component {
@@ -72,23 +77,37 @@ class ResultDetail extends Component {
         {!this.state.gettingStudy ? (
           <div>
             <Card className="col-md-12 detail-topsection">
-
-            <EmailModal study={this.state.study} contact={this.state.contact} />
-
             <CardContent>
 
               <Typography gutterBottom variant="headline" component="h2" className="detail-study-title">{this.state.study.brief_title}</Typography>
-              <Typography component="p" className="detail-description" style={{fontSize:'1.2em'}}>{this.state.study.description}</Typography>
+              
+              <Typography component="p" className="detail-description">{this.state.study.description}</Typography>
+              <Typography variant="headline" component="p"  className="trial-phase">Trial Phase: {this.state.study.phase}</Typography>
+              <Typography component="p" className="study-link">For more information visit: 
+              <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}>
+               {` https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}
+              </a></Typography>
+              
+              <EmailModal study={this.state.study} contact={this.state.contact} />
             </CardContent>
+      
           </Card>
 
-          <div className="row detail-midsection">
-            <Card className="col-md-4 detail-phase">
-              <CardContent>
-                <Typography gutterBottom variant="headline" component="h2"  className="detail-title">Trial Phase</Typography>
-                <Typography component="p"  className="detail-study-phase" style={{fontSize: '2em'}}>{this.state.study.phase}</Typography>
-              </CardContent>
-            </Card>
+          <ExpansionPanel>
+            <ExpansionPanelSummary className="incExTitle" expandIcon={<ExpandMoreIcon />}>
+                Criteria to Participate
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <div className="col-md-6 criteria">
+              {this.state.study.criteria_inc.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)} 
+              </div>
+              <div className="col-md-6 criteria">
+              {this.state.study.criteria_ex.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
+              </div>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+
+          {/* <div className="row detail-midsection">
             <Card className="col-md-4 detail-eligibility">
               <div>
                 <Button
@@ -132,12 +151,7 @@ class ResultDetail extends Component {
                 </Dialog>
               </div>
             </Card>
-            <Card className="col-md-4 detail-studylink">
-              <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}>
-                Clinical Trials Page for {this.state.study.nct_id}
-              </a>
-            </Card>
-          </div>
+          </div> */}
 
           <div className="row detail-endsection">
             {/* Contact Info Section */}
