@@ -4,7 +4,7 @@ import QuestionIcon from '@material-ui/icons/QuestionAnswerTwoTone';
 import LocationIcon from '@material-ui/icons/LocationOnTwoTone';
 import PeopleIcon from '@material-ui/icons/PeopleTwoTone';
 import { Link, withRouter } from 'react-router-dom';
-import {Grid, Button, Typography} from '@material-ui/core';
+import {Grid, Button, Typography, Paper, Card, CardContent} from '@material-ui/core';
 import Image from 'material-ui-image';
 
 
@@ -34,27 +34,85 @@ export default () => {
     paddingTop: 0,
 		position: 'inherit',
 		
-  }
+	}
+	const introInfo={
+		textAlign:'center',
+		paddingTop:'20px'
+	}
 
     return (
-			<Grid container>
-				<Grid item sm style={introBk}>
+			<div>
+			<Grid container style={introBk}>
+				<Grid item xs={6}>
 					<Image src={require('../dist/synapse.jpg')} color="black" style={imageRoot} imageStyle={ imageLogo }/>
 				</Grid>
-				<Grid item sm style={introBk}>
+				<Grid item xs={6} style={introInfo}>
 				
-						<Typography variant="h2" gutterBottom align="center" color="textPrimary">
+						<Typography variant="h3" gutterBottom align="center" color="secondary">
 							A Healing Connection
 						</Typography>
-						<Typography variant="h4" gutterBottom align="center" color="textSecondary">
+						<Typography variant="h6" gutterBottom align="center" color="primary">
 						We connect you to an Alzheimer’s disease clinical trial that’s right for you.
 						</Typography>
-						<Link to={`/quiz/question/0`}>
-							<Button>Get Started</Button>
-						</Link>
-					 
+						
+							<Button variant="contained" size="large" color="primary">
+								<Link to='/quiz/question/0'>Get Started
+								</Link>
+							</Button>
 				</Grid>
 			</Grid>
+
+			<Grid container>
+						<Grid item xs={12} sm={4}>
+							<Card>
+
+								<QuestionIcon 
+									fontSize="large"
+									/>
+								<CardContent>
+          				<Typography variant="body1" gutterBottom>
+										Click Get Started to begin a short questionnaire.
+          				</Typography>
+        				</CardContent>
+								
+							</Card>
+						</Grid>
+						<Grid item xs={12} sm={4}>
+							<Card>
+									<LocationIcon 
+										fontSize="large"
+										/>
+									<CardContent>
+										<Typography variant="body1" gutterBottom>
+											Returned list includes relevant studies in locations closest to you.
+										</Typography>
+									</CardContent>
+									
+							</Card>
+						</Grid>
+						<Grid item xs={12} sm={4}>
+							<Card>
+								<PeopleIcon
+									fontSize="large"
+									color="secondary"
+									/>
+								<CardContent>
+										<Typography variant="body1" gutterBottom>
+										Click on study title for important details including study contact information.
+										</Typography>
+								</CardContent>
+							</Card>
+						</Grid>
+				
+				
+					<Grid item xs={12}>
+					<footer style={introInfo}>
+							<Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
+							<Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+					</footer>
+					</Grid>
+				</Grid>
+			</div>
 
     	// <div className="landingPage">
     	// 	<div className="topStyle row">
