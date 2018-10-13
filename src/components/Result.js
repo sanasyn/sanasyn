@@ -5,19 +5,10 @@ import ComponentDidMount from '../utils/ComponentDidMount';
 import ResultsContainer from '../containers/ResultsContainer';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import axios from 'axios';
-
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import LocationIcon from '@material-ui/icons/LocationOnTwoTone';
+
 
 class Result extends Component {
     constructor(props){

@@ -8,7 +8,7 @@ import Result from './Result';
 import Header from './Header';
 import ResultDetail from './ResultDetail';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import { Image } from 'material-ui-image';
+import {Grid, Button, Typography, Paper, Card, CardContent} from '@material-ui/core';
 
 
 class App extends Component {
@@ -44,7 +44,7 @@ class App extends Component {
           <BrowserRouter>
             <Fragment>
             <Header/>
-                <div>
+                <Paper>
                   <Switch>
                       <Route 
                         exact path="/" 
@@ -67,7 +67,7 @@ class App extends Component {
                         component={ResultDetail} 
                       />
                     </Switch>
-                </div>
+                </Paper>
                 
             </Fragment>
             

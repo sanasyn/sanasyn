@@ -100,9 +100,9 @@ class AnswerOption extends Component {
                     ) : 
                     questionaire[this.props.questionId].type === 'text' ? (
                         <li className="answerOption">
-                            <label className='textCustomLabel' htmlFor={this.props.answerContent} >
+                            {/* <label className='textCustomLabel' htmlFor={this.props.answerContent} >
                                 {this.props.answerContent} :
-                            </label>
+                            </label> */}
                             <input 
                                 type={questionaire[this.props.questionId].type}
                                 className='textCustomInput'

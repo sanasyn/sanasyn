@@ -106,10 +106,9 @@ export default () => {
 				
 				
 					<Grid item xs={12}>
-					<footer style={introInfo}>
-							<Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
-							<Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
-					</footer>
+					<footer className='footer'>
+                          <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link>
+                    </footer>
 					</Grid>
 				</Grid>
 			</div>

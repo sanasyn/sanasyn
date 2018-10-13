@@ -349,10 +349,10 @@ label.checkCustomLabel {
   margin: 0 auto;
 }
 
-.MuiPaper-root-47.MuiPaper-elevation1-50.MuiPaper-rounded-48.MuiCard-root-46 {
+/* .MuiPaper-root-47.MuiPaper-elevation1-50.MuiPaper-rounded-48.MuiCard-root-46 {
   margin: 15px;
   text-align: left;
-}
+} */
 
 a.studyTitle {
   font-size: 1.8em;
@@ -375,9 +375,9 @@ p.locationText {
 }
 
 
-.MuiPaper-root-2.MuiPaper-elevation1-5.MuiPaper-rounded-3.MuiCard-root-1.col-md-12.detail-topsection {
+/* .MuiPaper-root-2.MuiPaper-elevation1-5.MuiPaper-rounded-3.MuiCard-root-1.col-md-12.detail-topsection {
   margin-top: 20px;
-}
+} */
 
 h2.MuiTypography-root-30.MuiTypography-headline-35.MuiTypography-gutterBottom-48.detail-study-title {
   font-size: 2.8em;

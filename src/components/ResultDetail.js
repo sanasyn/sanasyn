@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import { Subscribe } from 'unstated';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ResultsContainer from '../containers/ResultsContainer';
 import ComponentDidMount from '../utils/ComponentDidMount';
-import Button from '@material-ui/core/Button';
 
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Dialog from '@material-ui/core/Dialog';
+import {Button, Card,CardContent,Typography,Grid,Paper} from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -21,8 +14,7 @@ import StoreIcon from '@material-ui/icons/Store';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
 import ListItemText from '@material-ui/core/ListItemText';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -68,97 +60,56 @@ class ResultDetail extends Component {
 
   render(){
     return (
-      <div className="row detail-container">
+      <Grid container>
         <ComponentDidMount
           handler={() => {
             this.getStudy({facility_id: Number(this.props.match.params.facilityId)});
           }}
         >
         {!this.state.gettingStudy ? (
-          <div>
-            <Card className="col-md-12 detail-topsection">
-            <CardContent>
+          <Paper>
+            <Grid item xs>
+              <Card>
+               <CardContent>
 
-              <Typography gutterBottom variant="headline" component="h2" className="detail-study-title">{this.state.study.brief_title}</Typography>
-              
-              <Typography component="p" className="detail-description">{this.state.study.description}</Typography>
-              <Typography variant="headline" component="p"  className="trial-phase">Trial Phase: {this.state.study.phase}</Typography>
-              <Typography component="p" className="study-link">For more information visit: 
-              <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}>
-               {` https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}
-              </a></Typography>
-              
-              <EmailModal study={this.state.study} contact={this.state.contact} />
-            </CardContent>
-      
-          </Card>
-
-          <ExpansionPanel>
-            <ExpansionPanelSummary className="incExTitle" expandIcon={<ExpandMoreIcon />}>
-                Criteria to Participate
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <div className="col-md-6 criteria">
-              {this.state.study.criteria_inc.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)} 
-              </div>
-              <div className="col-md-6 criteria">
-              {this.state.study.criteria_ex.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
-              </div>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-
-          {/* <div className="row detail-midsection">
-            <Card className="col-md-4 detail-eligibility">
-              <div>
-                <Button
-                  fullWidth={true} 
-                  style={{margin:'50px auto'}} 
-                  onClick={()=>{this.handleToggle()}}
-                >
-                  Eligibility Info
-                </Button>
-                <Dialog
-                  title="Eligibility Information"
-                  open={this.state.elg_info_open}
-                  scroll="paper"
-                  style={{height:'100%'}}
-                >
-                  <Tabs
-                    value={this.state.tab_value}
-                    id={this.state.tab_value}
-                    onChange={(event, value) => this.handleTabChange(event, value)}
-                  >
-                    <Tab value={0} label="Inclusion Criteria"/> 
-                    <Tab value={1} label="Exclusion Criteria"/>
-                  </Tabs>
-                  {this.state.tab_value === 0 && 
-                  <div className="criteriaDiv">
-                    {this.state.study.criteria_inc.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
+                  <Typography gutterBottom variant="h2">{this.state.study.brief_title}</Typography>
+                  
+                  <Typography component="body1">{this.state.study.description}</Typography>
+                  <Typography variant="subtitle1" component="p">Trial Phase: {this.state.study.phase}</Typography>
+                  <Typography component="body1" className="study-link">For more information visit: 
+                  <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}>
+                  {` https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}
+                  </a></Typography>
+                  
+                  <EmailModal study={this.state.study} contact={this.state.contact} />  
+              </CardContent>
+        
+              </Card>
+            </Grid>
+          
+            <Grid item xs>
+              <ExpansionPanel>
+                <ExpansionPanelSummary className="incExTitle" expandIcon={<ExpandMoreIcon />}>
+                    Click to view the Criteria for Participating in this study
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <div className="criteria">
+                  {this.state.study.criteria_inc.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)} 
                   </div>
-                    }
-                    {this.state.tab_value === 1 && 
-                  <div className="criteriaDiv">
-                    {this.state.study.criteria_ex.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
+                  <div className="criteria">
+                  {this.state.study.criteria_ex.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
                   </div>
-                    }
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={()=>{this.handleToggle()}}
-                  >
-                    Ok
-                  </Button>
-                </Dialog>
-              </div>
-            </Card>
-          </div> */}
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+            </Grid>
 
-          <div className="row detail-endsection">
+          <Grid container>
+          <Grid item xs={12} sm={12} md={6}>
             {/* Contact Info Section */}
-            <Card className="col-md-6 detail-contact">
-              <Typography gutterBottom variant="headline" component="h2" className="detail-title">Contact Information</Typography>
+            <Card>
+              <Typography gutterBottom variant="h2">Contact Information</Typography>
               <CardContent>
-                <Typography variant="subheading" style={{padding: '0px', fontSize: '1.5em' }}>Facility Contact</Typography>
+                <Typography variant="subtitle2" style={{padding: '0px', fontSize: '1.5em' }}>Facility Contact</Typography>
                   
                   {this.state.contact.facility_contact_name === null && this.state.contact.pi_name === null ? 
                     <List>
@@ -205,7 +156,7 @@ class ResultDetail extends Component {
             
               </CardContent>
               <CardContent>
-                <Typography variant="subheading" style={{padding: '0px'}} style={{fontSize: '1.5em'}}>Central Contact</Typography>
+                <Typography variant="subtitle2" style={{padding: '0px'}} style={{fontSize: '1.5em'}}>Central Contact</Typography>
                 <List>
                   <ListItem style={{padding: '3px'}}><ListItemIcon className="material-icons"><StoreIcon /></ListItemIcon> {this.state.contact.central_contact_name === null ? 'N/A' : this.state.contact.central_contact_name}</ListItem>
                   <ListItem style={{padding: '3px'}}><ListItemIcon className="material-icons"><EmailIcon /></ListItemIcon> {this.state.contact.central_contact_email === null ? 'N/A' : this.state.contact.central_contact_email}</ListItem>
@@ -213,9 +164,11 @@ class ResultDetail extends Component {
                 </List>
               </CardContent>
             </Card>
+          </Grid>
 
+          <Grid item xs={12} sm={12} md={6}>
             {/* google map */}
-            <Card className="col-md-6 detail-map">
+            <Card>
                   <iframe
                     title={"result-map"}
                     width={"600"}
@@ -225,20 +178,21 @@ class ResultDetail extends Component {
                   >
                   </iframe>
             </Card>
-          </div>
-          
-          <div className="row detail-back-row" style={{fontSize: '20px', fontWeight: 'bold'}}>
-            <div className="col-md-3"></div>
-            <Link to={`/results`}>
-              <Button className="col-md-6 detail-back" style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}}>Back to Results</Button>
-            </Link>
-          </div>
-        </div>
+          </Grid>
+            <Grid item xs={12}>
+              
+              <Link to={`/results`}>
+                <Button style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} variant="extendedFab" size="large">Back to Results</Button>
+              </Link>
+            
+            </Grid>
+          </Grid>
+        </Paper>
 
         ) : null }
         
         </ComponentDidMount>
-      </div>
+      </Grid>
       
     )
   }

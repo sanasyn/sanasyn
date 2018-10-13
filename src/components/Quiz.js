@@ -12,8 +12,7 @@ import { Link, withRouter } from 'react-router-dom';
 import AnswerInput from '../components/AnswerInput';
 import HelpModal from '../components/HelpModal';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import {LinearProgress, Button, Card,CardHeader,CardContent} from '@material-ui/core';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import config from '../../config/config.js'
 
@@ -122,18 +121,20 @@ class Quiz extends Component {
                     // onKeyPress={this.handleEnterNext(event)}
                 >
                     <div className="quiz">
+                    <Card>
+                      <CardContent>
                         <LinearProgress 
                             color='primary'
                             className= "progressBar" 
                             variant="determinate"
                             value={this.state.questionNumber/questionaire.length*100} 
                         />
-        
+                      
                         <Question 
                           content={results.state.language === 'spanish' 
                           ? questionaireSpanish[this.state.questionNumber].question 
                           : questionaire[this.state.questionNumber].question }/>
-                                  
+                      
                         <AnswerInput 
                           language={results.state.language}
                           questionId={this.state.questionNumber}
@@ -165,7 +166,8 @@ class Quiz extends Component {
                           : questionaire[this.state.questionNumber].help
                         }
                         />):null}
-    
+                      </CardContent>
+                    </Card>
                     </div>
                 </ReactCSSTransitionGroup>
                 )}
