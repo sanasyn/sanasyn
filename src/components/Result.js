@@ -12,10 +12,12 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import Paper from '@material-ui/core/Paper';
+
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import LocationIcon from '@material-ui/icons/LocationOnTwoTone';
 
 class Result extends Component {
     constructor(props){
@@ -25,7 +27,7 @@ class Result extends Component {
             study: '',
             contact: '',
             currentPage: 1,
-            resultsPerPage: 25,
+            resultsPerPage: 8,
         }
     }
 
@@ -63,76 +65,63 @@ class Result extends Component {
                         style={{marginTop: '30px', color: '#a71919'}}
                         status={'loading'}
                       />
-                    <footer className='footer' style={{position:'fixed'}}>
-                        <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link> | 
-                        <Link className="aboutLink" to='/about' style={{textDecoration: "none"}}> About Us</Link>
+                      <footer className='footer' style={{position: 'fixed'}}>
+                        <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link>
                       </footer>
                   </div>
               
                   ) : (
+                    <div>
                     <div className="instructions" style={{textAlign: "center"}}>
-                    <h2 className='userInfo'>Click on the title for study details.</h2>
-                    
+                      <h2 className='userInfo'>Click on the title for study details.</h2>
 
+                      {this.resultsOnPage(results).map((study, i) => {
+                        return (
+                          <Card key={i}>
+                            <CardContent>
+                              <Link to={`/study/${study.facility_id} `} className="studyTitle">
+                                {study.brief_title}
+                              </Link>
+                              <p className="studyNumber">
+                                {study.nct_id}
+                              </p>
+                              <p className="locationText">
+                                {study.city}, {study.state} {study.zip}
+                              </p>
+                              </CardContent>
+                              </Card>
+                        )
+                      })}
 
-                    <Table style={{maxWidth:"90%", margin:"auto"}}>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell className="tableColumn1">Title</TableCell>
-                          <TableCell className="tableColumn2">City, State</TableCell>
-                          <TableCell className="tableColumn3">Zip Codes</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {this.resultsOnPage(results).map((study, i) => {
-                          return (
-                            <TableRow key={i}>
-                              <TableCell 
-                                className="tableColumn1">
-                                <Link to={`/study/${study.facility_id} `}>
-                                  {study.brief_title}
-                                </Link>
-                                <span 
-                                  style={{fontStyle:'italic', color:'#a0a0a0'}}
-                                >
-                                  ({study.nct_id})
-                                </span>
-                              </TableCell>
-                              <TableCell className="tableColumn2">
-                                {study.city}, {study.state}
-                              </TableCell>
-                              <TableCell className="tableColumn3">
-                                {study.zip}
-                              </TableCell>
-                            </TableRow>
-                          )
-                        }
-                        )}
-                      </TableBody>
-                    </Table>
-                    <div className="pagenation">
-                      {this.state.currentPage <= 1 ? (
-                        <Button 
-                          style={{visibility:'hidden', fontSize: '2.0em'}}
-                        >
+                      <div className="pagenation">
+                        {this.state.currentPage <= 1 ? (
+                          <Button 
+                            style={{visibility:'hidden', fontSize: '2.0em'}}
+                          >
+                              <i className="glyphicon glyphicon-triangle-left" />
+                          </Button>
+                        ) : 
+                          <Button 
+                            style={{visibility:'visible', fontSize: '2.0em'}} 
+                            onClick={() => {this.previousPageNumber()}}
+                          >
                             <i className="glyphicon glyphicon-triangle-left" />
-                        </Button>
-                      ) : 
+                          </Button>}
+                        <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2.5em"}}>
+                          {this.state.currentPage}
+                        </div>
                         <Button 
-                          style={{visibility:'visible', fontSize: '2.0em'}} 
-                          onClick={() => {this.previousPageNumber()}}
+                          style={{fontSize: '2.0em'}} 
+                          onClick={() => {this.nextPageNumber()}}
                         >
-                          <i className="glyphicon glyphicon-triangle-left" />
-                        </Button>}
-                      <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2.5em"}}>          {this.state.currentPage}
+                          <i className="glyphicon glyphicon-triangle-right" />
+                        </Button>
                       </div>
-                      <Button 
-                        style={{fontSize: '2.0em'}} 
-                        onClick={() => {this.nextPageNumber()}}
-                      >
-                        <i className="glyphicon glyphicon-triangle-right" />
-                      </Button>
-                    </div>
+                      
+                  </div>
+                  <footer className='footer'>
+                          <Link className='footerLogo' to='/' style={{textDecoration: "none"}}>SanaSyn</Link>
+                      </footer>
                   </div>
                   ) }
                   

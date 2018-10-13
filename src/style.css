@@ -140,15 +140,16 @@ h1.healingConn {
     height: 450px;
 }
 
-.synapseImage{
+.synapseImage {
   max-width: 45%;
   padding: 0px;
   display: block;
-  background-size: 100%;
+  background-size: cover;
   height: inherit;
   background-repeat: no-repeat;
   box-shadow: -15px 0px 100px 36px rgb(6,13,22) inset;
-  background-image: url('./dist/synapse.jpg');
+  background-image: url(dist/synapse.jpg);
+  background-position: center;
 }
 
 .info {
@@ -343,25 +344,29 @@ label.checkCustomLabel {
 
 /* Results*/
 
-.tableColumn1 {
-  padding: 15px !important;
-  font-size: 1.3em !important;
-  width: 55% !important;
-  white-space: normal !important;
+.instructions {
+  width: 82%;
+  margin: 0 auto;
 }
 
-.tableColumn2 {
-  padding: 15px !important;
-  font-size: 1.3em !important;
-  width: 18% !important;
-  white-space: normal !important;
+.MuiPaper-root-47.MuiPaper-elevation1-50.MuiPaper-rounded-48.MuiCard-root-46 {
+  margin: 15px;
+  text-align: left;
 }
 
-.tableColumn3 {
-  padding: 15px !important;
-  font-size: 1.3em !important;
-  width: 13% !important;
-  white-space: normal !important;
+a.studyTitle {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: rgb(36, 98, 183);
+}
+
+p.studyNumber {
+  font-size: 1.7em;
+}
+
+p.locationText {
+  display: inline;
+  font-size: 1.6em;
 }
 
 /* Result Details */
@@ -369,40 +374,62 @@ label.checkCustomLabel {
   width: 75%
 }
 
-.detail-topsection {
-  margin-bottom: 20px;
+
+.MuiPaper-root-2.MuiPaper-elevation1-5.MuiPaper-rounded-3.MuiCard-root-1.col-md-12.detail-topsection {
+  margin-top: 20px;
 }
 
-.detail-study-title {
+h2.MuiTypography-root-30.MuiTypography-headline-35.MuiTypography-gutterBottom-48.detail-study-title {
   font-size: 2.8em;
   text-align: center;
   font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: #9e9b9b solid 3px;
+  padding: 10px 0px;
 }
 
-.detail-description {
-  border-top: .2em solid black;
+p.MuiTypography-root-30.MuiTypography-body1-39.detail-description {
+  padding: 10px 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4em;
 }
 
-.detail-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5em;
-}
 
 .detail-phase, .detail-eligibility, .detail-studylink {
   height: 150px;
   text-align: center;
 }
 
-.detail-study-phase {
-  font-size: 2.5em;
-  text-align: center;
+p.MuiTypography-root-30.MuiTypography-headline-35.trial-phase {
+  padding: 10px 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.9em;
 }
 
-.detail-studylink {
-  padding-top: 35px;
-  font-size: 2.0em;
+.MuiPaper-root-2.MuiPaper-elevation1-5.MuiExpansionPanel-root-70 {
+  display: inline-block;
+  margin: 15px 0px;
+  border-radius: 3px;
 }
+
+
+.MuiExpansionPanelSummary-content-77 {
+  /* font-family: Ari; */
+  font-size: 1.9em;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+p.MuiTypography-root-30.MuiTypography-body1-39.study-link {
+  font-size: 1.6em;
+  padding-top: 10px;
+}
+
+.col-md-6.criteria {
+  font-size: 1.3em;
+}
+
 
 .detail-contact {
   height: 450px;
@@ -414,19 +441,8 @@ div.col-md-6.detail-map {
   padding-left: 0;
 }
 
-.criteriaDiv {
-  margin-top: 12px;
-  padding: 0 10px;
-  font-size: 1.2em;
-}
-
 button.MuiButtonBase-root-27.MuiTab-root-144.MuiTab-textColorInherit-146 {
   width: 100%;
-}
-
-.TabIndicator-colorSecondary-158 {
-  background-color: #f50057;
-  width: 50%;
 }
 
 /*animation*/
@@ -467,9 +483,8 @@ button.MuiButtonBase-root-27.MuiTab-root-144.MuiTab-textColorInherit-146 {
   font-size: 1.3em;
   line-height: 2.5em;
   margin-top: 0; 
-  background-color: #20759c;
+  background-color: #1b4a8a;
   height: 3em;
-  border-bottom: solid #545454 8px;
   bottom: 0;
   width: 100%;
 }
@@ -485,12 +500,13 @@ button.MuiButtonBase-root-27.MuiTab-root-144.MuiTab-textColorInherit-146 {
 
 .aboutTitle {
   font-weight: bold;
+  font-size: 2.5em;
+  margin-top: 0px;
 }
 
-.aboutCrdEle{
-  padding:0 16px 1em 16px;
+p.MuiTypography-root-30.MuiTypography-headline-35.MuiTypography-gutterBottom-48.aboutCrdEle {
+  font-family: 'Montserrat', sans-serif;
 }
-
 
 /*generic*/
 .picwidth100{
