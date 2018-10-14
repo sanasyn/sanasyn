@@ -72,11 +72,11 @@ class ResultDetail extends Component {
               <Card>
                <CardContent>
 
-                  <Typography gutterBottom variant="h2">{this.state.study.brief_title}</Typography>
+                  <Typography gutterBottom variant="h2" color="inherit">{this.state.study.brief_title}</Typography>
                   
-                  <Typography component="body1">{this.state.study.description}</Typography>
-                  <Typography variant="subtitle1" component="p">Trial Phase: {this.state.study.phase}</Typography>
-                  <Typography component="body1" className="study-link">For more information visit: 
+                  <Typography component="body1" color="inherit">{this.state.study.description}</Typography>
+                  <Typography variant="subtitle1" component="p" color="inherit">Trial Phase: {this.state.study.phase}</Typography>
+                  <Typography component="body1" className="study-link" color="inherit">For more information visit: 
                   <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}>
                   {` https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}
                   </a></Typography>
@@ -107,9 +107,9 @@ class ResultDetail extends Component {
           <Grid item xs={12} sm={12} md={6}>
             {/* Contact Info Section */}
             <Card>
-              <Typography gutterBottom variant="h2">Contact Information</Typography>
+              <Typography gutterBottom variant="h2" color="inherit">Contact Information</Typography>
               <CardContent>
-                <Typography variant="subtitle2" style={{padding: '0px', fontSize: '1.5em' }}>Facility Contact</Typography>
+                <Typography variant="subtitle2" style={{padding: '0px', fontSize: '1.5em' }} color="inherit">Facility Contact</Typography>
                   
                   {this.state.contact.facility_contact_name === null && this.state.contact.pi_name === null ? 
                     <List>
@@ -156,7 +156,7 @@ class ResultDetail extends Component {
             
               </CardContent>
               <CardContent>
-                <Typography variant="subtitle2" style={{padding: '0px'}} style={{fontSize: '1.5em'}}>Central Contact</Typography>
+                <Typography variant="subtitle2" style={{padding: '0px',fontSize: '1.5em'}} color="inherit">Central Contact</Typography>
                 <List>
                   <ListItem style={{padding: '3px'}}><ListItemIcon className="material-icons"><StoreIcon /></ListItemIcon> {this.state.contact.central_contact_name === null ? 'N/A' : this.state.contact.central_contact_name}</ListItem>
                   <ListItem style={{padding: '3px'}}><ListItemIcon className="material-icons"><EmailIcon /></ListItemIcon> {this.state.contact.central_contact_email === null ? 'N/A' : this.state.contact.central_contact_email}</ListItem>

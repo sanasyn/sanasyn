@@ -95,7 +95,7 @@ class Result extends Component {
                           <Button 
                             style={{visibility:'visible', fontSize: '2.0em'}} 
                             onClick={() => {this.previousPageNumber()}}
-                          >
+                            color="inherit">
                             <i className="glyphicon glyphicon-triangle-left" />
                           </Button>}
                         <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2.5em"}}>
@@ -104,6 +104,7 @@ class Result extends Component {
                         <Button 
                           style={{fontSize: '2.0em'}} 
                           onClick={() => {this.nextPageNumber()}}
+                          color="inherit"
                         >
                           <i className="glyphicon glyphicon-triangle-right" />
                         </Button>

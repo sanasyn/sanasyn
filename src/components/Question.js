@@ -15,12 +15,12 @@ function Question(props){
     return (
 
         <Fragment>
-            <Typography variant="h2" gutterBottom align="center">
+            <Typography variant="h2" gutterBottom align="center" color="inherit">
                 {question}
 			</Typography>
-            <Typography variant="subtitle1" gutterBottom align="center">
+            {/* <Typography variant="subtitle1" gutterBottom align="center">
                 {sub}
-			</Typography>
+			</Typography> */}
         </Fragment>
     );
 }
