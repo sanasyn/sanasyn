@@ -67,7 +67,7 @@ class ResultDetail extends Component {
           }}
         >
         {!this.state.gettingStudy ? (
-          <Paper>
+          <Paper style={{width:'100%'}}>
             <Grid item xs>
               <Card>
                <CardContent>
@@ -182,7 +182,7 @@ class ResultDetail extends Component {
             <Grid item xs={12}>
               
               <Link to={`/results`}>
-                <Button style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} variant="extendedFab" size="large">Back to Results</Button>
+                <Button style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} variant="extendedFab" size="large" fullWidth>Back to Results</Button>
               </Link>
             
             </Grid>

@@ -3,8 +3,10 @@ import { Subscribe } from 'unstated';
 import { Link, withRouter } from 'react-router-dom';
 import ComponentDidMount from '../utils/ComponentDidMount';
 import ResultsContainer from '../containers/ResultsContainer';
-import Button from '@material-ui/core/Button';
+import {Button, Typography} from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {ArrowForward, ArrowBack}from '@material-ui/icons';
+
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -50,7 +52,10 @@ class Result extends Component {
                 >
                   {results.state.loading ? (
                     <div className='refreshIndicator'>
-                    <h2 className='userInfo'>Searching for results...</h2>
+                      <Typography variant="h6" gutterBottom>
+                        Searching for results...
+                      </Typography>
+                    {/* <h2 className='userInfo'>Searching for results...</h2> */}
                       <CircularProgress
                         size={200}
                         style={{marginTop: '30px', color: '#a71919'}}
@@ -64,15 +69,20 @@ class Result extends Component {
                   ) : (
                     <div>
                     <div className="instructions" style={{textAlign: "center"}}>
-                      <h2 className='userInfo'>Click on the title for study details.</h2>
+                      {/* <h2 className='userInfo'>Click on the title for study details.</h2> */}
+                      <Typography variant="h6" gutterBottom>
+                        Click on the title for study details.
+                      </Typography>
 
                       {this.resultsOnPage(results).map((study, i) => {
                         return (
                           <Card key={i}>
                             <CardContent>
-                              <Link to={`/study/${study.facility_id} `} className="studyTitle">
+                              <Typography variant="h2" gutterBottom>
+                              <Link to={`/study/${study.facility_id} `}>
                                 {study.brief_title}
                               </Link>
+                              </Typography>
                               <p className="studyNumber">
                                 {study.nct_id}
                               </p>
@@ -88,15 +98,19 @@ class Result extends Component {
                         {this.state.currentPage <= 1 ? (
                           <Button 
                             style={{visibility:'hidden', fontSize: '2.0em'}}
+                            color="primary"
                           >
-                              <i className="glyphicon glyphicon-triangle-left" />
+                             
+                              <ArrowForward />
+                              
                           </Button>
                         ) : 
                           <Button 
                             style={{visibility:'visible', fontSize: '2.0em'}} 
                             onClick={() => {this.previousPageNumber()}}
-                            color="inherit">
-                            <i className="glyphicon glyphicon-triangle-left" />
+                            color="primary">
+                            
+                              <ArrowBack/>
                           </Button>}
                         <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2.5em"}}>
                           {this.state.currentPage}
@@ -104,9 +118,10 @@ class Result extends Component {
                         <Button 
                           style={{fontSize: '2.0em'}} 
                           onClick={() => {this.nextPageNumber()}}
-                          color="inherit"
+                          color="primary"
                         >
-                          <i className="glyphicon glyphicon-triangle-right" />
+                          <ArrowForward />
+                          
                         </Button>
                       </div>
                       

@@ -4,15 +4,24 @@ import QuestionIcon from '@material-ui/icons/QuestionAnswerTwoTone';
 import LocationIcon from '@material-ui/icons/LocationOnTwoTone';
 import PeopleIcon from '@material-ui/icons/PeopleTwoTone';
 import { Link, withRouter } from 'react-router-dom';
-import {Grid, Button, Typography, Paper, Card, CardContent} from '@material-ui/core';
+import {Grid, Button, Typography, Paper, Hidden} from '@material-ui/core';
 import Image from 'material-ui-image';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles={
 	getStartedButton: {
-		fontSize: "2em",
+		fontSize: "2rem",
 		margin: "20px 10px",
 		padding: "10px"
+	},
+
+	'@media (max-width: 600px)':
+	{
+		getStartedButton: {
+			fontSize:"1.25rem",
+			margin: "20px 10px",
+			padding: "10px"
+		},
 	},
 
 	introBk:{
@@ -52,15 +61,24 @@ export default withStyles(styles)(({classes})=> {
 		
 	}
 
+
+
     return (
 			<div>
 			<Grid container className={classes.introBk}>
-				<Grid item xs={6}>
-					<Paper className={classes.introBk}>
+				<Hidden xsDown>
+				<Grid item sm={6}>
+					{/* <Paper className={classes.introBk}>
 						<Image src={require('../dist/synapse.jpg')} color="#060d16" style={imageRoot} imageStyle={ imageLogo }/>
-					</Paper>
+					</Paper>	 */}
+					
+						<Paper className={classes.introBk}>
+							<Image src={require('../dist/synapse.jpg')} color="#060d16" style={imageRoot} imageStyle={ imageLogo }/>
+						</Paper>
+        			
 				</Grid>
-				<Grid item xs={6} className={classes.introInfo}>
+				</Hidden>
+				<Grid item sm={6} md={6} className={classes.introInfo}>
 					<Paper className={classes.paperDark}>
 						<Typography variant="h2" gutterBottom align="center" color="textPrimary">
 							A Healing Connection
@@ -70,7 +88,7 @@ export default withStyles(styles)(({classes})=> {
 						</Typography>
 
 							<Link to='/quiz/question/0'>
-								<Button variant="contained" size="large" color="secondary" className={classes.getStartedButton}>
+								<Button variant="contained" color="secondary" className={classes.getStartedButton}>
 									Get Started
 								</Button>
 							</Link>

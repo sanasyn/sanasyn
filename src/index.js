@@ -5,7 +5,7 @@ import './style.css';
 import App from './components/App';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+var theme = createMuiTheme({
     palette: {
       primary: { main:'#20759c'}, 
       secondary: { main: '#3b4e8c' }, 
@@ -14,10 +14,41 @@ const theme = createMuiTheme({
         primary:'#ffffff',
         secondary: '#eeff7b'    }
     }
-    
   });
 
-  console.log(theme);
+  theme = {
+    ...theme,
+    overrides: {
+      MuiTypography: {
+        h2: {
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "2.75rem"
+          },
+          [theme.breakpoints.down("xs")]: {
+            fontSize: "2rem"
+          }
+        },
+        body1: {
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "1.5rem"
+            },
+            [theme.breakpoints.down("xs")]: {
+              fontSize: "1rem"
+            }
+          },
+        headline: {
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "1.75rem"
+            },
+            [theme.breakpoints.down("xs")]: {
+              fontSize: "1rem"
+            }
+          }
+      }
+    }
+  };
+
+//   console.log(theme);
 
 ReactDOM.render(
     <Provider>

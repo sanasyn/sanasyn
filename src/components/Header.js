@@ -26,8 +26,31 @@ const styles = {
     },
     navLink:{
       padding:'24px',
-      textDecoration: 'none'
+      textDecoration: 'none',
+      color:"#fff"
     },
+
+
+    '@media (max-width: 400px)':
+    {
+      navLink:{
+        padding:'24px 3px',
+        textDecoration: 'none',
+        color:"#fff",
+        fontSize:"0.825rem"
+      },
+    },
+
+    '@media (min-width: 600px)':
+    {
+      navLink:{
+        paddingRight:'10px',
+        paddingLeft:'15px',
+        textDecoration: 'none',
+        color:"#fff"
+      },
+    },
+
     bringToFront:{
       zIndex:99
     }
