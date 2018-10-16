@@ -43,7 +43,10 @@ var theme = createMuiTheme({
             [theme.breakpoints.down("xs")]: {
               fontSize: "1rem"
             }
-          }
+          },
+        title:{
+            color:"#000"
+        }
       }
     }
   };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -7,6 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { withStyles } from '@material-ui/core/styles';
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -14,7 +15,16 @@ import axios from 'axios';
  *
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
-export default class EmailModal extends React.Component {
+
+
+const styles = {
+  fontBlack:{
+    color:"black"
+  }
+}
+
+
+ class EmailModal extends Component {
     constructor(props){
       super(props)
 
@@ -73,6 +83,7 @@ export default class EmailModal extends React.Component {
     }
 
     render() {
+      const { classes } = this.props;
         return (
         <div style={{marginTop:'20px'}}>
             <a
@@ -87,9 +98,9 @@ export default class EmailModal extends React.Component {
               open={this.state.open}
               onClose={() => this.handleClose()}
               >
-                <DialogTitle id="alert-dialog-title">{"Email Me!"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title" color="inherit">{"Email Me!"}</DialogTitle>
                 <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
+                  <DialogContentText id="alert-dialog-description" color="inherit">
                     To get this study information, please enter your email address below.
                   </DialogContentText>
                   <TextField
@@ -99,7 +110,7 @@ export default class EmailModal extends React.Component {
                     label="Email Address"
                     type="email"
                     fullWidth
-                    InputProps={{disableUnderline: true}}
+                    InputProps={{disableUnderline: true, className:classes.fontBlack}}
                     value={this.state.value}
                     onChange={this.handleChange}
                   />
@@ -108,14 +119,16 @@ export default class EmailModal extends React.Component {
                   <Button
                     color='primary'
                     onClick={() => this.handleSubmitEmail()}
-                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    variant="contained"
+                    // style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
                   >
                     Submit Email
                   </Button>
                   <Button
                     color='primary'
                     onClick={() => this.handleClose()}
-                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    variant="contained"
+                    // style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
                   >
                     Close
                   </Button>
@@ -127,26 +140,29 @@ export default class EmailModal extends React.Component {
               open={this.state.open}
               onClose={() => this.handleClose()}
               >
-                <DialogTitle>{"Send email to "}{this.state.value}{"?"}</DialogTitle>
+                <DialogTitle color="inherit">{"Send email to "}{this.state.value}{"?"}</DialogTitle>
                 <DialogActions>
                   <Button
                     color='primary'
                     onClick={() => this.emailUser()}
-                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    variant="contained"
+                    // style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
                   >
                     Yes, send email
                   </Button>,
                   <Button
                     color='primary'
                     onClick={() => this.editEmail()}
-                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    variant="contained"
+                    // style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
                   >
                     Edit email
                   </Button>,
                   <Button
                     color='primary'
                     onClick={() => this.handleClose()}
-                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    variant="contained"
+                    // style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
                   >
                     Cancel
                   </Button>
@@ -166,23 +182,26 @@ export default class EmailModal extends React.Component {
                     label="Email Address"
                     type="email"
                     fullWidth
-                    InputProps={{disableUnderline: true}}
+                    InputProps={{disableUnderline: true,className:classes.fontBlack}}
                     value={this.state.value}
                     onChange={this.handleChange}
+                    className={classes.fontBlack}
                   />
                 </DialogContent>
                 <DialogActions>
                   <Button
                     color='primary'
                     onClick={() => this.handleSubmitEmail()}
-                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    variant="contained"
+                    // style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
                   >
                     Submit Email
                   </Button>
                   <Button
                     color='primary'
                     onClick={() => this.handleClose()}
-                    style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
+                    variant="contained"
+                    // style={{backgroundColor: "#3b4e8c", hoverColor: "#20759c", marginTop:"20px", margin:"10px", color:'#fff'}}
                   >
                     Close
                   </Button>
@@ -193,3 +212,5 @@ export default class EmailModal extends React.Component {
         );
     }
 }
+
+export default withStyles(styles)(EmailModal);
