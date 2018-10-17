@@ -6,13 +6,19 @@ import ResultsContainer from '../containers/ResultsContainer';
 import {Button, Typography} from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {ArrowForward, ArrowBack}from '@material-ui/icons';
-
+import { withStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
+const styles = {
+  card: {
+    margin:'10px'
+  }
+}
 
 class Result extends Component {
+
     constructor(props){
         super(props)
 
@@ -40,6 +46,7 @@ class Result extends Component {
     }
 
     render(){
+      const { classes } = this.props;
         return (
           <Subscribe to={[ResultsContainer]}>
             {(results) => (
@@ -76,7 +83,7 @@ class Result extends Component {
 
                       {this.resultsOnPage(results).map((study, i) => {
                         return (
-                          <Card key={i}>
+                          <Card key={i} className={classes.card}>
                             <CardContent>
                               <Typography variant="h3" gutterBottom>
                               <Link to={`/study/${study.facility_id} `}>
@@ -140,4 +147,4 @@ class Result extends Component {
     } 
 }
 
-export default withRouter(Result);
+export default withRouter(withStyles(styles)(Result));
