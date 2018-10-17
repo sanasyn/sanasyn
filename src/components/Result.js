@@ -78,7 +78,7 @@ class Result extends Component {
                         return (
                           <Card key={i}>
                             <CardContent>
-                              <Typography variant="h2" gutterBottom>
+                              <Typography variant="h3" gutterBottom>
                               <Link to={`/study/${study.facility_id} `}>
                                 {study.brief_title}
                               </Link>
@@ -112,7 +112,7 @@ class Result extends Component {
                             
                               <ArrowBack/>
                           </Button>}
-                        <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2.5em"}}>
+                        <div className="currentPage" style={{display: "inline", fontWeight:"bold", fontSize:"2rem"}}>
                           {this.state.currentPage}
                         </div>
                         <Button 

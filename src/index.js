@@ -13,6 +13,14 @@ var theme = createMuiTheme({
       text:{
         primary:'#ffffff',
         secondary: '#eeff7b'    }
+    },
+    typography:{
+        fontFamily:[
+            'Montserrat',
+            'Helvetica',
+            'Arial',
+            'sans-serif'
+        ]
     }
   });
 
@@ -28,6 +36,14 @@ var theme = createMuiTheme({
             fontSize: "2rem"
           }
         },
+        h3: {
+            [theme.breakpoints.down("sm")]: {
+              fontSize: "2.25rem"
+            },
+            [theme.breakpoints.down("xs")]: {
+              fontSize: "1.75rem"
+            }
+          },
         body1: {
             [theme.breakpoints.down("sm")]: {
               fontSize: "1.5rem"
