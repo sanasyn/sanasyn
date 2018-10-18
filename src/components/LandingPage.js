@@ -26,7 +26,18 @@ const styles={
 
 	introBk:{
 		backgroundColor:'#060d16',
+		height: '450px',
 
+	},
+	image: {
+		height:'inherit',
+		display:'block',
+		backgroundImage: `url(${Background})`,
+		backgroundSize: 'cover',
+		backgroundPosition: 'center',
+		boxShadow: [
+			[-15, 0, 100, 36, 'rgb(6,13,22)', 'inset']
+		]
 	},
 
 	introInfo:{
@@ -37,7 +48,8 @@ const styles={
 	paper:{
 		padding:25,
 		height:'100%',
-		textAlign:'center'
+		textAlign:'center',
+		border: 'none'
 	},
 
 	paperDark:{
@@ -73,7 +85,7 @@ export default withStyles(styles)(({classes})=> {
 					</Paper>	 */}
 					
 						<Paper className={classes.introBk}>
-							<Image src={require('../dist/synapse.jpg')} color="#060d16" style={imageRoot} imageStyle={ imageLogo }/>
+							<div className={classes.image}></div>
 						</Paper>
         			
 				</Grid>
@@ -119,7 +131,7 @@ export default withStyles(styles)(({classes})=> {
 							<Paper className={classes.paper}>
 								<LocationIcon 
 									fontSize="large"
-									
+									color="error"
 									/>
 								
 								<Typography 
@@ -135,7 +147,7 @@ export default withStyles(styles)(({classes})=> {
 							<Paper className={classes.paper}>
 								<PeopleIcon
 									fontSize="large"
-									color="secondary"
+									color="error"
 									
 									/>
 				

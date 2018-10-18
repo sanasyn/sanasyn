@@ -10,14 +10,21 @@ import {Link} from 'react-router-dom';
 
 const styles = {
     root: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     grow: {
       flexGrow: 1 
     },
+    appBar: {
+      background: 'black',
+      backgroundImage: 'linear-gradient(rgb(36, 98, 183), rgba(32, 117, 156,0))',
+    },
     logo:{
         color: '#eeff7b',
-        letterSpacing: '-2px'
+        letterSpacing: '-6px',
+        fontFamily: 'Arial',
+        fontSize: '2em',
+        fontStyle: 'italic'
     },
     title:{
         height:'100%',
@@ -29,7 +36,6 @@ const styles = {
       textDecoration: 'none',
       color:"#fff"
     },
-
     '@media (max-width: 600px)':
     {
       navLink:{
@@ -61,7 +67,15 @@ const styles = {
     }
   const imageRoot={
     paddingTop: 0,
-    position: 'inherit'
+    position: 'inherit',
+    boxShadow:  {
+      x: -15,
+      y: 0,
+      blur: 100,
+      spread: 36,
+      color: 'rgb(6,13,22)',
+      inset: 'inset'
+    }
   }
 
 
@@ -69,12 +83,12 @@ function Header(props){
     const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
             
             <div className={classes.grow}>
             
-              <span className={classes.logo}>S &#423;</span>
+              <span className={classes.logo}>S&#423;</span>
               <Link to='/'>
               <Image src={require('../dist/SanaTitle.svg')} color="transparent" style={imageRoot} imageStyle={ imageLogo }/>
               </Link>
