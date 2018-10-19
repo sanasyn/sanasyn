@@ -3,69 +3,62 @@ const query = require('./exampleObjects').complete;
 // creates genetic testing query for inclusion criteria
 function geneticQueryInc(genetic) {
 	let queryGenetic = '%';
-	if (genetic.taken === 'apoE4_1') {
+	if (genetic.apoe4Present === 'Yes') {
 		queryGenetic = '%APOE4%'
 	}
-	// console.log("GENETIC INC: ", queryGenetic)
 	return queryGenetic;
 }
 
 // creates genetic testing query for exclusion criteria
 function geneticQueryEx(genetic) {
 	let queryGenetic = [''];
-	if (genetic.consent === 'no') {
+	if (genetic.consent === 'No') {
 		queryGenetic = ['%APOE%','%genetic%'];
 	}
-	// console.log("GENETIC Ex: ", queryGenetic)
 	return queryGenetic;
 }
 
 // creates mri query for exclusion criteria
 function mriQuery(mri) {
 	let queryMri = [''];
-	if (mri === 'no') {
+	if (mri === 'No') {
 		queryMri = ['%contraindication%MR%'];
 	}
-	// console.log("MRI: ", queryMri);
 	return queryMri;
 }
 
 // creates PET scan query for exclusion criteria
 function petQuery(pet) {
 	let petArray = [''];
-	if (pet === 'no') {
+	if (pet === 'No') {
 		petArray = ['%PET%', "%florbetapir%", "%F-AV-1451%"]
 	}
-	// console.log("PET: ", petArray);
 	return petArray;
 }
 
 // creates spinal tap query for exclusion criteria
 function spinalQuery(spinal) {
 	let spinalArray = [''];
-	if (spinal === 'no') {
+	if (spinal === 'No') {
 		spinalArray = ['%lumbar%','%LP%']
 	} 
-	// console.log("SPINAL ARRAY: ", spinalArray);
 	return spinalArray;
 }
 
 function strokeQuery(stroke) {
 	let strokeArray = [''];
-	if (stroke === 'yes') {
+	if (stroke === 'Yes') {
 		strokeArray = ['%stroke%', '%vascular%', '%ischemic%', '%myocardial infarction%','%congestive heart failure%', '%valvular%', '%hypertrophic cardiomyopathy%', "%cerebrovascular%", "%cardiovascular%", "%cardiac%"
 		]
 	}
-	// console.log("STROKE ARRAY: ", strokeArray);
 	return strokeArray;
 }
 
 function cancerQuery(cancer) {
 	let cancerArray = [''];
-	if (cancer === 'yes') {
+	if (cancer === 'Yes') {
 		cancerArray = ['%cancer%']
 	}
-	// console.log("CANCER ARRAY: ", cancerArray);
 	return cancerArray;
 }
 
@@ -77,23 +70,19 @@ function medicationsQuery(medications) {
 	const exelon = ['%rivastigmine%', '%exelon%', '%cholinesterase%'];
 	const razadyne = ['%galantamine%', '%razadyne%', '%cholinesterase%'];
 	const namenda = ['%memantine%', '%namenda%'];
-	const cognex = ['%tacrine%', '%cognex%', '%cholinesterase%'];
 
-	if (medications.acceptableTime === 'yes'){
-		if (medications.list.indexOf('Aricept') > -1) {
+	if (medications.acceptableTime === 'Yes'){
+		if (medications.list.indexOf('Aricept (generic name: donepezil)') > -1) {
 			buildArray = buildArray.concat(aricept);
 		};
-		if (medications.list.indexOf('Exelon') > -1) {
+		if (medications.list.indexOf('Exelon (generic name: rivastigmine)') > -1) {
 			buildArray = buildArray.concat(exelon);
 		};
-		if (medications.list.indexOf('Razadyne Er') > -1) {
+		if (medications.list.indexOf('Razadyne (generic name: galantamine)') > -1) {
 			buildArray = buildArray.concat(razadyne);
 		};
-		if (medications.list.indexOf('Namenda') > -1) {
+		if (medications.list.indexOf('Namenda (generic name: memantine)') > -1) {
 			buildArray = buildArray.concat(namenda);
-		};
-		if (medications.list.indexOf('Cognex') > -1) {
-			buildArray = buildArray.concat(cognex);
 		};
 	}
 
@@ -107,8 +96,6 @@ function medicationsQuery(medications) {
 	if (queryArray.length === 0) {
 		queryArray = ['']
 	}
-	// console.log("MEDICATIONS: ", queryArray);
-
 	return queryArray;
 }
 
@@ -122,17 +109,17 @@ function medicationsQueryNot(medications) {
 	const razadyne = ['%galantamine%', '%razadyne%', '%cholinesterase%'];
 	const namenda = ['%memantine%', '%namenda%'];
 
-	if (medications.acceptableTime === 'no'){
-		if (medications.list.indexOf('Aricept') > -1) {
+	if (medications.acceptableTime === 'No'){
+		if (medications.list.indexOf('Aricept (generic name: donepezil)') > -1) {
 			buildArray = buildArray.concat(aricept);
 		};
-		if (medications.list.indexOf('Exelon') > -1) {
+		if (medications.list.indexOf('Exelon (generic name: rivastigmine)') > -1) {
 			buildArray = buildArray.concat(exelon);
 		};
-		if (medications.list.indexOf('Razadyne Er') > -1) {
+		if (medications.list.indexOf('Razadyne (generic name: galantamine)') > -1) {
 			buildArray = buildArray.concat(razadyne);
 		};
-		if (medications.list.indexOf('Namenda') > -1) {
+		if (medications.list.indexOf('Namenda (generic name: memantine)') > -1) {
 			buildArray = buildArray.concat(namenda);
 		};
 	}
@@ -147,18 +134,15 @@ function medicationsQueryNot(medications) {
 	if (queryArray.length === 0) {
 		queryArray = ['%']
 	}
-	// console.log("MEDICATIONS: ", queryArray);
-
 	return queryArray;
 }
 
 // creates caregiver query for inclusion criteria
 function caregiverQueryInc(care) {
 	let queryCare = [''];
-	if (care === 'no') {
+	if (care === 'No') {
 		queryCare = ['%caregiver%','%partner%'];
 	}
-	// console.log("CARE INC: ", queryCare)
 	return queryCare;
 }
 

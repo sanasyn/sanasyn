@@ -15,29 +15,26 @@ function getConnectionOptions() {
 }
 
 function getDetails(req, res){
-  const study = req.body;
-
-  return getStudyInfo(study)
-    .then((data)=> getContactInfo(data, study))
+  return getStudyInfo(req.body.facility_id)
+    .then((data)=> getContactInfo(data, req.body.facility_id))
     .then((data) => res.send(data))
 }
 
-function getStudyInfo(study){
+function getStudyInfo(facilityInfo){
   return knex
     .select('nct_id','brief_title','description','phase','city','state','zip','criteria_inc','criteria_ex')
     .from('aact_master')
-    .where('facility_id', '=', study.facility_id)
+    .where('facility_id', '=', facilityInfo)
     .then(row => {
-      // console.log("getStudyInfo ", row);
       return row
     })
 }
 
-function getContactInfo(data, study){
+function getContactInfo(data, facilityInfo){
   return knex
     .select('facility_name','central_contact_name','central_contact_phone','central_contact_email','facility_contact_name','facility_contact_phone','facility_contact_email','facility_name','pi_name','city','state','zip','country')
     .from('contact_info')
-    .where('facility_id', '=', study.facility_id)
+    .where('facility_id', '=', facilityInfo)
     .then(row => {
       return {
         study: data,

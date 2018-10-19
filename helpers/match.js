@@ -2,16 +2,16 @@ const config = require('../config/config').heroku;
 const pg = require('pg');
 const knex = require('knex')(getConnectionOptions());
 
-const geneticQueryInc = require('./translate').geneticQueryInc;
-const geneticQueryEx = require('./translate').geneticQueryEx;
-const mriQuery = require('./translate').mriQuery;
-const petQuery = require('./translate').petQuery;
-const spinalQuery = require('./translate').spinalQuery;
-const strokeQuery = require('./translate').strokeQuery;
-const cancerQuery = require('./translate').cancerQuery;
-const medicationsQuery = require('./translate').medicationsQuery;
-const medicationsQueryNot = require('./translate').medicationsQueryNot;
-const caregiverQueryInc = require('./translate').caregiverQueryInc;
+const geneticQueryInc = require('./setQuery').geneticQueryInc;
+const geneticQueryEx = require('./setQuery').geneticQueryEx;
+const mriQuery = require('./setQuery').mriQuery;
+const petQuery = require('./setQuery').petQuery;
+const spinalQuery = require('./setQuery').spinalQuery;
+const strokeQuery = require('./setQuery').strokeQuery;
+const cancerQuery = require('./setQuery').cancerQuery;
+const medicationsQuery = require('./setQuery').medicationsQuery;
+const medicationsQueryNot = require('./setQuery').medicationsQueryNot;
+const caregiverQueryInc = require('./setQuery').caregiverQueryInc;
 const getFacilityDistance = require('./location');
 
 function getConnectionOptions() {
@@ -50,42 +50,15 @@ function runQuery(req, res) {
 		.where('gender', query.gender)
 		.orWhere('gender', 'All')
 	})
-	// // GOOD
 	.andWhere(knex.raw("criteria_inc ILIKE ( :search)", 
 		{search: geneticQueryInc(query.geneticTesting)}
 		))
-	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :search)",
-	// 		{search: geneticQueryEx(query.geneticTesting)}
-	// 		))
-	// // GOOD
-	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :mriSearch)", 
-	// 		{mriSearch: mriQuery(query.mri)}
-	// 		))
-	// // GOOD
-	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :arraySearch)",
-	// 		{arraySearch: petQuery(query.pet)}
-	// 		))
-	// //GOOD
 	.andWhere(knex.raw("criteria_ex NOT LIKE ALL ( :spinalSearch)", 
 		{spinalSearch: spinalQuery(query.spinalTap)}
 		))
-	// //GOOD
-	// .andWhere(knex.raw("criteria_ex NOT ILIKE ALL ( :strokeSearch)",
-	// 		{strokeSearch: strokeQuery(query.stroke)}
-	// 		))
-	// // //GOOD
-	// .andWhere(knex.raw("criteria_ex NOT ILIKE any ( :arraySearch)", 
-	// 		{arraySearch: medicationsQuery(query.medications)}
-	// 		))
-	// // //GOOD
-	// .andWhere(knex.raw("criteria_inc NOT ILIKE any ( :careSearch)", 
-	// 		{careSearch: caregiverQueryInc(query.informant)}
-	// 		))
-
 	.andWhere(knex.raw("criteria_ex NOT ILIKE ALL ( :multipleSearch)", 
 		{multipleSearch: buildNotILikeQueryEx(query)}
 		))
-	// .limit(10)
 	.then(rows => {
 		return getFacilityDistance(query.zipcode, rows)
 			.then((results) => {
@@ -111,7 +84,6 @@ function buildNotILikeQueryEx(request) {
 		medicationsQuery(request.medications),
 		caregiverQueryInc(request.informant)
 	];
-	// console.log("FUNCTION ARRAY: ", functionArray);
 	for (let i=0; i<functionArray.length; i++) {
 		if (functionArray[i].join().length) {
 			buildArray.push(...functionArray[i]);
@@ -120,11 +92,9 @@ function buildNotILikeQueryEx(request) {
 	if (!buildArray.length) {
 		buildArray=[''];
 	}
-	// console.log("BUILD ARRRAY: ", buildArray);
 	return buildArray;
 }
 
-// runQuery();
 module.exports = {
 	runQuery: runQuery,
 }

@@ -1,8 +1,9 @@
 //component displaying quiz questions
 //presentation component
 
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {Grid, Button, Typography, Paper, Card, CardContent} from '@material-ui/core';
 
 function Question(props){
     var question = props.content;
@@ -12,10 +13,15 @@ function Question(props){
         var question= question.substring(0,question.indexOf("|")-1);
     }
     return (
-        <div>
-        <h2 className="question">{question}</h2>
-        <span className="subtext">{sub}</span>
-        </div>
+
+        <Fragment>
+            <Typography variant="h2" gutterBottom align="center" color="inherit">
+                {question}
+			</Typography>
+            {/* <Typography variant="subtitle1" gutterBottom align="center">
+                {sub}
+			</Typography> */}
+        </Fragment>
     );
 }
 

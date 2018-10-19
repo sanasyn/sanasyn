@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {List, ListItem} from 'material-ui/List';
-import FontIcon from 'material-ui/FontIcon';
-import Dialog from 'material-ui/Dialog';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import { Subscribe } from 'unstated';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import ComponentDidMount from '../utils/ComponentDidMount';
+
+import {Button, Card,CardContent,Typography,Grid,Paper} from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import LocationIcon from '@material-ui/icons/LocationOn';
+import PhoneIcon from '@material-ui/icons/Phone';
+import StoreIcon from '@material-ui/icons/Store';
+import EmailIcon from '@material-ui/icons/Email';
+import PersonIcon from '@material-ui/icons/Person';
+import ListItemText from '@material-ui/core/ListItemText';
+
+
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import EmailModal from './EmailModal';
 
 class ResultDetail extends Component {
   constructor(props){
@@ -13,176 +28,171 @@ class ResultDetail extends Component {
 
       this.state = {
         elg_info_open: false,
-        tab_value:'include'
+        tab_value: 0,
+        study: '',
+        contact: '',
+        gettingStudy: true
       }
+  }
+
+  getStudy(facilityId) {
+    axios.post("/api/resultDetails", facilityId)
+      .then((results) => {
+        this.setState({ 
+          study: results.data.study[0],
+          contact: results.data.contact[0],
+        });
+        this.setState({
+          gettingStudy: false
+        })
+      })
   }
 
   handleToggle() {
     const currStat=this.state.elg_info_open;
     this.setState({elg_info_open: !currStat});
   };
-  handleTabChange(value) {
+  handleTabChange(event, value) {
     this.setState({
       tab_value: value,
     });
   };
 
-
   render(){
-    const actions = [
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onClick={()=>{this.handleToggle()}}
-      />
-    ];
-
-    var showCityStateZip, genericFacilityContact;
-    if(this.props.contact.facility_contact_name === null && this.props.contact.pi_name === null )
-      {
-        showCityStateZip = true;
-        genericFacilityContact= this.props.contact.city + ", " + this.props.contact.state + ", "+ this.props.contact.zip + " " + this.props.contact.country;
-      }
-    else
-      {
-        showCityStateZip = false;
-      }
-      var inclusion=this.props.study.criteria_inc;
-      var exclusion=this.props.study.criteria_ex;
-      
-      
-      if (typeof inclusion === 'string')
-      {
-        //look for multiple whitspace following by a - to split up the string into multiple lines
-        inclusion=inclusion.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>);
-      }
-
-      if (typeof exclusion === 'string')
-      {
-        //look for multiple whitspace following by a - to split uptthe string into multiple lines
-        exclusion=exclusion.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>);
-      }
-     // console.log("in render: inclusion ", inclusion, " exclusion ", exclusion);
-    
     return (
-      
-      <div className="row detail-container">
-      <div className="overallContainer" style={{overflow: 'scroll', height: '80vh'}}>
-        <Card className="col-md-12 detail-topsection">
-          <CardTitle className="detail-study-title">{this.props.study.brief_title}</CardTitle>
-          <CardText className="detail-description" style={{fontSize:'1.2em'}}>{this.props.study.description}</CardText>
-        </Card>
+      <Grid container>
+        <ComponentDidMount
+          handler={() => {
+            this.getStudy({facility_id: Number(this.props.match.params.facilityId)});
+          }}
+        >
+        {!this.state.gettingStudy ? (
+          <Paper style={{width:'100%'}}>
+            <Grid item xs>
+              <Card>
+               <CardContent>
 
-        <div className="row detail-midsection">
-          <Card className="col-md-4 detail-phase">
-            <CardTitle className="detail-title">Trial Phase</CardTitle>
-            <CardText className="detail-study-phase" style={{fontSize: '2em'}}>{this.props.study.phase}</CardText>
-          </Card>
-          <Card className="col-md-4 detail-eligibility">
-            <div>
-              <RaisedButton label="Eligibility Info" fullWidth={true} style={{margin:'50px auto'}} onClick={()=>{this.handleToggle()}} />
-              <Dialog
-                title="Eligibility Information"
-                actions={actions}
-                modal={true}
-                open={this.state.elg_info_open}
-                autoScrollBodyContent={true}
-                contentStyle={{height:'100%'}}
-              >
-                <Tabs
-                  value={this.state.tab_value}
-                  onChange={()=>{this.handleTabChange()}}
-                >
-                  <Tab label="Inclusion Criteria" value="include">
-                    <div>
-                    {inclusion}
-                    </div>
-                  </Tab>
-                  <Tab label="Exclusion Criteria" value="exclusion">
-                    <div>
-                      {exclusion}
-                    </div>
-                  </Tab>
-                </Tabs>
-
-              </Dialog>
-            </div>
-          </Card>
-          <Card className="col-md-4 detail-studylink">
-            <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.props.study.nct_id}`}>
-              Clinical Trials Page for {this.props.study.nct_id}
-            </a>
-          </Card>
-        </div>
-
-        <div className="row detail-endsection">
-          {/* Contact Info Section */}
-          <Card className="col-md-6 detail-contact">
-            <CardTitle className="detail-title">Contact Information</CardTitle>
-            <CardText>
-              <CardTitle style={{padding: '0px'}} subtitleStyle={{fontSize: '1.5em'}} subtitle="Facility Contact" />
-                
-                {showCityStateZip ? 
-                  <List>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">import_contacts</FontIcon> {genericFacilityContact}</ListItem>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">store</FontIcon> {this.props.contact.facility_name === null ? 'Please refer to the central contact' : this.props.contact.facility_name}</ListItem>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.props.contact.facility_contact_phone}</ListItem>
-                  </List>
-                  :
-                  <List>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">store</FontIcon> {this.props.contact.facility_name}</ListItem>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">person</FontIcon> 
-                  {this.props.contact.facility_contact_name === null ? " Primary Investigator: " +this.props.contact.pi_name : this.props.contact.facility_contact_name}</ListItem>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">email</FontIcon> {this.props.contact.facility_contact_email === null ? 'N/A' : this.props.contact.facility_contact_email}</ListItem>
-                  <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.props.contact.facility_contact_phone}</ListItem>
-                  </List>
-                }
+                  <Typography gutterBottom variant="h2" color="inherit">{this.state.study.brief_title}</Typography>
+                  
+                  <Typography component="body1" color="inherit">{this.state.study.description}</Typography>
+                  <Typography variant="subtitle1" component="p" color="inherit">Trial Phase: {this.state.study.phase}</Typography>
+                  <Typography component="body1" className="study-link" color="inherit">For more information visit: 
+                  <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}>
+                  {` https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}
+                  </a></Typography>
+                  
+                  <EmailModal study={this.state.study} contact={this.state.contact} />  
+              </CardContent>
+        
+              </Card>
+            </Grid>
           
-            </CardText>
-            <CardText>
-              <CardTitle style={{padding: '0px'}} subtitleStyle={{fontSize: '1.5em'}} subtitle="Central Contact" />
-              <List>
-                <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">person</FontIcon> {this.props.contact.central_contact_name === null ? 'N/A' : this.props.contact.central_contact_name}</ListItem>
-                <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">email</FontIcon> {this.props.contact.central_contact_email === null ? 'N/A' : this.props.contact.central_contact_email}</ListItem>
-                <ListItem innerDivStyle={{padding: '3px'}}><FontIcon className="material-icons">phone</FontIcon> {this.props.contact.central_contact_phone === null ? 'N/A' : this.props.contact.central_contact_phone}</ListItem>
-              </List>
-            </CardText>
-          </Card>
+            <Grid item xs>
+              <ExpansionPanel>
+                <ExpansionPanelSummary className="incExTitle" expandIcon={<ExpandMoreIcon />}>
+                    Click to view the Criteria for Participating in this study
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <div className="criteria">
+                  {this.state.study.criteria_inc.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)} 
+                  </div>
+                  <div className="criteria">
+                  {this.state.study.criteria_ex.split(/\s{2,}-/).map((item,i) => <p key={i}>{item}</p>)}
+                  </div>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+            </Grid>
 
-          {/* google map */}
-          <Card className="col-md-6 detail-map">
-            <CardMedia>
+          <Grid container>
+          <Grid item xs={12} sm={12} md={6}>
+            {/* Contact Info Section */}
+            <Card>
+              <Typography gutterBottom variant="h2" color="inherit">Contact Information</Typography>
+              <CardContent>
+                <Typography variant="subtitle2" style={{padding: '0px', fontSize: '1.5em' }} color="inherit">Facility Contact</Typography>
+                  
+                  {this.state.contact.facility_contact_name === null && this.state.contact.pi_name === null ? 
+                    <List>
+                      <ListItem style={{padding: '3px'}}>
+                        <ListItemIcon className="material-icons">
+                          <LocationIcon />
+                        </ListItemIcon> 
+                          {this.state.contact.city + ", " + this.state.contact.state + ", "+ this.state.contact.zip + " " + this.state.contact.country}
+                      </ListItem>
+                      <ListItem style={{padding: '3px'}}>
+                        <ListItemIcon className="material-icons">
+                          <StoreIcon />
+                        </ListItemIcon> 
+                          {this.state.contact.facility_name === null ? 'Please refer to the central contact' : this.state.contact.facility_name}
+                      </ListItem>
+                      <ListItem style={{padding: '3px'}}>
+                        <ListItemIcon className="material-icons">
+                          <PhoneIcon />
+                        </ListItemIcon> 
+                        {this.state.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.state.contact.facility_contact_phone}
+                      </ListItem>
+                    </List>
+                    :
+                    <List>
+                      <ListItem style={{padding: '3px'}}>
+                        <ListItemIcon className="material-icons">
+                          <PersonIcon />
+                        </ListItemIcon> 
+                        {this.state.contact.facility_contact_name === null ? " Primary Investigator: " +this.state.contact.pi_name : this.state.contact.facility_contact_name}
+                      </ListItem>
+                      <ListItem style={{padding: '3px'}}>
+                        <ListItemIcon className="material-icons">
+                          <EmailIcon />
+                        </ListItemIcon> {this.state.contact.facility_contact_email === null ? 'N/A' : this.state.contact.facility_contact_email}
+                      </ListItem>
+                      <ListItem style={{padding: '3px'}}>
+                        <ListItemIcon className="material-icons">
+                          <PhoneIcon />
+                        </ListItemIcon> 
+                        {this.state.contact.facility_contact_phone === null ? 'Please refer to the central contact' : this.state.contact.facility_contact_phone}
+                      </ListItem>
+                    </List>
+                  }
+            
+              </CardContent>
+              <CardContent>
+                <Typography variant="subtitle2" style={{padding: '0px',fontSize: '1.5em'}} color="inherit">Central Contact</Typography>
+                <List>
+                  <ListItem style={{padding: '3px'}}><ListItemIcon className="material-icons"><StoreIcon /></ListItemIcon> {this.state.contact.central_contact_name === null ? 'N/A' : this.state.contact.central_contact_name}</ListItem>
+                  <ListItem style={{padding: '3px'}}><ListItemIcon className="material-icons"><EmailIcon /></ListItemIcon> {this.state.contact.central_contact_email === null ? 'N/A' : this.state.contact.central_contact_email}</ListItem>
+                  <ListItem style={{padding: '3px'}}><ListItemIcon className="material-icons"><PhoneIcon /></ListItemIcon> {this.state.contact.central_contact_phone === null ? 'N/A' : this.state.contact.central_contact_phone}</ListItem>
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6}>
+            {/* google map */}
+            <Card>
+                  <iframe
+                    title={"result-map"}
+                    width={"600"}
+                    height={"450"}
+                    frameBorder={"0"}
+                    src={this.state.facility_contact_name ?`https://www.google.com/maps/embed/v1/place?key=AIzaSyBCyRuFxxuSVcYNNDZmVWrBUJgHaoXhLJ0&q=${this.state.contact.facility_name},${this.state.study.zip}` : `https://www.google.com/maps/embed/v1/place?key=AIzaSyBCyRuFxxuSVcYNNDZmVWrBUJgHaoXhLJ0&q=${this.state.study.zip}`}
+                  >
+                  </iframe>
+            </Card>
+          </Grid>
+            <Grid item xs={12}>
+              
+              <Link to={`/results`}>
+                <Button style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} variant="extendedFab" size="large" fullWidth>Back to Results</Button>
+              </Link>
+            
+            </Grid>
+          </Grid>
+        </Paper>
+
+        ) : null }
         
-              {this.props.facility_contact_name ?
-                <iframe
-                  title={"result-map"}
-                  width={"600"}
-                  height={"450"}
-                  frameBorder={"0"}
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBCyRuFxxuSVcYNNDZmVWrBUJgHaoXhLJ0&q=${this.props.contact.facility_name},${this.props.study.zip}`}
-                >
-                </iframe>
-              :
-                <iframe
-                title={"result-map"}
-                width={"600"}
-                height={"450"}
-                frameBorder={"0"}
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBCyRuFxxuSVcYNNDZmVWrBUJgHaoXhLJ0&q=${this.props.study.zip}`}>
-                </iframe>
-              }
-
-          </CardMedia>
-          </Card>
-        </div>
-        </div>
-        
-        <div className="row detail-back-row" style={{fontSize: '20px', fontWeight: 'bold'}}>
-          <div className="col-md-3"></div>
-          <FlatButton className="col-md-6 detail-back" style={{backgroundColor: "#6ab6c5", hoverColor: "#b8e2ea", marginTop:"20px"}} onClick={this.props.back}>Back to Results</FlatButton>
-        </div>
-
-      </div>
+        </ComponentDidMount>
+      </Grid>
       
     )
   }
