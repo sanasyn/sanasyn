@@ -116,7 +116,6 @@ class Quiz extends Component {
             <Subscribe to={[ResultsContainer]}>
                 {(results) => (
                     <ReactCSSTransitionGroup
-                    className="quiz_wrapper"
                     component="div"
                     transitionName="fade"
                     transitionEnterTimeout={800}
