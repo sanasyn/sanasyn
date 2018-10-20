@@ -14,13 +14,35 @@ import StoreIcon from '@material-ui/icons/Store';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import { withStyles } from '@material-ui/core/styles';
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EmailModal from './EmailModal';
+
+const styles = {
+  resultDetails: {
+    background: '#d4d2d2'
+  },
+  card: {
+    marginTop:'15px'
+  },
+  title: {
+    fontSize: '2.6em',
+    fontWeight: 'bold'
+  },
+  heading: {
+    fontSize: '1.9em',
+    fontWeight: 'bold',
+    margin: '10px'
+  },
+  description: {
+    fontSize: '1.3em',
+    margin: '8px'
+  }
+}
 
 class ResultDetail extends Component {
   constructor(props){
@@ -59,6 +81,7 @@ class ResultDetail extends Component {
   };
 
   render(){
+    const { classes } = this.props;
     return (
       <Grid container>
         <ComponentDidMount
@@ -67,16 +90,16 @@ class ResultDetail extends Component {
           }}
         >
         {!this.state.gettingStudy ? (
-          <Paper style={{width:'100%'}}>
+          <Paper style={{width:'100%'}} className={classes.resultDetails}>
             <Grid item xs>
-              <Card>
+              <Card className={classes.card}>
                <CardContent>
 
-                  <Typography gutterBottom variant="h2" color="inherit">{this.state.study.brief_title}</Typography>
+                  <Typography gutterBottom variant="h2" color="inherit" className={classes.title}>{this.state.study.brief_title}</Typography>
                   
-                  <Typography component="body1" color="inherit">{this.state.study.description}</Typography>
-                  <Typography variant="subtitle1" component="p" color="inherit">Trial Phase: {this.state.study.phase}</Typography>
-                  <Typography component="body1" className="study-link" color="inherit">For more information visit: 
+                  <Typography component="body1" color="inherit" className={classes.description}>{this.state.study.description}</Typography>
+                  <Typography variant="subtitle1" component="p" color="inherit" className={classes.description}>Trial Phase: {this.state.study.phase}</Typography>
+                  <Typography component="body1" className="study-link" color="inherit" className={classes.description}>For more information visit: 
                   <a target="_blank" href={`https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}>
                   {` https://clinicaltrials.gov/ct2/show/${this.state.study.nct_id}`}
                   </a></Typography>
@@ -88,7 +111,7 @@ class ResultDetail extends Component {
             </Grid>
           
             <Grid item xs>
-              <ExpansionPanel>
+              <ExpansionPanel className={classes.card}>
                 <ExpansionPanelSummary className="incExTitle" expandIcon={<ExpandMoreIcon />}>
                     Click to view the Criteria for Participating in this study
                 </ExpansionPanelSummary>
@@ -106,8 +129,8 @@ class ResultDetail extends Component {
           <Grid container>
           <Grid item xs={12} sm={12} md={6}>
             {/* Contact Info Section */}
-            <Card>
-              <Typography gutterBottom variant="h2" color="inherit">Contact Information</Typography>
+            <Card className={classes.card}>
+              <Typography gutterBottom variant="h2" color="inherit" className={classes.heading}>Contact Information</Typography>
               <CardContent>
                 <Typography variant="subtitle2" style={{padding: '0px', fontSize: '1.5em' }} color="inherit">Facility Contact</Typography>
                   
@@ -168,7 +191,7 @@ class ResultDetail extends Component {
 
           <Grid item xs={12} sm={12} md={6}>
             {/* google map */}
-            <Card>
+            <Card className={classes.card}>
                   <iframe
                     title={"result-map"}
                     width={"600"}
@@ -198,4 +221,4 @@ class ResultDetail extends Component {
   }
 }
 
-export default ResultDetail;
+export default withStyles(styles)(ResultDetail);
