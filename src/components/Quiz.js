@@ -15,8 +15,9 @@ import PropTypes from 'prop-types';
 import {LinearProgress, Button, Card,CardHeader,CardContent} from '@material-ui/core';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import config from '../../config/config.js'
+import { withStyles } from '@material-ui/core/styles';
 
-
+const styles ={};
 class Quiz extends Component {
     constructor(props) {
         super(props);
@@ -66,11 +67,15 @@ class Quiz extends Component {
             this.setNextOrPreviousQuestion(counter, 1)
             break;
           case 5:
-          results.state.answer.geneticTesting.taken === 'No' ?this.setNextOrPreviousQuestion(counter, 2) :
+            results.state.answer.geneticTesting.taken === 'No' ? this.setNextOrPreviousQuestion(counter, 2) :
+            this.setNextOrPreviousQuestion(counter, 1)
+            break;
+          case 6:
+            results.state.answer.geneticTesting.taken === 'Yes' ? this.setNextOrPreviousQuestion(counter, 2) :
             this.setNextOrPreviousQuestion(counter, 1)
             break;
           case 12:
-          results.state.answer.medications.list.includes('None') ?this.setNextOrPreviousQuestion(counter, 2) :
+            results.state.answer.medications.list.includes('None') ? this.setNextOrPreviousQuestion(counter, 2) :
             this.setNextOrPreviousQuestion(counter, 1)
             break;
           case 17:
@@ -187,4 +192,4 @@ Quiz.propTypes ={
     // onAnswerSelected: PropTypes.func.isRequired
 }
 
-export default withRouter(Quiz);
+export default withRouter(withStyles(styles)(Quiz));

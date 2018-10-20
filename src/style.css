@@ -125,6 +125,7 @@ h1.healingConn {
   line-height: 1.2em;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+  color: black;
 }
 
 /*Landing Page*/
@@ -350,6 +351,10 @@ label.checkCustomLabel {
   margin: 0 auto;
 }
 
+.resultsPage {
+  background: #d4d2d2;
+}
+
 /* .MuiPaper-root-47.MuiPaper-elevation1-50.MuiPaper-rounded-48.MuiCard-root-46 {
   margin: 15px;
   text-align: left;
@@ -496,6 +501,7 @@ button.MuiButtonBase-root-27.MuiTab-root-144.MuiTab-textColorInherit-146 {
 
 .aboutCard {
   /* margin: 2em 5em 2em 5em; */
+  margin-top: 10px;
   padding: 2em 2em 0 2em;
 }
 
