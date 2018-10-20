@@ -25,8 +25,7 @@ const styles={
 	},
 
 	introBk:{
-		backgroundColor:'#060d16',
-		height: '450px',
+		backgroundColor:'#060d16'
 
 	},
 	image: {
@@ -38,6 +37,11 @@ const styles={
 		boxShadow: [
 			[-15, 0, 100, 36, 'rgb(6,13,22)', 'inset']
 		]
+	},
+	imageContainer:{
+		height:'450px',
+		backgroundColor:'#060d16'
+
 	},
 
 	introInfo:{
@@ -84,7 +88,7 @@ export default withStyles(styles)(({classes})=> {
 						<Image src={require('../dist/synapse.jpg')} color="#060d16" style={imageRoot} imageStyle={ imageLogo }/>
 					</Paper>	 */}
 					
-						<Paper className={classes.introBk}>
+						<Paper className={classes.imageContainer}>
 							<div className={classes.image}></div>
 						</Paper>
         			

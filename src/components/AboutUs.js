@@ -4,11 +4,19 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import teamImage from '../dist/groupPic.jpg';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  aboutPage: {
+    background: '#d4d2d2'
+  }
+}
 
 class About extends Component {  
   render(){
+    const { classes } = this.props;
     return(
-      <Fragment>
+      <Fragment className={classes.aboutPage}>
         <Card className="aboutCard">
           <CardContent>
             <h2 className="aboutTitle">
@@ -87,4 +95,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default withStyles(styles)(About);

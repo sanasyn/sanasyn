@@ -14,6 +14,10 @@ import CardContent from '@material-ui/core/CardContent';
 const styles = {
   card: {
     margin:'10px'
+  },
+  clickTitle: {
+    fontSize: '1.9em',
+    color: 'black'
   }
 }
 
@@ -59,7 +63,7 @@ class Result extends Component {
                 >
                   {results.state.loading ? (
                     <div className='refreshIndicator'>
-                      <Typography variant="h6" gutterBottom>
+                      <Typography variant="h6" gutterBottom className={classes.clickTitle}>
                         Searching for results...
                       </Typography>
                     {/* <h2 className='userInfo'>Searching for results...</h2> */}
@@ -77,7 +81,7 @@ class Result extends Component {
                     <div>
                     <div className="instructions" style={{textAlign: "center"}}>
                       {/* <h2 className='userInfo'>Click on the title for study details.</h2> */}
-                      <Typography variant="h6" gutterBottom>
+                      <Typography variant="h6" className={classes.clickTitle}gutterBottom>
                         Click on the title for study details.
                       </Typography>
 
