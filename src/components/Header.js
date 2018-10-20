@@ -2,11 +2,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import headerImage from '../dist/SanaTitle.svg';
+import { Subscribe } from 'unstated';
+import ResultsContainer from '../containers/ResultsContainer';
+import {Link} from 'react-router-dom';
+import Image from 'material-ui-image';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select'
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar,Typography, Button} from '@material-ui/core';
-import headerImage from '../dist/SanaTitle.svg';
-import Image from 'material-ui-image';
-import {Link} from 'react-router-dom';
 
 const styles = {
     root: {
@@ -32,9 +38,29 @@ const styles = {
         boxSizing:'content-box'
     },
     navLink:{
-      padding:'24px',
+      padding:'31px',
       textDecoration: 'none',
-      color:"#fff"
+      color:"#fff",
+      display: 'inline',
+      fontSize: '1.3em'
+    },
+    form: {
+      display: 'inline',
+      fontSize: '1.1em',
+      padding: '3px',
+      borderRadius: '5px'
+
+    },
+    label: {
+      display: 'inline',
+      fontSize: '0.8em',
+      padding: '3px'
+    },
+    select: {
+      
+    },
+    options: {
+      color: 'black',
     },
     '@media (max-width: 600px)':
     {
@@ -82,25 +108,46 @@ const styles = {
 function Header(props){
     const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-            
-            <div className={classes.grow}>
-            
-              <span className={classes.logo}>S&#423;</span>
-              <Link to='/'>
-              <Image src={require('../dist/SanaTitle.svg')} color="transparent" style={imageRoot} imageStyle={ imageLogo }/>
-              </Link>
-            </div>
-            
-            <div className={classes.bringToFront}>
-                <Link to='/quiz/question/0' className={classes.navLink}>Quiz</Link>
-                <Link to='/about' className={classes.navLink}>About</Link>
-            </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <Subscribe to={[ResultsContainer]}>
+      {(results) => (
+        <div className={classes.root}>
+          <AppBar position="static" className={classes.appBar}>
+            <Toolbar>
+                
+                <div className={classes.grow}>
+                
+                  <span className={classes.logo}>S&#423;</span>
+                  <Link to='/'>
+                  <Image src={require('../dist/SanaTitle.svg')} color="transparent" style={imageRoot} imageStyle={ imageLogo }/>
+                  </Link>
+                </div>
+                
+                <div className={classes.bringToFront}>
+                  <form  autoComplete="off" className={classes.navLink}>
+                    <FormControl className={classes.form}>
+                      <p className={classes.label}>Language: </p>
+                      <Select
+                        className={classes.select}
+                        value={results.state.language}
+                        onChange={(event) => results.handleLanguageChange(event)}
+                        inputProps={{
+                          name: 'language',
+                          id: 'languageSelection',
+                        }}
+                      >
+                        <MenuItem className={classes.options} value={'english'}>English</MenuItem>
+                        <MenuItem className={classes.options} value={'spanish'}>Spanish</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </form>
+                  <Link to='/quiz/question/0' className={classes.navLink}>Quiz</Link>
+                  <Link to='/about' className={classes.navLink}>About</Link>
+                </div>
+            </Toolbar>
+          </AppBar>
+        </div>
+      )}
+    </Subscribe>
   );
 }
 

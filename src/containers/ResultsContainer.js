@@ -112,6 +112,10 @@ export default class ResultsContainer extends Container {
         })
         }
     }
-    }
+  }
+
+  handleLanguageChange(event) {
+    this.setState({language: event.target.value})
+  }
 
 }
