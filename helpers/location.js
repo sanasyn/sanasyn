@@ -22,7 +22,8 @@ function getDistance(source, facilities){
         .then((modFacilities) => getSourceZip(source, modFacilities))
         .then((obj) => facilityDistance(obj))
         .then((facility) => {
-            return facility.sort((a,b) => a.distance - b.distance)
+            // return facility.sort((a,b) => a.distance - b.distance)
+            return facility
         })
         .catch((err) => console.log(err))
 }

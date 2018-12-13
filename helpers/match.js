@@ -1,4 +1,4 @@
-const config = require('../config/config').heroku;
+const config = require('../config/config');
 const pg = require('pg');
 const knex = require('knex')(getConnectionOptions());
 
@@ -16,20 +16,22 @@ const getFacilityDistance = require('./location');
 
 function getConnectionOptions() {
 	return {
-		client: config.client,
+		client: config.heroku.client,
 		connection : {
-			host: config.host,
-			user: config.user,
-			password: config.password,
-			database: config.database,
+			host: config.heroku.host,
+			user: config.heroku.user,
+			password: config.heroku.password,
+			database: config.heroku.database,
 			ssl: true
 		}
 	}
 }
 
 function runQuery(req, res) {
-	console.log("Request: ", req.body);
-	// console.time("TIME");
+	// console.log("Request: ", req.body);
+	req.headers["Authentication"] = config.security.token;
+	console.log("REQ HEADERS: ", req.headers);
+	console.time("TIME");
 	let query = req.body;
 	return knex
 	// .distinct()
@@ -60,13 +62,15 @@ function runQuery(req, res) {
 		{multipleSearch: buildNotILikeQueryEx(query)}
 		))
 	.then(rows => {
-		return getFacilityDistance(query.zipcode, rows)
-			.then((results) => {
+		// return getFacilityDistance(query.zipcode, rows)
+		// 	.then((results) => {
 				// console.log(results)
-				res.send(results)
-			})
+				// results.splice(100);
+				// console.log("LENGTH: ", results.length);
+				res.send(rows)
+			// })
 	})
-	// .then(()=>{console.timeEnd("TIME");})
+	.then(()=>{console.timeEnd("TIME");})
 	.catch((error) => {
 		res.send(new Error('Error querying database. ', error));
 	});
