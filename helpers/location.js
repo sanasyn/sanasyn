@@ -28,39 +28,55 @@ function getDistance(source, facilities){
 }
 
 function handleZipExceptions(facilities) {
-    const modifiedFacilities = facilities.map((facility) => {
-        if (facility.zip.indexOf('-') > -1) {
-            facility.zip = facility.zip.substring(0,5);
-        }
-
-        const checkZip = zipcodes.lookup(facility.zip)
-
-        if (typeof checkZip === 'undefined' && facility.country === 'United States') {
-            facility.zip = zipcodes.lookupByName(facility.city, facility.state).length > 1 ? 
-                zipcodes.lookupByName(facility.city, facility.state)[1].zip : 
-                zipcodes.lookupByName(facility.city, facility.state)[0].zip;
-            return facility
-
-        }
-        else if (typeof checkZip === 'undefined' && facility.country === 'Canada') {
-            return knex
-            .select('zipcode')
-            .from('zipcodes')
-            .where('city', 'like', '%'+facility.city+'%')
-            .andWhere('state', 'like', '%'+facility.state+'%')
-            .then((row) => {
-                facility.zip = row[0].zipcode
-                return facility
-            })
-            .catch((err) => console.log(err))
-        }
-        else return facility
-    })
-    return Promise.all(modifiedFacilities);
+    try {
+        const modifiedFacilities = facilities.reduce((total, facility, idx) => {
+            if (facility.zip.indexOf('-') > -1) {
+                facility.zip = facility.zip.substring(0,5);
+            }
+    
+            const checkZip = zipcodes.lookup(facility.zip)
+            
+            if (!!checkZip) {
+                total.push(facility);
+            }
+    
+            else if (typeof checkZip === 'undefined' && facility.country === 'United States') {
+                let cityStateLookup = zipcodes.lookupByName(facility.city, facility.state)
+    
+                if (cityStateLookup) {
+                    facility.zip = cityStateLookup.length > 1 ? 
+                    cityStateLookup[1].zip : 
+                    cityStateLookup[0].zip;
+                    total.push(facility);
+                }
+            }
+            // to fix at some point for canada
+            // else if (typeof checkZip === 'undefined' && facility.country === 'Canada') {
+            //     return knex
+            //     .select('zipcode')
+            //     .from('zipcodes')
+            //     .where('city', 'like', '%'+facility.city+'%')
+            //     .andWhere('state', 'like', '%'+facility.state+'%')
+            //     .then((row) => {
+            //         if (!!row) {
+            //             facility.zip = row[0].zipcode
+            //             total.push(facility);
+            //         }
+            //     })
+            //     .catch((err) => console.log("CANADA ERROR", facility, err))
+            // }
+            return total;
+        }, [])
+        return Promise.all(modifiedFacilities);
+    }
+    catch(e) {
+        console.log("ERROR: ", e);
+    }
 }
 
 // Function to return lat and long using user's zipcode
 function getSourceZip(source, facilities){
+    
     return knex
         .select('zipcode', 'latitude', 'longitude')
         .from('zipcodes')
@@ -86,7 +102,7 @@ function facilityDistance(obj){
                 facility.distance = dist;
                 return facility
             })
-            .catch((err) => console.log(err))
+            .catch((err) => console.log("ERROR: ",err, facility))
     })
 
     return Promise.all(modifiedObj)
