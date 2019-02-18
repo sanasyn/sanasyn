@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: ['./src/index.js'],
@@ -8,15 +9,6 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: 'assets',
   },
-  // devServer: {
-  //   contentBase: './src/dist/index.html',
-  //   proxy: {
-  //     '/**': {
-  //       target: 'http://localhost:8080',
-  //       secure: false,
-  //     },
-  //   },
-  // },
   module: {
     rules: [
       {
@@ -51,4 +43,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebPackPlugin({
+      template: './src/dist/index.html',
+      filename: './index.html',
+    })
+  ]
 };
