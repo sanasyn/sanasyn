@@ -4,6 +4,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 function Question(props){
     var question = props.content;
