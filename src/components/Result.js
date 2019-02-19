@@ -3,9 +3,11 @@ import { Subscribe } from 'unstated';
 import { Link, withRouter } from 'react-router-dom';
 import ComponentDidMount from '../utils/ComponentDidMount';
 import ResultsContainer from '../containers/ResultsContainer';
-import {Button, Typography} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {ArrowForward, ArrowBack}from '@material-ui/icons';
+import ArrowForward from '@material-ui/icons/ArrowForward';
+import  ArrowBack from '@material-ui/icons/ArrowBack';
 import { withStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';

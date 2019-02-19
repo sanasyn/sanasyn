@@ -12,8 +12,11 @@ import { Link, withRouter } from 'react-router-dom';
 import AnswerInput from '../components/AnswerInput';
 import HelpModal from '../components/HelpModal';
 import PropTypes from 'prop-types';
-import {LinearProgress, Button, Card,CardHeader,CardContent} from '@material-ui/core';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
 import config from '../../config/config.js'
 import { withStyles } from '@material-ui/core/styles';
 
@@ -115,16 +118,6 @@ class Quiz extends Component {
         return (
             <Subscribe to={[ResultsContainer]}>
                 {(results) => (
-                    <ReactCSSTransitionGroup
-                    className="quiz_wrapper"
-                    component="div"
-                    transitionName="fade"
-                    transitionEnterTimeout={800}
-                    transitionLeaveTimeout={500}
-                    transitionAppear
-                    transitionAppearTimeout={500}
-                    // onKeyPress={this.handleEnterNext(event)}
-                >
                     <div className="quiz">
                     <Card>
                       <CardContent>
@@ -174,7 +167,6 @@ class Quiz extends Component {
                       </CardContent>
                     </Card>
                     </div>
-                </ReactCSSTransitionGroup>
                 )}
             </Subscribe>
             

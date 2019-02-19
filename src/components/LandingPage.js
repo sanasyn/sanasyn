@@ -4,8 +4,11 @@ import QuestionIcon from '@material-ui/icons/QuestionAnswerTwoTone';
 import LocationIcon from '@material-ui/icons/LocationOnTwoTone';
 import PeopleIcon from '@material-ui/icons/PeopleTwoTone';
 import { Link, withRouter } from 'react-router-dom';
-import {Grid, Button, Typography, Paper, Hidden} from '@material-ui/core';
-import Image from 'material-ui-image';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles={

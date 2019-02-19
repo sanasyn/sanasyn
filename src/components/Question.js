@@ -3,7 +3,7 @@
 
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {Grid, Button, Typography, Paper, Card, CardContent} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 function Question(props){
     var question = props.content;

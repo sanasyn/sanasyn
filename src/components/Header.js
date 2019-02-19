@@ -3,7 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Toolbar,Typography, Button} from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import headerImage from '../dist/SanaTitle.svg';
 import Image from 'material-ui-image';
 import {Link} from 'react-router-dom';

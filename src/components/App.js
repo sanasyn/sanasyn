@@ -8,7 +8,8 @@ import Result from './Result';
 import Header from './Header';
 import ResultDetail from './ResultDetail';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import {Grid, Button, Typography, Paper, Card, CardContent} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 
 class App extends Component {
